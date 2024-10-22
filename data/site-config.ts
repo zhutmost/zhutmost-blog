@@ -38,16 +38,6 @@ const userConfig: Partial<SiteConfig> = {
     iconSvg: '/favicons/favicon.svg',
     webManifest: '/favicons/site.webmanifest',
   },
-  search: {
-    provider: 'kbar',
-    kbarConfig: {
-      searchDocumentsPath: '/search-kbar.json',
-    },
-  },
-  comment: {
-    provider: null,
-  },
-  analytics: {},
 }
 
 export default userConfig

@@ -3,21 +3,18 @@
 import * as React from 'react'
 import Typed from 'typed.js'
 
-// import Twemoji from '@/components/Twemoji'
-
 export default function TypedBios() {
   const el = React.useRef(null)
-  const typed = React.useRef(null)
 
   React.useEffect(() => {
-    typed.current = new Typed(el.current, {
+    const typed = new Typed(el.current, {
       stringsElement: '#bios',
       typeSpeed: 40,
       backSpeed: 10,
       loop: true,
       backDelay: 1000,
     })
-    return () => typed.current.destroy()
+    return () => typed.destroy()
   }, [])
 
   return (

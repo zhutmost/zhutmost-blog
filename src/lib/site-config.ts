@@ -1,15 +1,14 @@
-import { KBarSearchProps } from 'pliny/search/KBar.js'
-import { AlgoliaSearchProps } from 'pliny/search/Algolia.js'
-import { DisqusProps, GiscusProps, UtterancesProps } from 'pliny/comments/index.js'
-import {
-  GoogleAnalyticsProps,
-  PlausibleProps,
-  PosthogProps,
-  SimpleAnalyticsProps,
-  UmamiProps,
-} from 'pliny/analytics/index.js'
+// import { KBarSearchProps } from 'pliny/search/KBar.js'
+// import { AlgoliaSearchProps } from 'pliny/search/Algolia.js'
+// import { DisqusProps, GiscusProps, UtterancesProps } from 'pliny/comments/index.js'
+// import {
+//   GoogleAnalyticsProps,
+//   PlausibleProps,
+//   PosthogProps,
+//   SimpleAnalyticsProps,
+//   UmamiProps,
+// } from 'pliny/analytics/index.js'
 import userConfig from '@/data/site-config'
-// import { SocialIconListType } from '@/components/icon-button'
 
 type SearchProviders = 'kbar' | 'algolia'
 
@@ -44,24 +43,24 @@ export interface SiteConfig {
     beian?: string
     icons?: Record<string, { icon: string; href: string }>
   }
-  search: {
-    provider: SearchProviders | null
-    kbarConfig?: KBarSearchProps
-    algoliaConfig?: AlgoliaSearchProps
-  }
-  comment: {
-    provider: CommentProviders | null
-    giscusConfig?: GiscusProps
-    utterancesConfig?: UtterancesProps
-    disqusConfig?: DisqusProps
-  }
-  analytics: {
-    umamiAnalytics?: UmamiProps
-    posthogAnalytics?: PosthogProps
-    googleAnalytics?: GoogleAnalyticsProps
-    plausibleAnalytics?: PlausibleProps
-    simpleAnalytics?: SimpleAnalyticsProps
-  }
+  // search: {
+  //   provider: SearchProviders | null
+  //   kbarConfig?: KBarSearchProps
+  //   algoliaConfig?: AlgoliaSearchProps
+  // }
+  // comment: {
+  //   provider: CommentProviders | null
+  //   giscusConfig?: GiscusProps
+  //   utterancesConfig?: UtterancesProps
+  //   disqusConfig?: DisqusProps
+  // }
+  // analytics: {
+  //   umamiAnalytics?: UmamiProps
+  //   posthogAnalytics?: PosthogProps
+  //   googleAnalytics?: GoogleAnalyticsProps
+  //   plausibleAnalytics?: PlausibleProps
+  //   simpleAnalytics?: SimpleAnalyticsProps
+  // }
   seo: {
     socialBanner: string
     openGraph?: {
@@ -108,16 +107,16 @@ export const defaultSiteConfig: SiteConfig = {
   footer: {
     beian: undefined,
   },
-  search: {
-    provider: null,
-    kbarConfig: {
-      searchDocumentsPath: '/search-kbar.json',
-    },
-  },
-  comment: {
-    provider: null,
-  },
-  analytics: {},
+  // search: {
+  //   provider: null,
+  //   kbarConfig: {
+  //     searchDocumentsPath: '/search-kbar.json',
+  //   },
+  // },
+  // comment: {
+  //   provider: null,
+  // },
+  // analytics: {},
   seo: {
     socialBanner: '/banner.png',
     openGraph: {},

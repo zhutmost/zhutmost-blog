@@ -149,11 +149,11 @@ export default function PostLayout({
                   CC BY-NC-SA 4.0
                 </a>
               </div>
-              {siteConfig.comment.provider && (
-                <div className="pb-6 pt-6 text-center text-foreground" id="comment">
-                  {/*<Comments slug={slugPath} />*/}
-                </div>
-              )}
+              {/*{siteConfig.comment.provider && (*/}
+              {/*  <div className="pb-6 pt-6 text-center text-foreground" id="comment">*/}
+              {/*    /!*<Comments slug={slugPath} />*!/*/}
+              {/*  </div>*/}
+              {/*)}*/}
             </div>
           </div>
         </div>
