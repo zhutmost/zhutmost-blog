@@ -1,6 +1,4 @@
 import { TimelineItemProps } from '@/components/timeline'
-import { Button } from '@/components/ui/button'
-import { icons } from '@tabler/icons-react'
 
 const timelineNews: TimelineItemProps[] = [
   {
