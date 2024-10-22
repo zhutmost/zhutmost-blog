@@ -1,6 +1,6 @@
 // import { KBarSearchProps } from 'pliny/search/KBar.js'
 // import { AlgoliaSearchProps } from 'pliny/search/Algolia.js'
-// import { DisqusProps, GiscusProps, UtterancesProps } from 'pliny/comments/index.js'
+import { DisqusProps, GiscusProps, UtterancesProps } from 'pliny/comments/index.js'
 import {
   GoogleAnalyticsProps,
   PlausibleProps,
@@ -48,12 +48,12 @@ export interface SiteConfig {
   //   kbarConfig?: KBarSearchProps
   //   algoliaConfig?: AlgoliaSearchProps
   // }
-  // comment: {
-  //   provider: CommentProviders | null
-  //   giscusConfig?: GiscusProps
-  //   utterancesConfig?: UtterancesProps
-  //   disqusConfig?: DisqusProps
-  // }
+  comment: {
+    provider: CommentProviders | null
+    giscusConfig?: GiscusProps
+    utterancesConfig?: UtterancesProps
+    disqusConfig?: DisqusProps
+  }
   analytics: {
     umamiAnalytics?: UmamiProps
     posthogAnalytics?: PosthogProps
@@ -113,9 +113,9 @@ export const defaultSiteConfig: SiteConfig = {
   //     searchDocumentsPath: '/search-kbar.json',
   //   },
   // },
-  // comment: {
-  //   provider: null,
-  // },
+  comment: {
+    provider: null,
+  },
   analytics: {},
   seo: {
     socialBanner: '/banner.png',

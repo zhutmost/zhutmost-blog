@@ -48,6 +48,22 @@ const userConfig: Partial<SiteConfig> = {
       umamiWebsiteId: '4ae56858-7872-446f-980e-32d1c8db927e',
     },
   },
+  comment: {
+    provider: 'giscus',
+    giscusConfig: {
+      theme: 'light',
+      darkTheme: 'dark',
+      mapping: 'pathname',
+      repo: 'zhutmost/analog-blog-starter',
+      repositoryId: 'R_kgDONEFqpw',
+      category: 'Announcements',
+      categoryId: 'DIC_kwDONEFqp84CjmEV',
+      reactions: '1',
+      metadata: '0',
+      inputPosition: 'bottom',
+      lang: 'en',
+    },
+  },
 }
 
 export default userConfig

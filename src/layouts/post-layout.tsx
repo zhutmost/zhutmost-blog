@@ -5,6 +5,7 @@ import NextImage from 'next/image'
 import siteConfig from '@/lib/site-config'
 import NextLink from 'next/link'
 import Tag from '@/components/tag'
+import { Comments, CommentsConfig } from 'pliny/comments/index.js'
 
 export interface PostLayoutProps {
   children: React.ReactNode
@@ -30,11 +31,9 @@ export default function PostLayout({
           <header className="pt-6 xl:pb-6">
             {banner && (
               <div className="w-full pb-10">
-                {/*<Bleed>*/}
                 <div className="relative aspect-[5/2] w-full">
                   <NextImage src={banner} alt={title} fill className="object-cover" />
                 </div>
-                {/*</Bleed>*/}
               </div>
             )}
             <div className="space-y-1 text-center">
@@ -149,11 +148,11 @@ export default function PostLayout({
                   CC BY-NC-SA 4.0
                 </a>
               </div>
-              {/*{siteConfig.comment.provider && (*/}
-              {/*  <div className="pb-6 pt-6 text-center text-foreground" id="comment">*/}
-              {/*    /!*<Comments slug={slugPath} />*!/*/}
-              {/*  </div>*/}
-              {/*)}*/}
+              {siteConfig.comment.provider && (
+                <div className="pb-6 pt-6 text-center text-foreground" id="comment">
+                  <Comments commentsConfig={siteConfig.comment as CommentsConfig} slug={slugPath} />
+                </div>
+              )}
             </div>
           </div>
         </div>
