@@ -21,6 +21,7 @@ const userConfig: Partial<SiteConfig> = {
       Home: '/',
       Blog: '/archive',
       Tags: '/tags',
+      News: '/news',
       About: '/about',
     },
   },
