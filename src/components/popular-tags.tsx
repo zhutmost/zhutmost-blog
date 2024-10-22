@@ -20,6 +20,11 @@ export default function PopularTags() {
     }))
   }
 
+  const chartColors = Array.from(
+    { length: 5 },
+    (_, i) => `bg-chart-${i + 1} hover:bg-chart-${i + 1}/80`
+  )
+
   return (
     <div className="grid grid-cols-2 gap-4 py-6 sm:grid-cols-3 lg:grid-cols-5">
       {popularTags.map((popularTag, index) => {
@@ -27,7 +32,8 @@ export default function PopularTags() {
         const tagSlug = slugify(tag)
 
         const IconSvg = icons[icon as keyof typeof icons] || icons.IconTag
-        const bgColor = `bg-chart-${index + 1} hover:bg-chart-${index + 1}/80`
+
+        const bgColor = chartColors[index % chartColors.length]
 
         return (
           <NextLink
@@ -35,7 +41,7 @@ export default function PopularTags() {
             href={`/tags/${tagSlug}`}
             className={cn(
               buttonVariants({ size: 'lg', variant: 'default' }),
-              `mx-auto w-[160px] space-x-2 ${bgColor} px-3`
+              `${bgColor} mx-auto w-[160px] space-x-2 px-3`
             )}
           >
             <IconSvg className="h-6 w-6" />
