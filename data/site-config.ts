@@ -29,6 +29,10 @@ const userConfig: Partial<SiteConfig> = {
     icons: {
       Facebook: { icon: 'IconBrandFacebook', href: 'https://facebook.com' },
       X: { icon: 'IconBrandX', href: 'https://x.com' },
+      Analytics: {
+        icon: 'IconChartDots',
+        href: 'https://cloud.umami.is/share/unndQ4BKaNaSgfys/analog-demo.zhutmost.com',
+      },
     },
   },
   favicon: {
@@ -37,6 +41,11 @@ const userConfig: Partial<SiteConfig> = {
     icon32x32: '/favicons/favicon-32x32.png',
     iconSvg: '/favicons/favicon.svg',
     webManifest: '/favicons/site.webmanifest',
+  },
+  analytics: {
+    umamiAnalytics: {
+      umamiWebsiteId: '4ae56858-7872-446f-980e-32d1c8db927e',
+    },
   },
 }
 

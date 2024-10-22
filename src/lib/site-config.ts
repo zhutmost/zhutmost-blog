@@ -1,13 +1,13 @@
 // import { KBarSearchProps } from 'pliny/search/KBar.js'
 // import { AlgoliaSearchProps } from 'pliny/search/Algolia.js'
 // import { DisqusProps, GiscusProps, UtterancesProps } from 'pliny/comments/index.js'
-// import {
-//   GoogleAnalyticsProps,
-//   PlausibleProps,
-//   PosthogProps,
-//   SimpleAnalyticsProps,
-//   UmamiProps,
-// } from 'pliny/analytics/index.js'
+import {
+  GoogleAnalyticsProps,
+  PlausibleProps,
+  PosthogProps,
+  SimpleAnalyticsProps,
+  UmamiProps,
+} from 'pliny/analytics/index.js'
 import userConfig from '@/data/site-config'
 
 type SearchProviders = 'kbar' | 'algolia'
@@ -54,13 +54,13 @@ export interface SiteConfig {
   //   utterancesConfig?: UtterancesProps
   //   disqusConfig?: DisqusProps
   // }
-  // analytics: {
-  //   umamiAnalytics?: UmamiProps
-  //   posthogAnalytics?: PosthogProps
-  //   googleAnalytics?: GoogleAnalyticsProps
-  //   plausibleAnalytics?: PlausibleProps
-  //   simpleAnalytics?: SimpleAnalyticsProps
-  // }
+  analytics: {
+    umamiAnalytics?: UmamiProps
+    posthogAnalytics?: PosthogProps
+    googleAnalytics?: GoogleAnalyticsProps
+    plausibleAnalytics?: PlausibleProps
+    simpleAnalytics?: SimpleAnalyticsProps
+  }
   seo: {
     socialBanner: string
     openGraph?: {
@@ -116,7 +116,7 @@ export const defaultSiteConfig: SiteConfig = {
   // comment: {
   //   provider: null,
   // },
-  // analytics: {},
+  analytics: {},
   seo: {
     socialBanner: '/banner.png',
     openGraph: {},

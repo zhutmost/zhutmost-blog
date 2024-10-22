@@ -36,6 +36,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "github-slugger": "^2.0.0",
     "next-themes": "^0.3.0",
+    "pliny": "^0.3.2",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
