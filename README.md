@@ -59,14 +59,16 @@ See the [Documentation](https://analog-demo.zhutmost.com/category/doc) to learn 
 ### TODO List
 
 - [ ] Search
-- [ ] Comment
+- [x] Comment
 - [ ] RSS
-- [ ] Sitemap
+- [x] Sitemap
 - [ ] Code highlighting optimization 
 - [ ] Page-wise greeting message
 - [ ] SEO optimization
 - [ ] Team Page
+- [ ] License
 - [ ] GitHub contribution wall on Author Page
+- [ ] Better Emoji support
 
 ### Code Highlighting
 
