@@ -2,7 +2,6 @@
 
 import NextLink from 'next/link'
 import NextImage from 'next/image'
-import { usePathname } from 'next/navigation'
 
 import { buttonVariants } from '@/components/ui/button'
 import siteConfig from '@/lib/site-config'
@@ -13,7 +12,6 @@ import ThemeSwitch from '@/components/theme-switch'
 export default function SiteHeader() {
   const isBlurred = true
   const isSticky = true
-  const pathname = usePathname()
 
   return (
     <header
@@ -43,15 +41,7 @@ export default function SiteHeader() {
               key={label}
               className="box-border hidden list-none whitespace-nowrap font-medium sm:block"
             >
-              <NextLink
-                className={cn(
-                  buttonVariants({ variant: 'ghost' })
-                  // pathname.startsWith(href)
-                  //   ? 'text-primary hover:text-primary'
-                  //   : 'text-accent-foreground'
-                )}
-                href={href}
-              >
+              <NextLink className={buttonVariants({ variant: 'ghost' })} href={href}>
                 {label}
               </NextLink>
             </li>

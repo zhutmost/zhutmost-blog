@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { cn } from '@/lib/utils'
-import NextImage, { ImageProps } from 'next/image'
+import NextImage from 'next/image'
 
 export default function MdxImage({
   src,

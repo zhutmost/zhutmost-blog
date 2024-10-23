@@ -5,10 +5,6 @@ import allPostsSorted from '@/lib/post-sort'
 import PopularTags from '@/components/popular-tags'
 import Timeline from '@/components/timeline'
 import timelineNews from '@/data/timeline-news'
-import NextImage from 'next/image'
-import NextLink from 'next/link'
-import { buttonVariants } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 import HomepageIntro from '@/components/homepage-intro'
 
 export default function HomePage() {

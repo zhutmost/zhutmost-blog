@@ -2,7 +2,7 @@ import * as React from 'react'
 import { IconChevronLeft, IconChevronRight, IconDots } from '@tabler/icons-react'
 
 import { cn } from '@/lib/utils'
-import { Button, ButtonProps, buttonVariants } from '@/components/ui/button'
+import { ButtonProps, buttonVariants } from '@/components/ui/button'
 import NextLink from 'next/link'
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
