@@ -30,18 +30,12 @@ const userConfig: Partial<SiteConfig> = {
     icons: {
       Facebook: { icon: 'IconBrandFacebook', href: 'https://facebook.com' },
       X: { icon: 'IconBrandX', href: 'https://x.com' },
+      RSS: { icon: 'IconRss', href: '/rss.xml' },
       Analytics: {
         icon: 'IconChartDots',
         href: 'https://cloud.umami.is/share/unndQ4BKaNaSgfys/analog-demo.zhutmost.com',
       },
     },
-  },
-  favicon: {
-    appleTouchIcon: '/favicons/apple-touch-icon.png',
-    icon16x16: '/favicons/favicon-16x16.png',
-    icon32x32: '/favicons/favicon-32x32.png',
-    iconSvg: '/favicons/favicon.svg',
-    webManifest: '/favicons/site.webmanifest',
   },
   analytics: {
     umamiAnalytics: {

@@ -24,13 +24,6 @@ export interface SiteConfig {
   multiCategories: boolean
   keywords: string[]
   popularTags: { tag: string; icon?: string; title?: string }[]
-  favicon: {
-    icon16x16: string | null
-    icon32x32: string | null
-    iconSvg: string | null
-    appleTouchIcon: string | null
-    webManifest: string | null
-  }
   header: {
     logo?: string
     title?: string
@@ -88,13 +81,6 @@ export const defaultSiteConfig: SiteConfig = {
   multiCategories: true,
   keywords: [],
   popularTags: [],
-  favicon: {
-    icon16x16: null,
-    icon32x32: null,
-    iconSvg: null,
-    appleTouchIcon: null,
-    webManifest: null,
-  },
   header: {
     logo: '/favicons/favicon.svg',
     title: 'Analog Demo',
