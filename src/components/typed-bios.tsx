@@ -19,7 +19,7 @@ export default function TypedBios() {
   }, [])
 
   return (
-    <div>
+    <div className="hidden lg:block">
       <ul id="bios" className="hidden">
         {typedBios.map((item, index) => (
           <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
