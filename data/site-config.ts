@@ -37,12 +37,6 @@ const userConfig: Partial<SiteConfig> = {
       },
     },
   },
-  search: {
-    provider: 'kbar',
-    kbarConfig: {
-      searchDocumentsPath: `${process.env.BASE_PATH || ''}/search.json`,
-    },
-  },
   analytics: {
     umamiAnalytics: {
       umamiWebsiteId: '4ae56858-7872-446f-980e-32d1c8db927e',
