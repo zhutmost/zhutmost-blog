@@ -63,7 +63,7 @@ export default function Page({ params }: { params: { category: string; page: str
     redirect(`/category/${params.category}/page/1`)
   }
 
-  const posts = allPostsSorted.slice(
+  const posts = filteredPosts.slice(
     siteConfig.postPerPage * (currPage - 1),
     siteConfig.postPerPage * currPage
   )
