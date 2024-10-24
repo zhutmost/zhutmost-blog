@@ -1,5 +1,3 @@
-// import { KBarSearchProps } from 'pliny/search/KBar.js'
-// import { AlgoliaSearchProps } from 'pliny/search/Algolia.js'
 import { DisqusProps, GiscusProps, UtterancesProps } from 'pliny/comments/index.js'
 import {
   GoogleAnalyticsProps,
@@ -9,8 +7,6 @@ import {
   UmamiProps,
 } from 'pliny/analytics/index.js'
 import userConfig from '@/data/site-config'
-
-type SearchProviders = 'kbar' | 'algolia'
 
 type CommentProviders = 'giscus' | 'utterances' | 'disqus'
 
@@ -36,11 +32,6 @@ export interface SiteConfig {
     beian?: string
     icons?: Record<string, { icon: string; href: string }>
   }
-  // search: {
-  //   provider: SearchProviders | null
-  //   kbarConfig?: KBarSearchProps
-  //   algoliaConfig?: AlgoliaSearchProps
-  // }
   comment: {
     provider: CommentProviders | null
     giscusConfig?: GiscusProps
@@ -93,12 +84,6 @@ export const defaultSiteConfig: SiteConfig = {
   footer: {
     beian: undefined,
   },
-  // search: {
-  //   provider: null,
-  //   kbarConfig: {
-  //     searchDocumentsPath: '/search-kbar.json',
-  //   },
-  // },
   comment: {
     provider: null,
   },

@@ -8,6 +8,7 @@ import siteConfig from '@/lib/site-config'
 import { cn } from '@/lib/utils'
 import MobileNav from '@/components/mobile-nav'
 import ThemeSwitch from '@/components/theme-switch'
+import SearchButton from '@/components/search/search-button'
 
 export default function SiteHeader() {
   const isBlurred = true
@@ -46,6 +47,9 @@ export default function SiteHeader() {
               </NextLink>
             </li>
           ))}
+          <li>
+            <SearchButton />
+          </li>
           <li>
             <ThemeSwitch />
           </li>

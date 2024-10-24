@@ -58,9 +58,9 @@ See the [Documentation](https://analog-demo.zhutmost.com/category/doc) to learn 
 
 ### TODO List
 
-- [ ] Search
+- [x] Search
 - [x] Comment
-- [ ] RSS
+- [x] RSS
 - [x] Sitemap
 - [ ] Code highlighting optimization 
 - [ ] Page-wise greeting message

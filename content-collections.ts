@@ -128,7 +128,7 @@ const Posts = defineCollection({
     tags: z.string().array().default([]),
     banner: z.string().optional(),
     draft: z.boolean().default(false),
-    locale: z.string().default('en_US'),
+    locale: z.string().default('en-US'),
   }),
   transform: async (document, context) => {
     const readingTime = readingTimeEstimate(document.content).minutes
@@ -145,16 +145,6 @@ const Posts = defineCollection({
     const categoryCounter = countPostCategories(docs)
     writeFileSync('./data/category-data.json', JSON.stringify(categoryCounter))
     console.log('... Tag & Category count generated')
-
-    // if (siteConfig.search && siteConfig.search.provider === 'kbar') {
-    //   if (siteConfig.search.kbarConfig && siteConfig.search.kbarConfig.searchDocumentsPath) {
-    //     writeFileSync(
-    //       `public/${path.basename(siteConfig.search.kbarConfig.searchDocumentsPath)}`,
-    //       JSON.stringify(docs)
-    //     )
-    //     console.log('Local search index generated...')
-    //   }
-    // }
   },
 })
 

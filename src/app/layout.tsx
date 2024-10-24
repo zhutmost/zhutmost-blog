@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 import SiteHeader from '@/components/site-header'
 import SiteFooter from '@/components/site-footer'
 import { Analytics } from 'pliny/analytics/index.js'
+import SearchProvider from '@/components/search/search-provider'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -73,11 +74,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Analytics analyticsConfig={siteConfig.analytics} />
-          <div className="flex min-h-screen flex-col items-center">
-            <SiteHeader />
-            <main className="w-full max-w-5xl flex-1 px-6 xl:px-0">{children}</main>
-            <SiteFooter />
-          </div>
+          <SearchProvider>
+            <div className="flex min-h-screen flex-col items-center">
+              <SiteHeader />
+              <main className="w-full max-w-5xl flex-1 px-6 xl:px-0">{children}</main>
+              <SiteFooter />
+            </div>
+          </SearchProvider>
         </ThemeProvider>
       </body>
     </html>
