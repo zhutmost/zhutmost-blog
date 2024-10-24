@@ -11,33 +11,56 @@ import userConfig from '@/data/site-config'
 type CommentProviders = 'giscus' | 'utterances' | 'disqus'
 
 export interface SiteConfig {
+  // The URL of your site, without trailing slash.
   siteUrl: string
+  // The title of your site, such as "John's Blog".
   siteTitle: string
+  // A short description used for SEO and social media.
   description: string
+  // The locale for your site. (Default: en-US)
   locale: string
+  // The author of the site.
   author: string
+  // The number of posts per page in the pagination.
   postPerPage: number
+  // Whether to use multiple categories to classify posts. (Default: true)
   multiCategories: boolean
+  // Keywords used for SEO and social media. It is unnecessary for most modern sites.
   keywords: string[]
+  // Popular tags displayed on the homepage. If blank, tags with the most posts will be used.
   popularTags: { tag: string; icon?: string; title?: string }[]
+
   header: {
+    // The path to the logo image. (Example: '/logo.svg')
     logo?: string
+    // The site title displayed on the navigation bar.
     title?: string
     // Whether to show the theme switching button on the navigation bar.
     themeSwitch: boolean
     // Navigation menu items. (Example: { Home: '/', Posts: '/posts' })
     menu: Record<string, string>
   }
+
   footer: {
-    beian?: string
+    // Social icons displayed at the footer.
     icons?: Record<string, { icon: string; href: string }>
+    // The Beian number of your site (which is needed for websites deployed in China).
+    beian?: string
   }
+
+  // Comment support (provided by Pliny)
+  // See https://github.com/timlrx/pliny for more details.
   comment: {
+    // The comment provider you want to use. (Options: 'giscus', 'utterances', 'disqus')
+    // Keep it null to disable comment support.
     provider: CommentProviders | null
     giscusConfig?: GiscusProps
     utterancesConfig?: UtterancesProps
     disqusConfig?: DisqusProps
   }
+
+  // Analytics support (provided by Pliny)
+  // See https://github.com/timlrx/pliny for more details.
   analytics: {
     umamiAnalytics?: UmamiProps
     posthogAnalytics?: PosthogProps
@@ -45,8 +68,12 @@ export interface SiteConfig {
     plausibleAnalytics?: PlausibleProps
     simpleAnalytics?: SimpleAnalyticsProps
   }
+
+  // SEO settings (OpenGraph & Twitter card)
   seo: {
+    // The path to the default social banner image. (Example: '/banner.png')
     socialBanner: string
+    // OpenGraph settings. Keep them blank to use the default values.
     openGraph?: {
       title?: string
       description?: string
@@ -54,6 +81,7 @@ export interface SiteConfig {
       locale?: string
       images?: string
     }
+    // OpenGraph settings. Keep them blank to use the default values.
     twitter?: {
       title?: string
       description?: string
@@ -62,6 +90,7 @@ export interface SiteConfig {
   }
 }
 
+// Default site config. You can override it in the user config (/data/site-config.ts).
 export const defaultSiteConfig: SiteConfig = {
   siteUrl: 'https://example.com',
   siteTitle: 'Example Site',
