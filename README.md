@@ -1,5 +1,7 @@
 # Analog: Another (Academic) Blog Starter
 
+![Analog screenshot](img/cover.png)
+
 **Analog** is a out-of-the-box feature-rich blog template with [Next.js](https://nextjs.org).
 
 It is easy to customize and reconfigure to suit your needs. It is perfect for individual blogs, especially **academic or technology blogs**.
@@ -56,12 +58,26 @@ See the [Documentation](https://analog-demo.zhutmost.com/category/doc) to learn 
 
 ## 🎁 Features
 
+Analog includes plentiful search, comment, sharing and other plugins out of the box that makes your blog feature-rich and powerful.
+
+- [**Comment System**](https://analog-demo.zhutmost.com/posts/docs/comment)
+  
+  Giscus · Utterances · Disqus
+- [**Search**](https://analog-demo.zhutmost.com/posts/docs/search)
+
+  KBar (support shortcuts, including pages & posts)
+- [**Analytics**](https://analog-demo.zhutmost.com/posts/docs/analytics)
+
+  Umami · Posthog · Google Analytics · Plausible · Simple Analytics
+- **Style-rich Writing**
+
+  MDX (Markdown + JSX) · Katex (math support) · Prism.js
+- **Other**
+
+  RSS · Sitemap · SEO (OpenGraph + Twitter Card) · Responsive Design
+
 ### TODO List
 
-- [x] Search
-- [x] Comment
-- [x] RSS
-- [x] Sitemap
 - [ ] Code highlighting optimization 
 - [ ] Page-wise greeting message
 - [ ] SEO optimization
@@ -80,6 +96,15 @@ Give your audiences best viewing experience with the mobile-friendly responsive 
 
 ![Responsive Design](img/responsive-design.jpg)
 
-## 🎉 Issues and Feature Requests
+## 🎉 Issues & Feature Requests
 
 If you find any bugs in my code or have any ideas to improve this, please feel free to open an [issue](https://github.com/zhutmost/analog-blog-starter). I will be glad to join the discussion.
+
+## 💡 Inspiration
+
+This project is on the shoulder of giants. I would like to thank the following projects for their inspiration:
+
+- [Tailwind Nextjs Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
+- [Hexo Icarus](https://github.com/ppoffice/hexo-theme-icarus)
+
+See [Tech Stack](https://analog-demo.zhutmost.com/posts/docs/tech-stack) for more details.
