@@ -94,7 +94,7 @@ TODO
 
 Give your audiences best viewing experience with the mobile-friendly responsive layout.
 
-![Responsive Design](img/responsive-design.jpg)
+![Responsive Design](img/responsive-design.png)
 
 ## 🎉 Issues & Feature Requests
 
