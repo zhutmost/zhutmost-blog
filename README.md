@@ -84,7 +84,7 @@ Analog includes plentiful search, comment, sharing and other plugins out of the 
 - [ ] Team Page
 - [ ] License
 - [ ] GitHub contribution wall on Author Page
-- [ ] Better Emoji support
+- [x] Better Emoji support
 
 ### Code Highlighting
 

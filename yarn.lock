@@ -2082,7 +2082,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@twemoji/api@npm:15.1.0, @twemoji/api@npm:^15.1.0":
+"@twemoji/api@npm:15.1.0":
   version: 15.1.0
   resolution: "@twemoji/api@npm:15.1.0"
   dependencies:
@@ -10235,7 +10235,6 @@ __metadata:
     "@tabler/icons-react": "npm:^3.20.0"
     "@tailwindcss/typography": "npm:^0.5.15"
     "@tsconfig/next": "npm:^2.0.3"
-    "@twemoji/api": "npm:^15.1.0"
     "@twemoji/parser": "npm:^15.1.1"
     "@types/node": "npm:^20.17.1"
     "@types/react": "npm:^18.3.12"

@@ -10,7 +10,7 @@ export default function HomepageIntro() {
       </p>
       <TypedBios />
       <p className="flex items-center">
-        <Twemojify size={'default'}>{'Happy reading!🍻🍻'}</Twemojify>
+        <Twemojify size={'default'}>{'Happy reading!🍻'}</Twemojify>
       </p>
     </div>
     // <div className="flex flex-row justify-start gap-5">
