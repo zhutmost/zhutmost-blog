@@ -6,6 +6,7 @@ import Tag from '@/components/tag'
 import NextImage from 'next/image'
 import { IconArrowRight } from '@tabler/icons-react'
 import slugify from '@sindresorhus/slugify'
+import Twemojify from '@/components/twemoji'
 
 interface PostCardProps {
   post: Post
@@ -32,7 +33,9 @@ export default function PostCard({ post }: PostCardProps) {
         <dt className="sr-only">Category</dt>
         {siteConfig.multiCategories && (
           <dd className="text-base font-semibold leading-6 text-foreground hover:text-foreground/80">
-            <NextLink href={`/category/${slugify(category)}`}>{category}</NextLink>
+            <Twemojify>
+              <NextLink href={`/category/${slugify(category)}`}>{category}</NextLink>
+            </Twemojify>
           </dd>
         )}
         <dt className="sr-only">Published on</dt>

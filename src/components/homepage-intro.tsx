@@ -1,4 +1,5 @@
 import TypedBios from '@/components/typed-bios'
+import Twemojify from '@/components/twemoji'
 
 export default function HomepageIntro() {
   return (
@@ -8,7 +9,9 @@ export default function HomepageIntro() {
         enthusiast.
       </p>
       <TypedBios />
-      <p className="">Happy reading! 🚀</p>
+      <p className="flex items-center">
+        <Twemojify size={'default'}>{'Happy reading!🍻🍻'}</Twemojify>
+      </p>
     </div>
     // <div className="flex flex-row justify-start gap-5">
     //   <NextImage

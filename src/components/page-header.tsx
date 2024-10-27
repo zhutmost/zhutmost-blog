@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { cn } from '@/lib/utils'
+import Twemojify from '@/components/twemoji'
 
 function PageHeader({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
@@ -10,7 +11,7 @@ function PageHeader({ className, children, ...props }: React.HTMLAttributes<HTML
       )}
       {...props}
     >
-      {children}
+      <Twemojify>{children}</Twemojify>
     </section>
   )
 }
