@@ -71,7 +71,7 @@ Analog includes plentiful search, comment, sharing and other plugins out of the 
   Umami · Posthog · Google Analytics · Plausible · Simple Analytics
 - **Style-rich Writing**
 
-  MDX (Markdown + JSX) · Katex (math support) · Prism.js
+  MDX (Markdown + JSX) · Katex (math support) · Prism.js (code highlighting)
 - **Other**
 
   RSS · Sitemap · SEO (OpenGraph + Twitter Card) · Responsive Design
@@ -79,12 +79,10 @@ Analog includes plentiful search, comment, sharing and other plugins out of the 
 ### TODO List
 
 - [ ] Code highlighting optimization 
-- [ ] Page-wise greeting message
 - [ ] SEO optimization
 - [ ] Team Page
 - [ ] License
 - [ ] GitHub contribution wall on Author Page
-- [x] Better Emoji support
 
 ### Code Highlighting
 

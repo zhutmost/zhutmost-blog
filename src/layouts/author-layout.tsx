@@ -6,6 +6,7 @@ import siteConfig from '@/lib/site-config'
 import SocialIcon from '@/components/social-icon'
 import BackToTop from '@/components/back-to-top'
 import { PageHeader, PageHeaderHeading, PageHeaderDescription } from '@/components/page-header'
+import Twemojify from '@/components/twemoji'
 
 export interface AuthorLayoutProps {
   children: React.ReactNode
@@ -22,7 +23,7 @@ export default function AuthorLayout({ children, author }: AuthorLayoutProps) {
         <PageHeader>
           <PageHeaderHeading>About</PageHeaderHeading>
           <PageHeaderDescription>
-            Hello, Bonjour, こんにちは, 你好! Welcome to {siteConfig.siteTitle}!
+            <Twemojify>{siteConfig.pageGreetings.about}</Twemojify>
           </PageHeaderDescription>
         </PageHeader>
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">

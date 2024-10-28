@@ -9,6 +9,7 @@ import { TagCounter } from '@/lib/content-collections/post-counter'
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
 import PostCard from '@/components/post-card'
 import PostPagination from '@/components/post-pagination'
+import Twemojify from '@/components/twemoji'
 
 export const generateStaticParams = async () => {
   const tagCounter = tagData as TagCounter
@@ -71,7 +72,7 @@ export default function Page({ params }: { params: { tag: string; page: string }
       <PageHeader>
         <PageHeaderHeading>Tag - {tagTitle}</PageHeaderHeading>
         <PageHeaderDescription>
-          Hello, Bonjour, こんにちは, 你好! Welcome to {siteConfig.siteTitle}!
+          <Twemojify>{siteConfig.pageGreetings.archive}</Twemojify>
         </PageHeaderDescription>
       </PageHeader>
       <div>

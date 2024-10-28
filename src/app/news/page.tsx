@@ -3,6 +3,7 @@ import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/componen
 import siteConfig from '@/lib/site-config'
 import Timeline from '@/components/timeline'
 import timelineNews from '@/data/timeline-news'
+import Twemojify from '@/components/twemoji'
 
 export default function Page() {
   return (
@@ -10,7 +11,7 @@ export default function Page() {
       <PageHeader>
         <PageHeaderHeading>News</PageHeaderHeading>
         <PageHeaderDescription>
-          Hello, Bonjour, こんにちは, 你好! Welcome to {siteConfig.siteTitle}!
+          <Twemojify>{siteConfig.pageGreetings.news}</Twemojify>
         </PageHeaderDescription>
       </PageHeader>
       <div className="py-10">

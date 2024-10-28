@@ -88,6 +88,18 @@ export interface SiteConfig {
       images?: string
     }
   }
+
+  // Set the greetings (displayed under the page header) for different pages.
+  pageGreetings: {
+    // Greetings for 'Authors'(/about/[...]) pages.
+    about?: string
+    // Greetings for 'All Posts'(/archive & /category/... & /tags/...) pages.
+    archive?: string
+    // Greetings for 'News'(/news) pages
+    news?: string
+    // Greetings for the 'Popular Tags' section on the homepage.
+    tags?: string
+  }
 }
 
 // Default site config. You can override it in the user config (/data/site-config.ts).
@@ -122,6 +134,12 @@ export const defaultSiteConfig: SiteConfig = {
     openGraph: {},
     twitter: {},
   },
+  pageGreetings: {
+    about: 'Hello, Bonjour, こんにちは, 你好! Glad to see you!',
+    archive: 'My digital garden, where I share my thoughts and ideas.',
+    news: 'Stay up-to-date with the latest happenings.',
+    tags: 'Popular tags feature the most widely favored topics.',
+  },
 }
 
 const siteConfig: SiteConfig = (() => {
@@ -129,17 +147,18 @@ const siteConfig: SiteConfig = (() => {
   const c = { ...defaultSiteConfig, ...userConfig }
 
   // Set default values for Open Graph and Twitter SEO
-  c.seo.openGraph!.title = c.seo.openGraph!.title || c.siteTitle
-  c.seo.openGraph!.description = c.seo.openGraph!.description || c.description
-  c.seo.openGraph!.siteName = c.seo.openGraph!.siteName || c.siteTitle
-  c.seo.openGraph!.locale = c.seo.openGraph!.locale || c.locale
-  c.seo.openGraph!.images = new URL(
-    c.seo.openGraph!.images || c.seo.socialBanner,
-    c.siteUrl
-  ).toString()
-  c.seo.twitter!.title = c.seo.twitter!.title || c.siteTitle
-  c.seo.twitter!.description = c.seo.twitter!.description || c.description
-  c.seo.twitter!.images = new URL(c.seo.twitter!.images || c.seo.socialBanner, c.siteUrl).toString()
+  c.seo.openGraph = {
+    title: c.seo.openGraph?.title || c.siteTitle,
+    description: c.seo.openGraph?.description || c.description,
+    siteName: c.seo.openGraph?.siteName || c.siteTitle,
+    locale: c.seo.openGraph?.locale || c.locale,
+    images: new URL(c.seo.openGraph?.images || c.seo.socialBanner, c.siteUrl).toString(),
+  }
+  c.seo.twitter = {
+    title: c.seo.twitter?.title || c.siteTitle,
+    description: c.seo.twitter?.description || c.description,
+    images: new URL(c.seo.twitter?.images || c.seo.socialBanner, c.siteUrl).toString(),
+  }
 
   return c
 })()

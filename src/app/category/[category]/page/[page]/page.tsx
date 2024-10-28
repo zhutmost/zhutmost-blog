@@ -10,6 +10,7 @@ import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/componen
 import PostCard from '@/components/post-card'
 import PostPagination from '@/components/post-pagination'
 import * as React from 'react'
+import Twemojify from '@/components/twemoji'
 
 export const generateStaticParams = async () => {
   const categoryCounter = categoryData as CategoryCounter
@@ -73,7 +74,7 @@ export default function Page({ params }: { params: { category: string; page: str
       <PageHeader>
         <PageHeaderHeading>Category - {category}</PageHeaderHeading>
         <PageHeaderDescription>
-          Hello, Bonjour, こんにちは, 你好! Welcome to {siteConfig.siteTitle}!
+          <Twemojify>{siteConfig.pageGreetings.archive}</Twemojify>
         </PageHeaderDescription>
       </PageHeader>
       <div>

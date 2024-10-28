@@ -5,6 +5,7 @@ import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/componen
 import PostPagination from '@/components/post-pagination'
 import { redirect } from 'next/navigation'
 import PostCard from '@/components/post-card'
+import Twemojify from '@/components/twemoji'
 
 export const generateStaticParams = async () => {
   const totalPages = Math.ceil(allPostsSorted.length / siteConfig.postPerPage)
@@ -28,7 +29,7 @@ export default function Page({ params }: { params: { page: string } }) {
       <PageHeader>
         <PageHeaderHeading>All Posts</PageHeaderHeading>
         <PageHeaderDescription>
-          Hello, Bonjour, こんにちは, 你好! Welcome to {siteConfig.siteTitle}!
+          <Twemojify>{siteConfig.pageGreetings.archive}</Twemojify>
         </PageHeaderDescription>
       </PageHeader>
       <div>

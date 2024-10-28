@@ -6,6 +6,7 @@ import PopularTags from '@/components/popular-tags'
 import Timeline from '@/components/timeline'
 import timelineNews from '@/data/timeline-news'
 import HomepageIntro from '@/components/homepage-intro'
+import Twemojify from '@/components/twemoji'
 
 export default function HomePage() {
   const posts = allPostsSorted.slice(0, siteConfig.postPerPage)
@@ -31,7 +32,7 @@ export default function HomePage() {
               Latest News
             </h2>
             <PageHeaderDescription>
-              Stay up-to-date with my latest accomplishments and endeavors.
+              <Twemojify>{siteConfig.pageGreetings.news}</Twemojify>
             </PageHeaderDescription>
           </PageHeader>
           <Timeline timelineNews={recentNews} findMore />
@@ -44,7 +45,7 @@ export default function HomePage() {
             Popular Tags
           </h2>
           <PageHeaderDescription>
-            Popular tags feature the most widely favored topics.
+            <Twemojify>{siteConfig.pageGreetings.tags}</Twemojify>
           </PageHeaderDescription>
         </PageHeader>
         <PopularTags />
@@ -56,7 +57,7 @@ export default function HomePage() {
             Recent Posts
           </h2>
           <PageHeaderDescription>
-            My desire to share my acquired knowledge fuels my endeavors.
+            <Twemojify>{siteConfig.pageGreetings.archive}</Twemojify>
           </PageHeaderDescription>
         </PageHeader>
         <div>
