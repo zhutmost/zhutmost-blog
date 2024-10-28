@@ -20,10 +20,13 @@ export default function PopularTags() {
     }))
   }
 
-  const chartColors = Array.from(
-    { length: 5 },
-    (_, i) => `bg-chart-${i + 1} hover:bg-chart-${i + 1}/80`
-  )
+  const chartColors = [
+    'bg-chart-1 hover:bg-chart-1/80',
+    'bg-chart-2 hover:bg-chart-2/80',
+    'bg-chart-3 hover:bg-chart-3/80',
+    'bg-chart-4 hover:bg-chart-4/80',
+    'bg-chart-5 hover:bg-chart-5/80',
+  ]
 
   return (
     <div className="grid grid-cols-2 gap-4 py-6 sm:grid-cols-3 lg:grid-cols-5">
