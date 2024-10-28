@@ -13,6 +13,7 @@ import SearchButton from '@/components/search/search-button'
 export default function SiteHeader() {
   const isBlurred = true
   const isSticky = true
+  const menuLength: number = Object.keys(siteConfig.header.menu).length
 
   return (
     <header
@@ -40,7 +41,10 @@ export default function SiteHeader() {
           {Object.entries(siteConfig.header.menu).map(([label, href]) => (
             <li
               key={label}
-              className="box-border hidden list-none whitespace-nowrap font-medium sm:block"
+              className={cn(
+                'box-border hidden list-none whitespace-nowrap font-medium',
+                menuLength > 4 ? 'md:block' : 'sm:block'
+              )}
             >
               <NextLink className={buttonVariants({ variant: 'ghost' })} href={href}>
                 {label}
@@ -53,7 +57,7 @@ export default function SiteHeader() {
           <li>
             <ThemeSwitch />
           </li>
-          <li className="sm:hidden">
+          <li className={menuLength > 4 ? 'md:hidden' : 'sm:hidden'}>
             <MobileNav />
           </li>
         </ul>
