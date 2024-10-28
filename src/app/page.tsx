@@ -7,6 +7,7 @@ import Timeline from '@/components/timeline'
 import timelineNews from '@/data/timeline-news'
 import HomepageIntro from '@/components/homepage-intro'
 import Twemojify from '@/components/twemoji'
+import NextLink from 'next/link'
 
 export default function HomePage() {
   const posts = allPostsSorted.slice(0, siteConfig.postPerPage)
@@ -28,8 +29,8 @@ export default function HomePage() {
       {recentNews.length > 0 && (
         <div>
           <PageHeader>
-            <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">
-              Latest News
+            <h2 className="text-3xl font-bold leading-tight tracking-tighter hover:opacity-80 md:text-4xl lg:leading-[1.1]">
+              <NextLink href={'/news'}>Latest News</NextLink>
             </h2>
             <PageHeaderDescription>
               <Twemojify>{siteConfig.pageGreetings.news}</Twemojify>
@@ -41,8 +42,8 @@ export default function HomePage() {
 
       <div>
         <PageHeader>
-          <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">
-            Popular Tags
+          <h2 className="text-3xl font-bold leading-tight tracking-tighter hover:opacity-80 md:text-4xl lg:leading-[1.1]">
+            <NextLink href={'/tags'}>Popular Tags</NextLink>
           </h2>
           <PageHeaderDescription>
             <Twemojify>{siteConfig.pageGreetings.tags}</Twemojify>
@@ -53,8 +54,8 @@ export default function HomePage() {
 
       <div>
         <PageHeader>
-          <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">
-            Recent Posts
+          <h2 className="text-3xl font-bold leading-tight tracking-tighter hover:opacity-80 md:text-4xl lg:leading-[1.1]">
+            <NextLink href={'/archive'}>Recent Posts</NextLink>
           </h2>
           <PageHeaderDescription>
             <Twemojify>{siteConfig.pageGreetings.archive}</Twemojify>
