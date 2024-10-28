@@ -22,18 +22,17 @@ export default function TypedBios() {
   }, [])
 
   return (
-    <div className="hidden lg:block">
-      <ul id="bios" className="hidden">
-        {typedBios.map((item, index) => (
-          <Twemojify key={index} size={'default'}>
-            <li className="flex items-center">
-              {/*{item}*/}
-              {item}
-            </li>
-          </Twemojify>
-        ))}
-      </ul>
-      <span ref={el} />
+    <div className="flex h-8 items-center">
+      <div className="overflow-x-auto whitespace-nowrap text-nowrap">
+        <ul id="bios" className="hidden">
+          {typedBios.map((item, index) => (
+            <Twemojify key={index}>
+              <li className="flex items-center">{item}</li>
+            </Twemojify>
+          ))}
+        </ul>
+        <span ref={el} />
+      </div>
     </div>
   )
 }
