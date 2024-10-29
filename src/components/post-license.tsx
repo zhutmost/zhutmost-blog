@@ -8,7 +8,6 @@ import {
   IconCreativeCommonsSa,
   IconCreativeCommonsZero,
 } from '@tabler/icons-react'
-import authorsFind from '@/lib/authors-find'
 
 export interface PostLicenseProps {
   post: Post
