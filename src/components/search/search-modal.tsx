@@ -73,13 +73,21 @@ const RenderResults = () => {
               </div>
             ) : (
               <div
-                className={`flex cursor-pointer justify-between px-4 py-2 ${
+                className={cn(
+                  'flex cursor-pointer justify-between px-4 py-2',
                   active ? 'bg-primary text-primary-foreground' : 'bg-transparent text-foreground'
-                }`}
+                )}
               >
-                <div className={'flex space-x-1'}>
+                <div className={'flex space-x-3'}>
                   {item.icon && (
-                    <div className={'self-center text-muted-foreground'}>{item.icon}</div>
+                    <div
+                      className={cn(
+                        'self-center',
+                        active ? 'text-primary-foreground' : 'text-muted-foreground'
+                      )}
+                    >
+                      {item.icon}
+                    </div>
                   )}
                   <div className="block">
                     <div className={active ? 'text-primary-foreground' : 'text-card-foreground/70'}>
