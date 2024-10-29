@@ -21,7 +21,9 @@ export default function HomePage() {
           <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text font-bold text-transparent">
             {siteConfig.author}
           </span>
-          <Twemojify size={'lg'} className="ml-10">👋</Twemojify>
+          <Twemojify size={'lg'} className="ml-6">
+            👋
+          </Twemojify>
         </h1>
         <HomepageIntro />
       </div>
