@@ -1,16 +1,15 @@
 import { Metadata } from 'next'
 
-import { allAuthors, Author } from '@/content-collections'
+import { Author } from '@/content-collections'
 import { MDXContent } from '@content-collections/mdx/react'
 import mdxComponents from '@/components/mdx/mdx-components'
 import AuthorLayout from '@/layouts/author-layout'
 import { notFound } from 'next/navigation'
 import { generatePageMetadata } from '@/lib/page-metadata'
-
-const allAuthorsExcludingDefault = allAuthors.filter((author) => author.slugPath != 'default')
+import { allAuthorsNonDefault } from '@/lib/author-sort'
 
 export const generateStaticParams = async () => {
-  return allAuthorsExcludingDefault.map((author) => ({ slug: author.slug }))
+  return allAuthorsNonDefault.map((author) => ({ slug: author.slug }))
 }
 
 export async function generateMetadata({
@@ -18,7 +17,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string[] }
 }): Promise<Metadata | undefined> {
-  const author: Author | undefined = allAuthorsExcludingDefault.find(
+  const author: Author | undefined = allAuthorsNonDefault.find(
     (author) => author.slugPath === params.slug.join('/')
   )
   if (!author) {
@@ -31,7 +30,7 @@ export async function generateMetadata({
 }
 
 export default function Page({ params }: { params: { slug: string[] } }) {
-  const author: Author | undefined = allAuthorsExcludingDefault.find(
+  const author: Author | undefined = allAuthorsNonDefault.find(
     (author) => author.slugPath === params.slug.join('/')
   )
   if (!author) {

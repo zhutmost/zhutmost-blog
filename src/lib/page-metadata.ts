@@ -1,14 +1,14 @@
 import siteConfig from '@/lib/site-config'
 import { Metadata } from 'next'
 
-interface PageSEOProps {
+interface PageMetadataProps {
   title: string
   description?: string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any
 }
 
-export function generatePageMetadata({ title, description, ...rest }: PageSEOProps): Metadata {
+export function generatePageMetadata({ title, description, ...rest }: PageMetadataProps): Metadata {
   return {
     title,
     openGraph: {

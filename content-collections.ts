@@ -99,7 +99,9 @@ async function commonTransform<D extends BaseDoc>(
     return { mdx, toc }
   })
 
+  // Slugged path in array (i.e., slugPath.split('/'))
   const slug: string[] = document._meta.path.split('/').map((part) => slugify(part))
+  // Slugged path (without special chars)
   const slugPath: string = slug.join('/')
 
   let dataUpdateStdout: string

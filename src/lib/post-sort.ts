@@ -5,7 +5,7 @@ const isProduction: boolean = process.env.NODE_ENV === 'production'
 type SortOrder = 'asc' | 'desc'
 type SortMethod = 'datePublish' | 'dateUpdate'
 
-function sortPosts(
+export function sortPosts(
   posts: Post[],
   order: SortOrder = 'desc',
   method: SortMethod = 'datePublish'

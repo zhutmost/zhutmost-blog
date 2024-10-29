@@ -91,7 +91,6 @@ Give your audiences best viewing experience with the mobile-friendly responsive 
 ### TODO List
 
 - [ ] Code highlighting optimization
-- [ ] Team Page (for multi-user sites)
 - [ ] GitHub contribution wall on Author Page
 
 ## 🎉 Issues & Feature Requests

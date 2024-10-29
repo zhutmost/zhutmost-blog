@@ -111,6 +111,8 @@ export interface SiteConfig {
     news?: string
     // Greetings for the 'Popular Tags' section on the homepage.
     tags?: string
+    // Greetings for 'Team'(/team) page.
+    team?: string
   }
 }
 
@@ -152,6 +154,7 @@ export const defaultSiteConfig: SiteConfig = {
     archive: 'My digital garden, where I share my thoughts and ideas.',
     news: 'Stay up-to-date with the latest happenings.',
     tags: 'Popular tags feature the most widely favored topics.',
+    team: 'Meet the team behind the scenes.',
   },
 }
 
