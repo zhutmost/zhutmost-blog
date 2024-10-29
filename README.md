@@ -14,6 +14,12 @@ Check out the documentation below to get started.
 
 ## 🚀 Quick Start
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fzhutmost%2Fanalog-blog-starter&project-name=analog-blog&repository-name=analog-blog&demo-title=Analog%20Blog%20Demo&demo-description=Demo%20Blog%20(i.e.%2C%20Docs%20site)%20of%20the%20Analog%20Bolog%20Starter&demo-url=https%3A%2F%2Fanalog-demo.zhutmost.com&demo-image=https%3A%2F%2Fgithub.com%2Fzhutmost%2Fanalog-blog-starter%2Fraw%2Fmain%2Fimg%2Fcover.png)
+
+Click it and follow its steps! You will get your own blog in minutes.
+
+To modify the blog, clone the repository and follow the instructions below.
+
 ### Prerequisites
 
 [Node.js](https://nodejs.org/en) and [Yarn v2](https://yarnpkg.com) are required to run this project.
@@ -27,9 +33,9 @@ corepack enable # enable corepack (which includes Yarn v2)
 ### Kickstart Your Blog
 
 ```shell
-git clone git@github.com:zhutmost/analog-blog-starter.git my-blog
+git clone git@github.com:YOUR-USERNAME/YOUR-BLOG.git my-blog
 cd my-blog
-yarn dev # start the development server
+yarn dev # start the development server locally
 ```
 
 Then, open [http://localhost:3000](http://localhost:3000) to see your own blog.
@@ -51,6 +57,8 @@ tags: ['life', 'tech', 'javascript']
 ---
 # Write your content here ...
 ```
+
+After any changes, the blog will automatically update [http://localhost:3000](http://localhost:3000). To make the changes public, push the changes to your repository.
 
 ### Customize Your Blog
 
