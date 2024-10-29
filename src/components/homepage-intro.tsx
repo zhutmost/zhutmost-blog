@@ -4,7 +4,7 @@ import Twemojify from '@/components/twemoji'
 export default function HomepageIntro() {
   return (
     <div className="text-lg text-muted-foreground">
-      <p className="">
+      <p>
         I am a dedicated <span className="font-medium">software developer</span> and a tech
         enthusiast.
       </p>
