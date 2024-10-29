@@ -81,7 +81,6 @@ Analog includes plentiful search, comment, sharing and other plugins out of the 
 - [ ] Code highlighting optimization 
 - [ ] SEO optimization
 - [ ] Team Page
-- [ ] License
 - [ ] GitHub contribution wall on Author Page
 
 ### Code Highlighting

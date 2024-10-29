@@ -6,6 +6,7 @@ import siteConfig from '@/lib/site-config'
 import NextLink from 'next/link'
 import Tag from '@/components/tag'
 import { Comments, CommentsConfig } from 'pliny/comments/index.js'
+import PostLicense from '@/components/post-license'
 
 export interface PostLayoutProps {
   children: React.ReactNode
@@ -136,18 +137,11 @@ export default function PostLayout({
             {/*    </div>*/}
             {/*  )}*/}
             {/*</div>*/}
-            <div className="divide-y divide-border xl:col-span-3 xl:row-span-2 xl:pb-0">
+            <div className="xl:col-span-3 xl:row-span-2 xl:pb-0">
               <div className="prose max-w-none pb-8 pt-10 dark:prose-invert">{children}</div>
-              <div className="pb-6 pt-6 text-sm text-muted-foreground">
-                {`License © `}
-                <a
-                  href={`https://creativecommons.org/licenses/by-nc-sa/4.0`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  CC BY-NC-SA 4.0
-                </a>
-              </div>
+
+              {siteConfig.license && <PostLicense post={content} authors={authors} />}
+
               {siteConfig.comment.provider && (
                 <div className="pb-6 pt-6 text-center text-foreground" id="comment">
                   <Comments commentsConfig={siteConfig.comment as CommentsConfig} slug={slugPath} />

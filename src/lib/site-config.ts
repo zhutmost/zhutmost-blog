@@ -89,6 +89,18 @@ export interface SiteConfig {
     }
   }
 
+  // The Creative Commons (CC) license of your posts. Leave it null to disable the license display.
+  // Visit https://creativecommons.org/share-your-work/cclicenses to find the license you want.
+  license:
+    | 'cc-by-nc-sa'
+    | 'cc-by-nc-nd'
+    | 'cc-by-nc'
+    | 'cc-by-nd'
+    | 'cc-by-sa'
+    | 'cc-by'
+    | 'cc0'
+    | null
+
   // Set the greetings (displayed under the page header) for different pages.
   pageGreetings: {
     // Greetings for 'Authors'(/about/[...]) pages.
@@ -134,6 +146,7 @@ export const defaultSiteConfig: SiteConfig = {
     openGraph: {},
     twitter: {},
   },
+  license: null,
   pageGreetings: {
     about: 'Hello, Bonjour, こんにちは, 你好! Glad to see you!',
     archive: 'My digital garden, where I share my thoughts and ideas.',

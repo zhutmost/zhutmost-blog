@@ -58,6 +58,7 @@ const userConfig: Partial<SiteConfig> = {
       lang: 'en',
     },
   },
+  license: 'cc-by-nc-sa',
 }
 
 export default userConfig
