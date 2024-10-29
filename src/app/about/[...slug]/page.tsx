@@ -5,6 +5,7 @@ import { MDXContent } from '@content-collections/mdx/react'
 import mdxComponents from '@/components/mdx/mdx-components'
 import AuthorLayout from '@/layouts/author-layout'
 import { notFound } from 'next/navigation'
+import { generatePageMetadata } from '@/lib/page-metadata'
 
 const allAuthorsExcludingDefault = allAuthors.filter((author) => author.slugPath != 'default')
 
@@ -24,9 +25,9 @@ export async function generateMetadata({
     return
   }
 
-  return {
+  return generatePageMetadata({
     title: `About - ${author.name}`,
-  }
+  })
 }
 
 export default function Page({ params }: { params: { slug: string[] } }) {

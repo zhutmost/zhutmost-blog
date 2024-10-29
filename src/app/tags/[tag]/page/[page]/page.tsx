@@ -10,6 +10,7 @@ import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/componen
 import PostCard from '@/components/post-card'
 import PostPagination from '@/components/post-pagination'
 import Twemojify from '@/components/twemoji'
+import { generatePageMetadata } from '@/lib/page-metadata'
 
 export const generateStaticParams = async () => {
   const tagCounter = tagData as TagCounter
@@ -33,10 +34,10 @@ export async function generateMetadata({
 
   if (!tag) return
 
-  return {
+  return generatePageMetadata({
     title: `Tag - ${tag}`,
-    description: `${siteConfig.siteTitle} "${tag}" tagged content`,
-  }
+    description: `"${tag}" tagged posts on ${siteConfig.siteTitle}`,
+  })
 }
 
 export default function Page({ params }: { params: { tag: string; page: string } }) {

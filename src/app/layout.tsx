@@ -1,6 +1,5 @@
 import '@/styles/globals.css'
 import '@/styles/github-alert.css'
-// import '@/styles/twemoji.css'
 
 import * as React from 'react'
 import type { Metadata } from 'next'

@@ -11,6 +11,7 @@ import PostCard from '@/components/post-card'
 import PostPagination from '@/components/post-pagination'
 import * as React from 'react'
 import Twemojify from '@/components/twemoji'
+import { generatePageMetadata } from '@/lib/page-metadata'
 
 export const generateStaticParams = async () => {
   const categoryCounter = categoryData as CategoryCounter
@@ -35,10 +36,10 @@ export async function generateMetadata({
 
   if (!category) return
 
-  return {
+  return generatePageMetadata({
     title: `Category - ${category}`,
-    description: `${siteConfig.siteTitle} "${category}" category content`,
-  }
+    description: `"${category}" category posts on ${siteConfig.siteTitle}`,
+  })
 }
 
 export default function Page({ params }: { params: { category: string; page: string } }) {

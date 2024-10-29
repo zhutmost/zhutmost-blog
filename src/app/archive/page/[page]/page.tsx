@@ -6,11 +6,17 @@ import PostPagination from '@/components/post-pagination'
 import { redirect } from 'next/navigation'
 import PostCard from '@/components/post-card'
 import Twemojify from '@/components/twemoji'
+import { Metadata } from 'next'
+import { generatePageMetadata } from '@/lib/page-metadata'
 
 export const generateStaticParams = async () => {
   const totalPages = Math.ceil(allPostsSorted.length / siteConfig.postPerPage)
   return Array.from({ length: totalPages }, (_, i) => ({ page: (i + 1).toString() }))
 }
+
+export const metadata: Metadata = generatePageMetadata({
+  title: 'All Posts',
+})
 
 export default function Page({ params }: { params: { page: string } }) {
   const totalPages = Math.ceil(allPostsSorted.length / siteConfig.postPerPage)

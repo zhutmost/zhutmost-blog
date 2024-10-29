@@ -3,11 +3,12 @@ import Tag from '@/components/tag'
 import slugify from '@sindresorhus/slugify'
 import tagData from '@/data/tag-data.json'
 import { TagCounter } from '@/lib/content-collections/post-counter'
+import { generatePageMetadata } from '@/lib/page-metadata'
 
-export const metadata = {
-  title: 'Tags',
+export const metadata = generatePageMetadata({
+  title: 'All Tags',
   description: 'Things I blog about',
-}
+})
 
 export default async function Page() {
   const tagCounter = tagData as TagCounter
