@@ -49,49 +49,50 @@ category: 'Lift Style'
 banner: /images/posts/image-test/banner.jpg
 tags: ['life', 'tech', 'javascript']
 ---
-# Write your content here ... 
+# Write your content here ...
 ```
 
 ### Customize Your Blog
 
-See the [Documentation](https://analog-demo.zhutmost.com/category/doc) to learn how to customize your blog.
+See the [Documentation](https://analog-demo.zhutmost.com/category/docs) to learn how to customize your blog.
 
 ## 🎁 Features
 
 Analog includes plentiful search, comment, sharing and other plugins out of the box that makes your blog feature-rich and powerful.
 
-- [**Comment System**](https://analog-demo.zhutmost.com/posts/docs/comment)
-  
-  Giscus · Utterances · Disqus
-- [**Search**](https://analog-demo.zhutmost.com/posts/docs/search)
+- [**Comment System**](https://analog-demo.zhutmost.com/post/docs/comment)
 
-  KBar (support shortcuts, including pages & posts)
-- [**Analytics**](https://analog-demo.zhutmost.com/posts/docs/analytics)
+  Giscus · Utterances · Disqus
+- [**Search**](https://analog-demo.zhutmost.com/post/docs/search)
+
+  KBar (support Cmd+K shortcuts, including pages & posts)
+- [**Analytics**](https://analog-demo.zhutmost.com/post/docs/analytics)
 
   Umami · Posthog · Google Analytics · Plausible · Simple Analytics
 - **Style-rich Writing**
 
-  MDX (Markdown + JSX) · Katex (math support) · Prism.js (code highlighting)
+  MDX (Markdown + JSX) · Katex (math support) · Prism.js (code highlighting) · License
 - **Other**
 
-  RSS · Sitemap · SEO (OpenGraph + Twitter Card) · Responsive Design
+  Dark mode · Responsive Design · RSS · Sitemap · SEO (OpenGraph + Twitter Card)
 
-### TODO List
+### Dark & Light Mode
 
-- [ ] Code highlighting optimization 
-- [ ] SEO optimization
-- [ ] Team Page
-- [ ] GitHub contribution wall on Author Page
+Make your blog more comfortable to read with the dark/light mode switching.
 
-### Code Highlighting
-
-TODO
+![Dark & Light Modes](img/dark-mode.png)
 
 ### Responsive Design
 
 Give your audiences best viewing experience with the mobile-friendly responsive layout.
 
 ![Responsive Design](img/responsive-design.png)
+
+### TODO List
+
+- [ ] Code highlighting optimization
+- [ ] Team Page (for multi-user sites)
+- [ ] GitHub contribution wall on Author Page
 
 ## 🎉 Issues & Feature Requests
 
