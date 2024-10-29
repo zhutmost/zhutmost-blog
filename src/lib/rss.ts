@@ -28,8 +28,8 @@ export default function generateRssFeed(): Feed {
   allPostsSorted.forEach((post: Post) => {
     feed.addItem({
       title: post.title,
-      id: `${siteUrl}/posts/${post.slugPath}`,
-      link: `${siteUrl}/posts/${post.slugPath}`,
+      id: `${siteUrl}/post/${post.slugPath}`,
+      link: `${siteUrl}/post/${post.slugPath}`,
       description: post.summary,
       content: post.content,
       author: post.authors.map((author) => ({

@@ -56,7 +56,7 @@ export default function SearchProvider({ children }: { children: React.ReactNode
       month: 'long',
       day: 'numeric',
     }),
-    perform: () => router.push('/posts/' + post.slugPath),
+    perform: () => router.push('/post/' + post.slugPath),
     priority: 10,
   }))
   return (

@@ -37,7 +37,7 @@ export interface SiteConfig {
     title?: string
     // Whether to show the theme switching button on the navigation bar.
     themeSwitch: boolean
-    // Navigation menu items. (Example: { Home: '/', Posts: '/posts' })
+    // Navigation menu items. (Example: { Home: '/', Posts: '/archive' })
     menu: Record<string, string>
   }
 
@@ -131,7 +131,7 @@ export const defaultSiteConfig: SiteConfig = {
     themeSwitch: true,
     menu: {
       Home: '/',
-      Blog: '/posts',
+      Blog: '/archive',
     },
   },
   footer: {

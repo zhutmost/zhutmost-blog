@@ -19,7 +19,7 @@ export default function sitemap(): Sitemap {
   const postRoutes: Sitemap = allPostsSorted
     .filter((post) => !post.draft)
     .map((post) => ({
-      url: `${siteUrl}/posts/${post.slugPath}`,
+      url: `${siteUrl}/post/${post.slugPath}`,
       lastModified: (post.dateUpdate || post.datePublish).toISOString(),
       changeFrequency: 'monthly',
     }))
