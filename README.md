@@ -63,7 +63,7 @@ Analog includes plentiful search, comment, sharing and other plugins out of the 
 - [**Comment System**](https://analog-demo.zhutmost.com/post/docs/comment)
 
   Giscus · Utterances · Disqus
-- [**Search**](https://analog-demo.zhutmost.com/post/docs/search)
+- **Search**
 
   KBar (support Cmd+K shortcuts, including pages & posts)
 - [**Analytics**](https://analog-demo.zhutmost.com/post/docs/analytics)

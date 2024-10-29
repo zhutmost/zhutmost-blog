@@ -1,5 +1,5 @@
 ---
-title: Comment System
+title: Analog User Guide - Comment System
 datePublish: 2024-10-24
 summary: 'Analog support multiple comment systems, including Disqus, Giscus, and Utterances.'
 category: 🌈 Docs
@@ -12,7 +12,7 @@ tags:
 Analog support multiple comment systems. You can choose the one that fits your needs.
 The following comment systems are provided by [timlrx/pliny](https://github.com/timlrx/pliny). Please refer to its README for a complete list of supported plugins and their configuration details.
 
-Now, let's demonstrate how to set up a comment system using Giscus as an example.
+Now, let's demonstrate how to set up a comment system using [Giscus](https://giscus.app) as an example.
 
 ## Giscus
 
@@ -49,9 +49,9 @@ If everything is set up correctly, it will generate a script code snippet for yo
 
 ### Configure Giscus in Analog
 
-Next, fill in the corresponding fields in the user configuration file `/data/site-config.ts`:
+Next, fill in the corresponding `comment` fields in the user configuration file `/data/site-config.ts`:
 
-```yaml
+```typescript
 comment: {
   provider: 'giscus',
   giscusConfig: {
@@ -67,12 +67,12 @@ comment: {
     inputPosition: 'bottom',
     lang: 'en',
   },
-},
+}
 ```
 
-Now, you can see the Giscus comment widget at the bottom of your posts (like this one).
+Now, you can see the Giscus comment widget at the bottom of your posts (just like this post).
 
 ## See Also
 
 The comment system in Analog is driven by the [timlrx/pliny](https://github.com/timlrx/pliny).
-Please visit it for detailed configurations.
+Please visit it for more detailed configurations.
