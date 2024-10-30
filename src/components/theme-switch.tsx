@@ -16,7 +16,6 @@ export default function ThemeSwitch() {
   React.useEffect(() => setMounted(true), [])
 
   const toggle = () => {
-    console.log(resolvedTheme)
     if (resolvedTheme !== 'dark') {
       setTheme('dark')
     } else {
