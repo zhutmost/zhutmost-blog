@@ -7,6 +7,7 @@ import SmartLink from '@/components/mdx/smart-link'
 import HeadingLinkIcon from '@/components/mdx/heading-link-icon'
 import MdxImage from '@/components/mdx/mdx-image'
 import MdxTable from '@/components/mdx/mdx-table'
+import PreCodeCopy from '@/components/mdx/pre-code-copy'
 
 const components: MDXComponents = {
   a: SmartLink,
@@ -18,6 +19,7 @@ const components: MDXComponents = {
   // h6: (props) => <HeadingLinkIcon level={6} {...props} />,
   img: MdxImage,
   table: MdxTable,
+  pre: PreCodeCopy,
   AspectRatio,
   Image,
 }

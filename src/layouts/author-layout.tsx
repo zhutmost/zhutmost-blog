@@ -47,8 +47,10 @@ export default function AuthorLayout({ children, author }: AuthorLayoutProps) {
                 ))}
             </div>
           </div>
-          <div className="prose prose-slate max-w-none pb-8 pt-8 dark:prose-invert xl:col-span-2">
-            {children}
+          <div className="pb-8 pt-8 xl:col-span-2">
+            <div className="prose prose-slate max-w-none dark:prose-invert prose-code:font-mono prose-pre:p-0">
+              {children}
+            </div>
           </div>
         </div>
       </div>

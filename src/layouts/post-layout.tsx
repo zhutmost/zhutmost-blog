@@ -137,13 +137,15 @@ export default function PostLayout({
             {/*    </div>*/}
             {/*  )}*/}
             {/*</div>*/}
-            <div className="xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pb-8 pt-10 dark:prose-invert">{children}</div>
+            <div className="gap-16 pb-8 pt-10 xl:col-span-3 xl:row-span-2 xl:pb-0">
+              <div className="prose prose-slate max-w-none pb-8 dark:prose-invert prose-code:font-mono prose-pre:p-0">
+                {children}
+              </div>
 
               {siteConfig.license && <PostLicense post={content} authors={authors} />}
 
               {siteConfig.comment.provider && (
-                <div className="pb-6 pt-6 text-center text-foreground" id="comment">
+                <div className="pt-10 text-center text-foreground" id="comment">
                   <Comments commentsConfig={siteConfig.comment as CommentsConfig} slug={slugPath} />
                 </div>
               )}

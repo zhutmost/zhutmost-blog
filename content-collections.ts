@@ -14,7 +14,11 @@ import {
 } from 'rehype-github-alerts'
 import rehypeKatex from 'rehype-katex'
 import rehypeProbeImageSize from 'rehype-probe-image-size'
-import rehypePrismPlus from 'rehype-prism-plus'
+import scala from 'highlight.js/lib/languages/scala.js'
+import verilog from 'highlight.js/lib/languages/verilog.js'
+import { common as commonLanguages } from 'lowlight'
+import rehypeHighlight from 'rehype-highlight'
+import rehypeHighlightLines from 'rehype-highlight-code-lines'
 import rehypePresetMinify from 'rehype-preset-minify'
 import { writeFileSync } from 'fs'
 import { countPostCategories, countPostTags } from '@/lib/content-collections/post-counter'
@@ -87,7 +91,8 @@ async function commonTransform<D extends BaseDoc>(
         rehypePlugins: [
           [rehypeGithubAlerts, rehypeGithubAlertsOptions],
           rehypeKatex,
-          [rehypePrismPlus, { defaultLanguage: 'log', ignoreMissing: true }],
+          [rehypeHighlight, { detect: true, languages: { ...commonLanguages, verilog, scala } }],
+          [rehypeHighlightLines, { showLineNumbers: true }],
           rehypeSlug,
           rehypeUnwrapImages,
           // @ts-expect-error Types not assignable

@@ -1,4 +1,4 @@
-import '@/styles/prism.css'
+import '@/styles/highlight.css'
 import 'katex/dist/katex.css'
 
 import mdxComponents from '@/components/mdx/mdx-components'
