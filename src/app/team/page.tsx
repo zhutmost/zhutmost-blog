@@ -7,6 +7,9 @@ import { Author } from '@/content-collections'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import SocialIcon from '@/components/social-icon'
 import { allAuthorsNonDefault, sortAuthors } from '@/lib/author-sort'
+import { generatePageMetadata } from '@/lib/page-metadata'
+import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
 
 function PersonCard({ author }: { author: Author }) {
   const { name, avatar, bio, slugPath, icons } = author
@@ -37,7 +40,20 @@ function PersonCard({ author }: { author: Author }) {
   )
 }
 
+export async function generateMetadata(): Promise<Metadata | undefined> {
+  if (!siteConfig.teamPage) {
+    return
+  }
+  return generatePageMetadata({
+    title: 'Our Team',
+  })
+}
+
 export default function Page() {
+  if (!siteConfig.teamPage) {
+    return notFound()
+  }
+
   const allAuthorsGrouped: Record<string, Author[]> = allAuthorsNonDefault.reduce<
     Record<string, Author[]>
   >((acc, a) => {

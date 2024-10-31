@@ -21,6 +21,7 @@ export default function sitemap(): Sitemap {
     .map((post) => ({
       url: `${siteUrl}/post/${post.slugPath}`,
       lastModified: (post.dateUpdate || post.datePublish).toISOString(),
+      priority: 1,
       changeFrequency: 'monthly',
     }))
 
@@ -32,6 +33,9 @@ export default function sitemap(): Sitemap {
   }))
 
   const pages = ['news', 'tags']
+  if (siteConfig.teamPage) {
+    pages.push('team')
+  }
 
   const pageRoutes: Sitemap = pages.map((route) => ({
     url: `${siteUrl}/${route}`,

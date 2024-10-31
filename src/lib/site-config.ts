@@ -26,6 +26,8 @@ export interface SiteConfig {
   postPerPage: number
   // Whether to use multiple categories to classify posts. (Default: true)
   multiCategories: boolean
+  // Whether to have a team page. (Default: false)
+  teamPage: boolean
   // Keywords used for SEO and social media. It is unnecessary for most modern sites.
   keywords: string[]
   // Popular tags displayed on the homepage. If blank, tags with the most posts will be used.
@@ -126,6 +128,7 @@ export const defaultSiteConfig: SiteConfig = {
   author: 'John Doe',
   postPerPage: 10,
   multiCategories: true,
+  teamPage: false,
   keywords: [],
   popularTags: [],
   header: {
