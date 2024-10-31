@@ -30,13 +30,13 @@ export default function HomepageIntro() {
       <div className="text-lg text-muted-foreground">
         {homepageGreetings.fixed.map((item, index) => (
           <Twemojify key={index}>
-            <p className="flex items-center">{item}</p>
+            <p>{item}</p>
           </Twemojify>
         ))}
 
         {homepageGreetings.scrolled && <ScrolledGreetings greetings={homepageGreetings.scrolled} />}
 
-        <p className="flex items-center">
+        <p>
           <Twemojify>Happy reading!&nbsp;🍻</Twemojify>
         </p>
       </div>
