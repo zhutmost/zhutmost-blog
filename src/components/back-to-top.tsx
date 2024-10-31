@@ -21,11 +21,12 @@ export default function BackToTop() {
   }
 
   return (
-    <div className={`fixed bottom-8 right-8 z-50 hidden ${show ? 'md:block' : 'md:hidden'}`}>
+    <div className={`fixed bottom-24 right-8 z-50 ${show ? 'block' : 'hidden'}`}>
       <button
+        id="backToTop"
         aria-label="Scroll To Top"
         onClick={handleScrollTop}
-        className="rounded-full border border-border bg-accent p-2 text-accent-foreground shadow shadow-lg transition-all hover:text-accent-foreground/60"
+        className="rounded-full bg-accent p-2 text-accent-foreground opacity-90 shadow-lg transition-all hover:text-accent-foreground/60"
       >
         <IconArrowUp />
       </button>
