@@ -31,7 +31,7 @@ export default function AuthorLayout({ children, author }: AuthorLayoutProps) {
             {avatar && (
               <Avatar className="h-48 w-48">
                 <AvatarImage className="object-cover" src={avatar} />
-                <AvatarFallback></AvatarFallback>
+                <AvatarFallback>{name}</AvatarFallback>
               </Avatar>
             )}
             <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">{name}</h3>

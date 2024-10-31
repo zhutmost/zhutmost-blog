@@ -33,10 +33,7 @@ function PageHeaderDescription({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <p
-      className={cn('text-pretty text-lg font-light leading-7 text-muted-foreground', className)}
-      {...props}
-    />
+    <p className={cn('text-lg font-light leading-7 text-muted-foreground', className)} {...props} />
   )
 }
 

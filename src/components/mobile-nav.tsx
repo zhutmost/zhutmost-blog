@@ -24,7 +24,12 @@ export default function MobileNav() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant={'ghost'} size={'icon'}>
+        <Button
+          id="mobileNavOpen"
+          aria-label="Open Navigation Menu"
+          variant={'ghost'}
+          size={'icon'}
+        >
           <IconMenu2 className="h-6 w-6" />
         </Button>
       </SheetTrigger>
@@ -60,8 +65,12 @@ export default function MobileNav() {
         </div>
         <SheetFooter>
           <SheetClose>
-            <span className="sr-only">Close</span>
-            <Button variant="ghost" size="icon">
+            <Button
+              id="mobileNavClose"
+              aria-label="Close Navigation Menu"
+              variant="ghost"
+              size="icon"
+            >
               <IconChevronsUp className="h-6 w-6" />
             </Button>
           </SheetClose>

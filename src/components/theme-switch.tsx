@@ -24,7 +24,7 @@ export default function ThemeSwitch() {
   }
 
   return (
-    <Button onClick={toggle} variant="ghost" size="icon">
+    <Button id="themeSwitch" aria-label="Theme Switch" onClick={toggle} variant="ghost" size="icon">
       {mounted ? resolvedTheme === 'dark' ? <IconDark /> : <IconLight /> : <IconBlank />}
     </Button>
   )

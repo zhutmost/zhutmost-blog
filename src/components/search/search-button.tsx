@@ -6,7 +6,13 @@ export default function SearchButton() {
   const { query } = useKBar()
 
   return (
-    <Button aria-label="Search" variant={'ghost'} size={'icon'} onClick={() => query.toggle()}>
+    <Button
+      id="search"
+      aria-label="Search"
+      variant={'ghost'}
+      size={'icon'}
+      onClick={() => query.toggle()}
+    >
       <IconSearch />
     </Button>
   )
