@@ -1,4 +1,5 @@
-import { DisqusProps, GiscusProps, UtterancesProps } from 'pliny/comments/index.js'
+import { DisqusProps, UtterancesProps } from 'pliny/comments/index.js'
+import { GiscusProps } from '@/components/comment/giscus-comments'
 import {
   GoogleAnalyticsProps,
   PlausibleProps,

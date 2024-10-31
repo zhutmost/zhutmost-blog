@@ -5,8 +5,9 @@ import NextImage from 'next/image'
 import siteConfig from '@/lib/site-config'
 import NextLink from 'next/link'
 import Tag from '@/components/tag'
-import { Comments, CommentsConfig } from 'pliny/comments/index.js'
+// import { Comments, CommentsConfig } from 'pliny/comments/index.js'
 import PostLicense from '@/components/post-license'
+import Comments from '@/components/comments'
 
 export interface PostLayoutProps {
   children: React.ReactNode
@@ -145,8 +146,8 @@ export default function PostLayout({
               {siteConfig.license && <PostLicense post={content} authors={authors} />}
 
               {siteConfig.comment.provider && (
-                <div className="pt-10 text-center text-foreground" id="comment">
-                  <Comments commentsConfig={siteConfig.comment as CommentsConfig} slug={slugPath} />
+                <div className="pt-10" id="comment">
+                  <Comments slug={slugPath} />
                 </div>
               )}
             </div>

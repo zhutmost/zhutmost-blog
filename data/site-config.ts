@@ -45,17 +45,10 @@ const userConfig: Partial<SiteConfig> = {
   comment: {
     provider: 'giscus',
     giscusConfig: {
-      theme: 'light',
-      darkTheme: 'dark',
-      mapping: 'pathname',
       repo: 'zhutmost/analog-blog-starter',
-      repositoryId: 'R_kgDONEFqpw',
+      repoId: 'R_kgDONEFqpw',
       category: 'Announcements',
       categoryId: 'DIC_kwDONEFqp84CjmEV',
-      reactions: '1',
-      metadata: '0',
-      inputPosition: 'bottom',
-      lang: 'en',
     },
   },
   license: 'cc-by-nc-sa',
