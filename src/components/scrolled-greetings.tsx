@@ -2,12 +2,10 @@
 
 import * as React from 'react'
 import Typed from 'typed.js'
-import typedBios from '@/data/typed-bios'
 import Twemojify from '@/components/twemoji'
+import { HomepageGreetingsItem } from '@/components/homepage-intro'
 
-export type TypedBiosItem = string | React.ReactNode
-
-export default function TypedBios() {
+export default function ScrolledGreetings({ greetings }: { greetings: HomepageGreetingsItem[] }) {
   const el = React.useRef(null)
 
   React.useEffect(() => {
@@ -25,7 +23,7 @@ export default function TypedBios() {
     <div className="flex h-8 items-center">
       <div className="overflow-x-auto whitespace-nowrap text-nowrap">
         <ul id="bios" className="hidden">
-          {typedBios.map((item, index) => (
+          {greetings.map((item, index) => (
             <Twemojify key={index}>
               <li className="flex items-center">{item}</li>
             </Twemojify>

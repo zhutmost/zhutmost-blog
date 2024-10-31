@@ -8,6 +8,7 @@ import timelineNews from '@/data/timeline-news'
 import HomepageIntro from '@/components/homepage-intro'
 import Twemojify from '@/components/twemoji'
 import NextLink from 'next/link'
+import homepageGreetings from '@/data/homepage-greetings'
 
 export default function HomePage() {
   const posts = allPostsSorted.slice(0, siteConfig.postPerPage)
@@ -16,15 +17,6 @@ export default function HomePage() {
   return (
     <div>
       <div className="px-4 pb-2 pt-8 md:pt-12 lg:pt-12">
-        <h1 className="mb-8 text-5xl font-extrabold leading-[60px] tracking-tight text-foreground/70 lg:text-6xl lg:leading-[86px]">
-          Hi, folks! I&apos;m{' '}
-          <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text font-bold text-transparent">
-            {siteConfig.author}
-          </span>
-          <Twemojify size={'lg'} className="ml-6">
-            👋
-          </Twemojify>
-        </h1>
         <HomepageIntro />
       </div>
 
