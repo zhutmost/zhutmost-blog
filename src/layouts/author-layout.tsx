@@ -36,8 +36,8 @@ export default function AuthorLayout({ children, author }: AuthorLayoutProps) {
             )}
             <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">{name}</h3>
             <div className="text-muted-foreground">{bio}</div>
-            <div className="flex items-center gap-1 pt-1 text-muted-foreground">
-              <IconMapPinFilled />
+            <div className="flex items-center gap-1.5 pt-1 text-muted-foreground">
+              <IconMapPinFilled className="h-5 w-5" />
               {affiliation}
             </div>
             <div className="flex space-x-3 pt-6">
