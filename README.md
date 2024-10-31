@@ -1,12 +1,12 @@
-# Analog: Another (Academic) Blog Starter
-
 ![Analog screenshot](img/cover.png)
 
-**Analog** is a out-of-the-box feature-rich blog template with [Next.js](https://nextjs.org).
+# Analog: Another (Academic) Blog Starter
+
+A out-of-the-box feature-rich blog template with [Next.js](https://nextjs.org).
 
 It is easy to customize and reconfigure to suit your needs. It is perfect for individual blogs, especially **academic or technology blogs**.
 
-Demo sites:
+**Live Preview**:
 - [Analog Demo](https://analog-demo.zhutmost.com)
 - [zhutmost.com](https://blog.zhutmost.com) - My personal blog.
 
@@ -68,21 +68,24 @@ See the [Documentation](https://analog-demo.zhutmost.com/category/docs) to learn
 
 Analog includes plentiful search, comment, sharing and other plugins out of the box that makes your blog feature-rich and powerful.
 
+- **Fully Responsive Design**
+- **Dark & Light Mode Switching**
+- **Diverse Pages - Tags/Category/Team/About/...** 
+- **Style-rich Writing**
+
+  MDX (Markdown + JSX) · Katex (math support) · hightlighting.js (code highlighting) · License
 - [**Comment System**](https://analog-demo.zhutmost.com/post/docs/comment)
 
   Giscus · Utterances · Disqus
-- **Search**
+- **Built-in Search**
 
   KBar (support Cmd+K shortcuts, including pages & posts)
 - [**Analytics**](https://analog-demo.zhutmost.com/post/docs/analytics)
 
   Umami · Posthog · Google Analytics · Plausible · Simple Analytics
-- **Style-rich Writing**
-
-  MDX (Markdown + JSX) · Katex (math support) · Prism.js (code highlighting) · License
 - **Other**
 
-  Dark mode · Responsive Design · RSS · Sitemap · SEO (OpenGraph + Twitter Card)
+  RSS · Sitemap · SEO (OpenGraph + Twitter Card)
 
 ### Dark & Light Mode
 
@@ -96,20 +99,10 @@ Give your audiences best viewing experience with the mobile-friendly responsive 
 
 ![Responsive Design](img/responsive-design.png)
 
-### TODO List
-
-- [ ] Code highlighting optimization
-- [ ] GitHub contribution wall on Author Page
-
 ## 🎉 Issues & Feature Requests
 
 If you find any bugs in my code or have any ideas to improve this, please feel free to open an [issue](https://github.com/zhutmost/analog-blog-starter). I will be glad to join the discussion.
 
 ## 💡 Inspiration
 
-This project is on the shoulder of giants. I would like to thank the following projects for their inspiration:
-
-- [Tailwind Nextjs Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
-- [Hexo Icarus](https://github.com/ppoffice/hexo-theme-icarus)
-
-See [Tech Stack](https://analog-demo.zhutmost.com/posts/docs/tech-stack) for more details.
+This project is on the shoulder of giants. See [Tech Stack](https://analog-demo.zhutmost.com/posts/docs/tech-stack) for more details.
