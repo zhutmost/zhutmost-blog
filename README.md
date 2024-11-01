@@ -1,10 +1,15 @@
+<p align="center" class="mb-2">
+<h1>Analog: Another (Academic) Blog Starter</h1>
+<br> An out-of-the-box feature-rich blog template with Next.js
+<br>
+<a href="https://analog-demo.zhutmost.com">Preview</a> |
+<a href="https://analog-demo.zhutmost.com/category/docs">Documentation</a>
+<br>
+</p>
+
 ![Analog screenshot](img/cover.png)
 
-# Analog: Another (Academic) Blog Starter
-
-A out-of-the-box feature-rich blog template with [Next.js](https://nextjs.org).
-
-It is easy to customize and reconfigure to suit your needs. It is perfect for individual blogs, especially **academic or technology blogs**.
+**Analog** is easy to customize and reconfigure to suit your needs. It is perfect for individual blogs, especially **academic or technology blogs**.
 
 **Live Preview**:
 - [Analog Demo](https://analog-demo.zhutmost.com)

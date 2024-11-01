@@ -5,9 +5,10 @@ import NextImage from 'next/image'
 import siteConfig from '@/lib/site-config'
 import NextLink from 'next/link'
 import Tag from '@/components/tag'
-// import { Comments, CommentsConfig } from 'pliny/comments/index.js'
 import PostLicense from '@/components/post-license'
 import Comments from '@/components/comments'
+import PostToc from '@/components/post-toc'
+import { cn } from '@/lib/utils'
 
 export interface PostLayoutProps {
   children: React.ReactNode
@@ -17,6 +18,113 @@ export interface PostLayoutProps {
   postPrev?: Post
 }
 
+function PostSidebarItem({
+  label = undefined,
+  children,
+  className,
+  ...rest
+}: {
+  label?: string
+} & React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div className={cn('py-4 xl:py-8', className)} {...rest}>
+      {label && (
+        <h2 className="text-xs font-medium uppercase leading-5 tracking-wide text-muted-foreground">
+          {label}
+        </h2>
+      )}
+      <div className="text-sm font-medium">{children}</div>
+    </div>
+  )
+}
+
+function PostSidebar({ content, authors, postNext, postPrev }: Omit<PostLayoutProps, 'children'>) {
+  const { tags, toc } = content
+
+  return (
+    <div className="flex flex-col justify-start divide-border xl:divide-y">
+      {/* Author */}
+      <dl className="pb-10 pt-6 xl:pt-11">
+        <dt className="sr-only">Authors</dt>
+        <dd className="">
+          <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8">
+            {authors.map((author) => (
+              <li className="flex items-center space-x-2" key={author.name}>
+                {author.avatar && (
+                  <NextLink href={`/about/${author.slugPath}`}>
+                    <NextImage
+                      src={author.avatar}
+                      width={38}
+                      height={38}
+                      alt="avatar"
+                      className="h-10 w-10 rounded-full"
+                    />
+                  </NextLink>
+                )}
+                <dl className="whitespace-nowrap indent-3 text-sm font-medium leading-5">
+                  <NextLink href={`/about/${author.slugPath}`}>
+                    <dt className="sr-only">Name</dt>
+                    <dd className="text-foreground">{author.name}</dd>
+                  </NextLink>
+                  {author.bio && (
+                    <div>
+                      <dt className="sr-only">Bio</dt>
+                      <dd className="text-sm text-muted-foreground">{author.bio}</dd>
+                    </div>
+                  )}
+                </dl>
+              </li>
+            ))}
+          </ul>
+        </dd>
+      </dl>
+
+      {/* Tags */}
+      {tags && (
+        <PostSidebarItem label="Tags">
+          <div className="flex flex-wrap">
+            {tags.map((tag) => (
+              <Tag key={tag} text={tag} />
+            ))}
+          </div>
+        </PostSidebarItem>
+      )}
+
+      {/* Next, Prev */}
+      {(postNext || postPrev) && (
+        <div className="flex flex-wrap justify-between gap-8 py-4 xl:py-8">
+          {postPrev && (
+            <PostSidebarItem label="Previous Article" className="py-0 xl:py-0">
+              <div className="text-primary hover:text-primary/80">
+                <NextLink href={`/post/${postPrev.slugPath}`}>{postPrev.title}</NextLink>
+              </div>
+            </PostSidebarItem>
+          )}
+          {postNext && (
+            <PostSidebarItem label="Next Article" className="py-0 xl:py-0">
+              <div className="text-primary hover:text-primary/80">
+                <NextLink href={`/post/${postNext.slugPath}`}>{postNext.title}</NextLink>
+              </div>
+            </PostSidebarItem>
+          )}
+        </div>
+      )}
+
+      {/* TOC */}
+      {toc && (
+        <div className="container h-full">
+          <PostSidebarItem
+            label="Table of Contents"
+            className="sticky inset-x-0 top-14 hidden space-y-4 xl:block"
+          >
+            <PostToc toc={toc} />
+          </PostSidebarItem>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function PostLayout({
   content,
   authors,
@@ -24,13 +132,13 @@ export default function PostLayout({
   postPrev,
   children,
 }: PostLayoutProps) {
-  const { title, datePublish, tags, slugPath, banner, toc } = content
+  const { title, datePublish, slugPath, banner } = content
   return (
     <>
       <BackToTop />
       <article>
         <div className="xl:divide-y xl:divide-border">
-          <header className="pt-6 xl:pb-6">
+          <header className="pb-6 pt-6">
             {banner && (
               <div className="w-full pb-10">
                 <div className="relative aspect-[5/2] w-full">
@@ -58,87 +166,16 @@ export default function PostLayout({
               </h1>
             </div>
           </header>
-          <div className="grid-rows-[auto_1fr] divide-y divide-border pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0">
-            <dl className="pb-10 pt-6 xl:border-b xl:border-border xl:pt-11">
-              <dt className="sr-only">Authors</dt>
-              <dd>
-                <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8">
-                  {authors.map((author) => (
-                    <li className="flex items-center space-x-2" key={author.name}>
-                      {author.avatar && (
-                        <NextLink href={`/about/${author.slugPath}`}>
-                          <NextImage
-                            src={author.avatar}
-                            width={38}
-                            height={38}
-                            alt="avatar"
-                            className="h-10 w-10 rounded-full"
-                          />
-                        </NextLink>
-                      )}
-                      <dl className="whitespace-nowrap indent-3 text-sm font-medium leading-5">
-                        <NextLink href={`/about/${author.slugPath}`}>
-                          <dt className="sr-only">Name</dt>
-                          <dd className="text-foreground">{author.name}</dd>
-                        </NextLink>
-                        {author.bio && (
-                          <div>
-                            <dt className="sr-only">Bio</dt>
-                            <dd className="text-sm text-muted-foreground">{author.bio}</dd>
-                          </div>
-                        )}
-                      </dl>
-                    </li>
-                  ))}
-                </ul>
-              </dd>
-            </dl>
-            <div className="divide-border text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2 xl:divide-y">
-              {tags && (
-                <div className="py-4 xl:py-8">
-                  <h2 className="text-xs uppercase tracking-wide text-muted-foreground">Tags</h2>
-                  <div className="flex flex-wrap">
-                    {tags.map((tag) => (
-                      <Tag key={tag} text={tag} />
-                    ))}
-                  </div>
-                </div>
-              )}
-              {(postNext || postPrev) && (
-                <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
-                  {postPrev && (
-                    <div>
-                      <h2 className="text-xs uppercase tracking-wide text-muted-foreground">
-                        Previous Article
-                      </h2>
-                      <div className="text-primary hover:text-primary/80">
-                        <NextLink href={`/post/${postPrev.slugPath}`}>{postPrev.title}</NextLink>
-                      </div>
-                    </div>
-                  )}
-                  {postNext && (
-                    <div>
-                      <h2 className="text-xs uppercase tracking-wide text-muted-foreground">
-                        Next Article
-                      </h2>
-                      <div className="text-primary hover:text-primary/80">
-                        <NextLink href={`/post/${postNext.slugPath}`}>{postNext.title}</NextLink>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-            {/*<div className="divide-border text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2 xl:divide-y">*/}
-            {/*  {toc && (*/}
-            {/*    <div className="hidden xl:block">*/}
-            {/*      <h2 className="text-xs uppercase tracking-wide text-muted-foreground">*/}
-            {/*        Table of Contents*/}
-            {/*      </h2>*/}
-            {/*    </div>*/}
-            {/*  )}*/}
-            {/*</div>*/}
-            <div className="gap-16 pb-8 pt-10 xl:col-span-3 xl:row-span-2 xl:pb-0">
+
+          <div className="divide-y divide-border pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0">
+            <PostSidebar
+              content={content}
+              authors={authors}
+              postNext={postNext}
+              postPrev={postPrev}
+            />
+
+            <div className="gap-16 pb-8 pt-10 xl:col-span-3 xl:pb-0">
               <div className="prose prose-slate max-w-none pb-8 dark:prose-invert prose-code:font-mono prose-pre:p-0">
                 {children}
               </div>

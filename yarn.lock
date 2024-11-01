@@ -2043,21 +2043,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tabler/icons-react@npm:^3.20.0":
-  version: 3.20.0
-  resolution: "@tabler/icons-react@npm:3.20.0"
+"@tabler/icons-react@npm:^3.21.0":
+  version: 3.21.0
+  resolution: "@tabler/icons-react@npm:3.21.0"
   dependencies:
-    "@tabler/icons": "npm:3.20.0"
+    "@tabler/icons": "npm:3.21.0"
   peerDependencies:
     react: ">= 16"
-  checksum: 10c0/468aa5034c489e6db443cafbf20a3794ef5f2ad7dc719dca8ce957fd19ea5d94f6ad8ada4c68b7621d6e5cdf747e40f6b2cc65e89c5a4f2b21e4ea727dd1b67c
+  checksum: 10c0/c415c0f2495dc846d5d32bb8a97cd426316c738c5a89cde2fec06f40b7d04f56cd37afb5e997eba541ea145a67a81cb4cf99ec6e2f381096120b3fbf4c9d696a
   languageName: node
   linkType: hard
 
-"@tabler/icons@npm:3.20.0":
-  version: 3.20.0
-  resolution: "@tabler/icons@npm:3.20.0"
-  checksum: 10c0/81650ed119f1a87fabe55dc33f4956a5e427cfad48629ac3ea1b8946486935c3206ff20aad080270a5df4f3080848dbb8e22c6dfa0a9290cf111a228ef1fefc9
+"@tabler/icons@npm:3.21.0":
+  version: 3.21.0
+  resolution: "@tabler/icons@npm:3.21.0"
+  checksum: 10c0/45d0201683e948348e0f247c88d39a2b2e7c05be2715180d911a5c11821ff31d96d54a2d6452ea6e23304cdb4836a21ba2cc043ee9abc6e73804e2192b4c6527
   languageName: node
   linkType: hard
 
@@ -2197,12 +2197,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.17.1":
-  version: 20.17.1
-  resolution: "@types/node@npm:20.17.1"
+"@types/node@npm:^20.17.5":
+  version: 20.17.5
+  resolution: "@types/node@npm:20.17.5"
   dependencies:
     undici-types: "npm:~6.19.2"
-  checksum: 10c0/214cf1fffff9c80ae0d49d7dd1f04254215d49711276fff44ff6f61e36dc8d53520509a88add6955fe029b2259c87eaf284b43bc1236d4f4f06bd80c46f0e2b8
+  checksum: 10c0/6e6bf7f84365a2ee95a369c48cdb47a93aae2b5029d19660183ba944d7bdbc193e54167076d64a3a11ff28e307b84c90eda350edf8e2029195d1fc27ae6055f4
   languageName: node
   linkType: hard
 
@@ -10189,11 +10189,11 @@ __metadata:
     "@radix-ui/react-dialog": "npm:^1.1.2"
     "@radix-ui/react-slot": "npm:^1.1.0"
     "@sindresorhus/slugify": "npm:^2.2.1"
-    "@tabler/icons-react": "npm:^3.20.0"
+    "@tabler/icons-react": "npm:^3.21.0"
     "@tailwindcss/typography": "npm:^0.5.15"
     "@tsconfig/next": "npm:^2.0.3"
     "@twemoji/parser": "npm:^15.1.1"
-    "@types/node": "npm:^20.17.1"
+    "@types/node": "npm:^20.17.5"
     "@types/react": "npm:^18.3.12"
     "@types/react-dom": "npm:^18.3.1"
     "@types/react-twemoji": "npm:^0.4.3"
