@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 
 export interface PostTocProps {
   toc: TocItem[]
-  depth?: 1 | 2
+  maxDepth?: 2 | 3
 }
 
 function useActiveItem(itemIds: string[]) {
@@ -41,55 +41,39 @@ function useActiveItem(itemIds: string[]) {
     }
   }, [itemIds])
 
-  console.log(activeId)
   return activeId
 }
 
-export default function PostToc({ toc, depth = 2 }: PostTocProps) {
-  const activeHeading = useActiveItem(
-    toc.filter((item) => item.depth === 3).map((item) => item.href.slice(1))
-  )
+export default function PostToc({ toc, maxDepth = 3 }: PostTocProps) {
+  const activeHeading = useActiveItem(toc.map((item) => item.href.slice(1)))
   const activeHeadingNumbering = toc.find((item) => item.href.slice(1) === activeHeading)?.numbering
 
-  const filteredToc = toc.filter((item) => item.depth <= depth + 1)
+  const filteredToc = toc.filter((item) => item.depth <= maxDepth)
 
   return (
-    <nav className="max-h-[85svh] overflow-auto py-2 text-sm font-normal leading-8">
+    <nav className="max-h-[85svh] overflow-auto py-2 leading-8">
       <ul>
-        {filteredToc.map((item) => {
-          const numbering = item.numbering.slice(1).join('.')
-          if (item.depth === 2) {
-            return (
-              <li
-                key={item.href}
-                className={cn(
-                  'px-2 py-1 text-base font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground',
-                  activeHeadingNumbering &&
-                    item.numbering[1] == activeHeadingNumbering[1] &&
-                    'text-primary'
-                )}
-              >
-                <span className="pr-2">{numbering}</span>
-                <a href={item.href} className="">
-                  {item.value}
-                </a>
-              </li>
-            )
-          } else if (item.depth === 3) {
-            return (
-              <li
-                key={item.href}
-                className={cn(
-                  'ml-4 px-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground',
-                  item.href.slice(1) === activeHeading && 'text-primary'
-                )}
-              >
-                <span className="pr-2">{numbering}</span>
-                <a href={item.href}>{item.value}</a>
-              </li>
-            )
-          }
-        })}
+        {filteredToc.map((item) => (
+          <li
+            key={item.href}
+            className={cn(
+              'px-2 py-1 text-muted-foreground transition-colors hover:bg-accent',
+              item.depth === 2
+                ? 'text-base font-medium'
+                : item.depth === 3
+                  ? 'ml-5 text-sm font-normal'
+                  : 'ml-8 text-xs font-normal',
+              activeHeadingNumbering &&
+                item.numbering.every((value, index) => value === activeHeadingNumbering[index]) &&
+                'text-primary'
+            )}
+          >
+            {item.depth === 2 && <span className="pr-2">{item.numbering.slice(1).join('.')}</span>}
+            <a href={item.href} className="">
+              {item.value}
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
   )
