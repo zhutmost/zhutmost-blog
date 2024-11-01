@@ -68,12 +68,14 @@ See the [Documentation](https://analog-demo.zhutmost.com/category/docs) to learn
 
 Analog includes plentiful search, comment, sharing and other plugins out of the box that makes your blog feature-rich and powerful.
 
-- **Fully Responsive Design**
-- **Dark & Light Mode Switching**
-- **Diverse Pages - Tags/Category/Team/About/...** 
+- [**Fully Responsive Design**](#responsive-design)
+- [**Dark & Light Mode Switching**](#dark--light-mode)
+- [**Diverse Pages**](#diverse-pages)
+
+  Tags · Category · Team · About · News
 - **Style-rich Writing**
 
-  MDX (Markdown + JSX) · Katex (math support) · hightlighting.js (code highlighting) · License
+  MDX (Markdown + JSX) · Katex (math support) · highlighting.js (code highlighting) · License
 - [**Comment System**](https://analog-demo.zhutmost.com/post/docs/comment)
 
   Giscus · Utterances · Disqus
@@ -87,17 +89,23 @@ Analog includes plentiful search, comment, sharing and other plugins out of the 
 
   RSS · Sitemap · SEO (OpenGraph + Twitter Card)
 
+### Responsive Design
+
+Give your audiences best viewing experience with the mobile-friendly responsive layout.
+
+![Responsive Design](img/responsive-design.png)
+
 ### Dark & Light Mode
 
 Make your blog more comfortable to read with the dark/light mode switching.
 
 ![Dark & Light Modes](img/dark-mode.png)
 
-### Responsive Design
+### Diverse Pages
 
-Give your audiences best viewing experience with the mobile-friendly responsive layout.
+In addition to the blog posts, Analog provides various pages to enrich your blog.
 
-![Responsive Design](img/responsive-design.png)
+![Diverse Pages](img/pages.png)
 
 ## 🎉 Issues & Feature Requests
 

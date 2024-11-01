@@ -269,6 +269,7 @@ it's also easy to use Markdown to write about Markdown's own syntax.
 ```markdown
 abc def
 =======
+
 It is a Markdown syntax demo.
 ```
 
@@ -304,6 +305,14 @@ title for the link, surrounded in quotes. For example:
 This is [an example](http://example.com/) inline link.
 
 [This link](http://example.net/) has no title attribute.
+
+Reference-style links use a second set of square brackets, inside which you place a label of your choosing to identify the link:
+
+This is [an example][cite1] reference-style link.
+
+The implicit link name shortcut allows you to omit the name of the link, in which case the link text itself is used as the name. Just use an empty set of square brackets:
+
+[Google] is another example of a reference-style link.
 
 ### Emphasis
 
@@ -370,3 +379,7 @@ GitHub-flavored Markdown supports alerts. You can use the following syntax to wr
 
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
+
+
+[cite1]: https://example.com/  "Optional Title Here"
+[Google]: https://google.com  ("Google Search")
