@@ -13,6 +13,7 @@ const userConfig: Partial<SiteConfig> = {
     { tag: 'writing', icon: 'IconNote', title: 'Writing' },
     { tag: 'windows', icon: 'IconBrandWindows', title: 'Windows' },
   ],
+  githubCalendar: 'zhutmost',
   header: {
     logo: '/favicons/favicon.svg',
     title: 'Analog Demo',

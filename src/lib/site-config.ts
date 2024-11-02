@@ -32,6 +32,9 @@ export interface SiteConfig {
   keywords: string[]
   // Popular tags displayed on the homepage. If blank, tags with the most posts will be used.
   popularTags: { tag: string; icon?: string; title?: string }[]
+  // GitHub username for the GitHub calendar on the homepage. (Example: 'zhutmost')
+  // Leave it blank to disable the GitHub calendar.
+  githubCalendar: string | null
 
   header: {
     // The path to the logo image. (Example: '/logo.svg')
@@ -131,6 +134,7 @@ export const defaultSiteConfig: SiteConfig = {
   teamPage: false,
   keywords: [],
   popularTags: [],
+  githubCalendar: null,
   header: {
     logo: '/favicons/favicon.svg',
     title: 'Analog Demo',
