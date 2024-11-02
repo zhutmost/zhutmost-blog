@@ -44,11 +44,11 @@ export default function PopularTags() {
             href={`/tags/${tagSlug}`}
             className={cn(
               buttonVariants({ size: 'lg', variant: 'default' }),
-              `${bgColor} mx-auto w-[160px] space-x-2 px-3`
+              `${bgColor} mx-auto w-[160px] space-x-2 px-3 text-white`
             )}
           >
             <IconSvg className="h-6 w-6" />
-            <div className="my-auto overflow-hidden text-base text-white">{title || tag}</div>
+            <div className="my-auto truncate text-base">{title || tag}</div>
           </NextLink>
         )
       })}
