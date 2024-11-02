@@ -4,6 +4,7 @@ import Twemojify from '@/components/twemoji'
 import homepageGreetings from '@/data/homepage-greetings'
 import siteConfig from '@/lib/site-config'
 import GithubCalendar from '@/components/github-calendar'
+import SmartLink from '@/components/smart-link'
 
 export type HomepageGreetingsItem = string | React.ReactNode
 
@@ -41,14 +42,12 @@ export default function HomepageIntro() {
           <div className="space-y-4 py-4">
             <p>
               I also go by&nbsp;
-              <a
+              <SmartLink
                 href={`https://github.com/${siteConfig.githubCalendar}`}
                 className="inline text-primary hover:text-primary/80 hover:underline hover:underline-offset-2"
-                rel="noopener noreferrer"
-                target="_blank"
               >
                 @{siteConfig.githubCalendar}
-              </a>
+              </SmartLink>
               &nbsp;when coding. Catch me on GitHub!
             </p>
             <div className="py-8">

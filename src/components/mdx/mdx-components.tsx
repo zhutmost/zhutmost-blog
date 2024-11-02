@@ -3,14 +3,14 @@ import { MDXComponents } from 'mdx/types'
 import Image from 'next/image'
 
 import { AspectRatio } from '@/components/ui/aspect-ratio'
-import SmartLink from '@/components/mdx/smart-link'
 import HeadingLinkIcon from '@/components/mdx/heading-link-icon'
 import MdxImage from '@/components/mdx/mdx-image'
 import MdxTable from '@/components/mdx/mdx-table'
 import PreCodeCopy from '@/components/mdx/pre-code-copy'
+import MdxLink from '@/components/mdx/mdx-link'
 
 const components: MDXComponents = {
-  a: SmartLink,
+  a: MdxLink,
   h1: (props) => <HeadingLinkIcon level={1} {...props} />,
   h2: (props) => <HeadingLinkIcon level={2} {...props} />,
   h3: (props) => <HeadingLinkIcon level={3} {...props} />,

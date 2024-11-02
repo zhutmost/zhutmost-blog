@@ -14,7 +14,7 @@ const homepageGreetings: HomepageGreetings = {
       I am aliased as <b className="font-medium">Alice</b> at work 💼.
     </>,
     <>
-      I live in <b className="font-medium">Shanghai, China 🇨🇳.</b>
+      I live in <b className="font-medium">Shanghai, China 🇨🇳</b>.
     </>,
     <>
       I was born in the beautiful <b className="font-medium">Jiaxing</b> city.

@@ -17,6 +17,8 @@ import siteConfig from '@/lib/site-config'
 import NextImage from 'next/image'
 import { cn } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import SmartLink from '@/components/smart-link'
 
 export default function MobileNav() {
   const [open, setOpen] = React.useState(false)
@@ -24,14 +26,23 @@ export default function MobileNav() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button
-          id="mobileNavOpen"
-          aria-label="Open Navigation Menu"
-          variant={'ghost'}
-          size={'icon'}
-        >
-          <IconMenu2 className="h-6 w-6" />
-        </Button>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                id="mobileNavOpen"
+                aria-label="Open Navigation Menu"
+                variant={'ghost'}
+                size={'icon'}
+              >
+                <IconMenu2 className="h-6 w-6" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Menu</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </SheetTrigger>
       <SheetContent side={'top'}>
         <SheetHeader>
