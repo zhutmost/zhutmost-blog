@@ -136,6 +136,7 @@ const Posts = defineCollection({
     banner: z.string().optional(),
     draft: z.boolean().default(false),
     locale: z.string().default('en-US'),
+    license: z.string().optional(),
   }),
   transform: async (document, context) => {
     const readingTime = readingTimeEstimate(document.content).minutes

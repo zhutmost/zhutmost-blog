@@ -9,7 +9,16 @@ import {
 } from 'pliny/analytics/index.js'
 import userConfig from '@/data/site-config'
 
-type CommentProviders = 'giscus' | 'utterances' | 'disqus'
+export type CommentProviders = 'giscus' | 'utterances' | 'disqus'
+
+export type CreativeCommonsLicense =
+  | 'cc-by-nc-sa'
+  | 'cc-by-nc-nd'
+  | 'cc-by-nc'
+  | 'cc-by-nd'
+  | 'cc-by-sa'
+  | 'cc-by'
+  | 'cc0'
 
 export interface SiteConfig {
   // The URL of your site, without trailing slash.
@@ -22,19 +31,34 @@ export interface SiteConfig {
   locale: string
   // The author of the site.
   author: string
-  // The number of posts per page in the pagination.
-  postPerPage: number
-  // Whether to use multiple categories to classify posts. (Default: true)
-  multiCategories: boolean
-  // Whether to have a team page. (Default: false)
-  teamPage: boolean
   // Keywords used for SEO and social media. It is unnecessary for most modern sites.
   keywords: string[]
+
+  // Whether to use multiple categories to classify posts. (Default: true)
+  multiCategories: boolean
+  // Whether to have a team page. (Default: true)
+  teamPage: boolean
+  // The number of posts per page in the pagination. (Default: 10)
+  postPerPage: number
   // Popular tags displayed on the homepage. If blank, tags with the most posts will be used.
   popularTags: { tag: string; icon?: string; title?: string }[]
   // GitHub username for the GitHub calendar on the homepage. (Example: 'zhutmost')
   // Leave it blank to disable the GitHub calendar.
   githubCalendar: string | null
+
+  // Set the greetings (displayed under the page header) for different pages.
+  pageGreetings: {
+    // Greetings for 'Authors'(/about/[...]) pages.
+    about?: string
+    // Greetings for 'All Posts'(/archive & /category/... & /tags/...) pages.
+    archive?: string
+    // Greetings for 'News'(/news) pages
+    news?: string
+    // Greetings for the 'Popular Tags' section on the homepage.
+    tags?: string
+    // Greetings for 'Team'(/team) page.
+    team?: string
+  }
 
   header: {
     // The path to the logo image. (Example: '/logo.svg')
@@ -97,29 +121,7 @@ export interface SiteConfig {
 
   // The Creative Commons (CC) license of your posts. Leave it null to disable the license display.
   // Visit https://creativecommons.org/share-your-work/cclicenses to find the license you want.
-  license:
-    | 'cc-by-nc-sa'
-    | 'cc-by-nc-nd'
-    | 'cc-by-nc'
-    | 'cc-by-nd'
-    | 'cc-by-sa'
-    | 'cc-by'
-    | 'cc0'
-    | null
-
-  // Set the greetings (displayed under the page header) for different pages.
-  pageGreetings: {
-    // Greetings for 'Authors'(/about/[...]) pages.
-    about?: string
-    // Greetings for 'All Posts'(/archive & /category/... & /tags/...) pages.
-    archive?: string
-    // Greetings for 'News'(/news) pages
-    news?: string
-    // Greetings for the 'Popular Tags' section on the homepage.
-    tags?: string
-    // Greetings for 'Team'(/team) page.
-    team?: string
-  }
+  license: CreativeCommonsLicense | null
 }
 
 // Default site config. You can override it in the user config (/data/site-config.ts).
@@ -131,9 +133,16 @@ export const defaultSiteConfig: SiteConfig = {
   author: 'John Doe',
   postPerPage: 10,
   multiCategories: true,
-  teamPage: false,
+  teamPage: true,
   keywords: [],
   popularTags: [],
+  pageGreetings: {
+    about: 'Hello, Bonjour, こんにちは, 你好! Glad to see you!',
+    archive: 'My digital garden, where I share my thoughts and ideas.',
+    news: 'Stay up-to-date with the latest happenings.',
+    tags: 'Popular tags feature the most widely favored topics.',
+    team: 'Meet the team behind the scenes.',
+  },
   githubCalendar: null,
   header: {
     logo: '/favicons/favicon.svg',
@@ -157,18 +166,13 @@ export const defaultSiteConfig: SiteConfig = {
     twitter: {},
   },
   license: null,
-  pageGreetings: {
-    about: 'Hello, Bonjour, こんにちは, 你好! Glad to see you!',
-    archive: 'My digital garden, where I share my thoughts and ideas.',
-    news: 'Stay up-to-date with the latest happenings.',
-    tags: 'Popular tags feature the most widely favored topics.',
-    team: 'Meet the team behind the scenes.',
-  },
 }
 
 const siteConfig: SiteConfig = (() => {
   // Merge default config with user config
   const c = { ...defaultSiteConfig, ...userConfig }
+
+  c.siteUrl = new URL(c.siteUrl).toString()
 
   // Set default values for Open Graph and Twitter SEO
   c.seo.openGraph = {

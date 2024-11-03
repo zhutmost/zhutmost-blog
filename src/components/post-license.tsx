@@ -1,4 +1,4 @@
-import siteConfig from '@/lib/site-config'
+import siteConfig, { CreativeCommonsLicense } from '@/lib/site-config'
 import type { Author, Post } from '@/content-collections'
 import {
   IconCreativeCommons,
@@ -15,9 +15,9 @@ export interface PostLicenseProps {
 }
 
 export default function PostLicense({ post, authors }: PostLicenseProps) {
-  if (!siteConfig.license) return null
+  if (!(siteConfig.license || post.license)) return null
 
-  const { title, slugPath, datePublish, dateUpdate } = post
+  const { title, slugPath, datePublish, dateUpdate, license } = post
   const postUrl = new URL(`post/${slugPath}`, siteConfig.siteUrl).toString()
 
   const authorName = authors[0].name + (authors.length > 1 ? ' et al.' : '')
@@ -43,8 +43,11 @@ export default function PostLicense({ post, authors }: PostLicenseProps) {
     cc0: [IconCreativeCommonsBy, IconCreativeCommonsZero],
   }
 
+  const licenseMerged: CreativeCommonsLicense =
+    license && license in licenseIcons ? (license as CreativeCommonsLicense) : siteConfig.license!
+
   const licenseLink = new URL(
-    siteConfig.license === 'cc0' ? 'zero/1.0' : siteConfig.license.slice(3) + '/4.0',
+    licenseMerged === 'cc0' ? 'zero/1.0' : licenseMerged.slice(3) + '/4.0',
     'https://creativecommons.org/licenses/'
   ).toString()
 
@@ -80,8 +83,8 @@ export default function PostLicense({ post, authors }: PostLicenseProps) {
           <h6 className="text-xs">Licensed under</h6>
           <p>
             <a href={licenseLink} rel="noopener noreferrer" target="_blank">
-              <span className="sr-only">{siteConfig.license}</span>
-              {licenseIcons[siteConfig.license].map((Icon, index) => (
+              <span className="sr-only">{licenseMerged}</span>
+              {licenseIcons[licenseMerged].map((Icon, index) => (
                 <Icon key={index} className="inline-block h-6 w-6" />
               ))}
             </a>
