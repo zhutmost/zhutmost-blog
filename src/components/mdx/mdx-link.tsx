@@ -9,7 +9,7 @@ export default function MdxLink({
   children,
   ...rest
 }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
-  const isExternal = href && !(href.startsWith('/') && href.startsWith('#'))
+  const isExternal = href && !(href.startsWith('/') || href.startsWith('#'))
 
   const inlineLinkStyles =
     'break-words text-primary no-underline hover:text-primary/80 hover:underline hover:underline-offset-2'
