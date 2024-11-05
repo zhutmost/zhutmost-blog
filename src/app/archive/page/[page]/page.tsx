@@ -9,7 +9,7 @@ import Twemojify from '@/components/twemoji'
 import { Metadata } from 'next'
 import { generatePageMetadata } from '@/lib/page-metadata'
 
-export const generateStaticParams = async () => {
+export async function generateStaticParams(): Promise<{ page: string }[]> {
   const totalPages = Math.ceil(allPostsSorted.length / siteConfig.postPerPage)
   return Array.from({ length: totalPages }, (_, i) => ({ page: (i + 1).toString() }))
 }

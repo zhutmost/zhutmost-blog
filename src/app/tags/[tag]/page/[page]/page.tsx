@@ -12,11 +12,11 @@ import PostPagination from '@/components/post-pagination'
 import Twemojify from '@/components/twemoji'
 import { generatePageMetadata } from '@/lib/page-metadata'
 
-export const generateStaticParams = async () => {
+export async function generateStaticParams(): Promise<{ tag: string; page: string }[]> {
   const tagCounter = tagData as TagCounter
-  return Object.keys(tagCounter).map((tag) => {
+  return Object.keys(tagCounter).flatMap((tag) => {
     const totalPages = Math.ceil(tagCounter[tag] / siteConfig.postPerPage)
-    Array.from({ length: totalPages }, (_, i) => ({
+    return Array.from({ length: totalPages }, (_, i) => ({
       tag: encodeURI(slugify(tag)),
       page: (i + 1).toString(),
     }))

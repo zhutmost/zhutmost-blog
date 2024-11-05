@@ -3,10 +3,12 @@ import categoryData from '@/data/category-data.json'
 import { CategoryCounter } from '@/lib/content-collections/post-counter'
 import slugify from '@sindresorhus/slugify'
 
-export const generateStaticParams = async () => {
+export async function generateStaticParams(): Promise<{ category: string }[]> {
   const categoryCounter = categoryData as CategoryCounter
-  return Object.keys(categoryCounter).map((t) => {
-    encodeURI(slugify(t))
+  return Object.keys(categoryCounter).map((category) => {
+    return {
+      category: encodeURI(slugify(category)),
+    }
   })
 }
 

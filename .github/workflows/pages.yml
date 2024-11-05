@@ -3,7 +3,7 @@ name: GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: false
 
 jobs:
@@ -27,9 +27,9 @@ jobs:
         run: corepack enable
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: yarn
-      - id: configurepages
+          node-version: "20"
+          cache: "yarn"
+      - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Restore cache
         uses: actions/cache@v4

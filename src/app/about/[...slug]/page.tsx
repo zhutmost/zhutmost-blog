@@ -8,7 +8,7 @@ import { notFound } from 'next/navigation'
 import { generatePageMetadata } from '@/lib/page-metadata'
 import { allAuthorsNonDefault } from '@/lib/author-sort'
 
-export const generateStaticParams = async () => {
+export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   return allAuthorsNonDefault.map((author) => ({ slug: author.slug }))
 }
 

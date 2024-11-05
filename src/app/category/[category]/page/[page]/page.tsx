@@ -13,9 +13,9 @@ import * as React from 'react'
 import Twemojify from '@/components/twemoji'
 import { generatePageMetadata } from '@/lib/page-metadata'
 
-export const generateStaticParams = async () => {
+export async function generateStaticParams(): Promise<{ category: string }[]> {
   const categoryCounter = categoryData as CategoryCounter
-  return Object.keys(categoryCounter).map((category) => {
+  return Object.keys(categoryCounter).flatMap((category) => {
     const totalPages = Math.ceil(categoryCounter[category] / siteConfig.postPerPage)
     return Array.from({ length: totalPages }, (_, i) => ({
       category: encodeURI(slugify(category)),

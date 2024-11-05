@@ -11,7 +11,7 @@ import PostLayout from '@/layouts/post-layout'
 import allPostsSorted from '@/lib/post-sort'
 import authorsFind from '@/lib/authors-find'
 
-export const generateStaticParams = async () => {
+export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   return allPosts.map((post) => ({ slug: post.slug }))
 }
 
