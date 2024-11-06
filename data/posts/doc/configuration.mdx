@@ -6,6 +6,7 @@ category: 🌈 Docs
 banner: /images/posts/docs/configuration/banner.jpg
 tags:
   - analog
+  - mdx
 ---
 
 Analog's default configuration file is `/data/site-config.ts`. This file contains all the configurations for your blog, including the site's metadata, navigation, analytics, comment system, and more.
@@ -248,6 +249,37 @@ The `license` field is the default license of the posts. You can choose from the
 You can visit the [Creative Commons website](https://creativecommons.org/share-your-work/cclicenses) to find the license you want.
 
 It will display the license information at the bottom of each post. Leave it blank to disable the license display.
+
+### SEO
+
+#### Default Social Banner - `seo.socialBanner`
+
+```yaml
+seo: {
+  socialBanner: '/images/logo.svg',
+}
+```
+
+The `seo.socialBanner` field is the path to the default social banner image of the website. It should be a absolute path from the `public` folder.
+
+This banner will be used when sharing the website on social media platforms, such as Twitter and Facebook.
+
+#### Open Graph & Twitter Card
+
+```yaml
+seo: {
+  openGraph: {
+    siteName: 'My Blog',
+  },
+  twitter: {
+    images: '/images/logo_twitter.svg',
+  },
+}
+```
+
+Analog will automatically generate Open Graph and Twitter Card meta tags for each post. You can customize these values in the configuration file to override them.
+
+In most cases, you don't need to set these fields.
 
 ### Web Analytics System
 
