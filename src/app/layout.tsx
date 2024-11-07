@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: new URL(siteConfig.siteUrl),
     types: {
-      'application/rss+xml': new URL('/feed.xml', siteConfig.siteUrl),
+      'application/rss+xml': new URL(`${process.env.BASE_PATH || ''}/feed.xml`, siteConfig.siteUrl),
     },
   },
   robots: {

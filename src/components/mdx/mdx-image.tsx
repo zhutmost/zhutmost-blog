@@ -12,7 +12,7 @@ export default function MdxImage({
   ...rest
 }: React.ImgHTMLAttributes<HTMLImageElement>) {
   if (!src) return null
-  const imgPath = src.startsWith('http') ? src : `${process.env.NEXT_PUBLIC_BASE_PATH || ''}${src}`
+  const imgPath = src.startsWith('http') ? src : `${process.env.BASE_PATH || ''}${src}`
   const imgTitle = title || alt || ''
   return (
     <figure className="relative mx-auto h-auto max-w-3xl">
