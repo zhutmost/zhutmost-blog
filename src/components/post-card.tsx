@@ -3,7 +3,7 @@ import NextLink from 'next/link'
 import * as React from 'react'
 import siteConfig from '@/lib/site-config'
 import Tag from '@/components/tag'
-import NextImage from 'next/image'
+import SmartImage from '@/components/smart-image'
 import { IconArrowRight } from '@tabler/icons-react'
 import slugify from '@sindresorhus/slugify'
 import Twemojify from '@/components/twemoji'
@@ -19,7 +19,7 @@ export default function PostCard({ post }: PostCardProps) {
       {banner && (
         <div className="mx-auto h-auto w-full pb-5 xl:col-span-6">
           <NextLink href={`/post/${slugPath}`}>
-            <NextImage
+            <SmartImage
               src={banner}
               alt={`Cover image of post: ${title}`}
               height={400}

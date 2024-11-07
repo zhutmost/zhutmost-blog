@@ -3,6 +3,7 @@
 import * as React from 'react'
 import { IconChevronsUp, IconMenu2 } from '@tabler/icons-react'
 import NextLink, { LinkProps } from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Button, buttonVariants } from '@/components/ui/button'
 import {
   Sheet,
@@ -12,13 +13,10 @@ import {
   SheetHeader,
   SheetTrigger,
 } from '@/components/ui/sheet'
-
-import siteConfig from '@/lib/site-config'
-import NextImage from 'next/image'
-import { cn } from '@/lib/utils'
-import { useRouter } from 'next/navigation'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import SmartLink from '@/components/smart-link'
+import siteConfig from '@/lib/site-config'
+import { cn } from '@/lib/utils'
+import SmartImage from '@/components/smart-image'
 
 export default function MobileNav() {
   const [open, setOpen] = React.useState(false)
@@ -49,7 +47,7 @@ export default function MobileNav() {
           <MobileLink href="/" onOpenChange={setOpen}>
             <div className="flex items-center justify-center gap-4">
               {siteConfig.header.logo && (
-                <NextImage
+                <SmartImage
                   src={siteConfig.header.logo}
                   alt={siteConfig.siteTitle}
                   width={30}

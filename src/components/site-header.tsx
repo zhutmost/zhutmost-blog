@@ -1,14 +1,13 @@
 'use client'
 
 import NextLink from 'next/link'
-import NextImage from 'next/image'
-
 import { buttonVariants } from '@/components/ui/button'
 import siteConfig from '@/lib/site-config'
 import { cn } from '@/lib/utils'
 import MobileNav from '@/components/mobile-nav'
 import ThemeSwitch from '@/components/theme-switch'
 import SearchButton from '@/components/search/search-button'
+import SmartImage from '@/components/smart-image'
 
 export default function SiteHeader() {
   const isBlurred = true
@@ -26,7 +25,7 @@ export default function SiteHeader() {
       <nav className="relative flex h-14 w-full max-w-5xl flex-row flex-nowrap items-center justify-between gap-4 px-3">
         <NextLink href="/" className="flex items-center gap-4">
           {siteConfig.header.logo && (
-            <NextImage
+            <SmartImage
               src={siteConfig.header.logo}
               alt={siteConfig.siteTitle}
               width={30}

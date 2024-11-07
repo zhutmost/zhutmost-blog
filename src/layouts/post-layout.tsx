@@ -1,7 +1,6 @@
 import * as React from 'react'
 import type { Author, Post } from '@/content-collections'
 import BackToTop from '@/components/back-to-top'
-import NextImage from 'next/image'
 import siteConfig from '@/lib/site-config'
 import NextLink from 'next/link'
 import Tag from '@/components/tag'
@@ -9,6 +8,7 @@ import PostLicense from '@/components/post-license'
 import Comments from '@/components/comments'
 import PostToc from '@/components/post-toc'
 import { cn } from '@/lib/utils'
+import SmartImage from '@/components/smart-image'
 
 export interface PostLayoutProps {
   children: React.ReactNode
@@ -52,7 +52,7 @@ function PostSidebar({ content, authors, postNext, postPrev }: Omit<PostLayoutPr
               <li className="flex items-center space-x-2" key={author.name}>
                 {author.avatar && (
                   <NextLink href={`/about/${author.slugPath}`}>
-                    <NextImage
+                    <SmartImage
                       src={author.avatar}
                       width={38}
                       height={38}
@@ -142,7 +142,7 @@ export default function PostLayout({
             {banner && (
               <div className="w-full pb-10">
                 <div className="relative aspect-[5/2] w-full">
-                  <NextImage src={banner} alt={title} fill className="object-cover" />
+                  <SmartImage src={banner} alt={title} fill className="object-cover" />
                 </div>
               </div>
             )}
