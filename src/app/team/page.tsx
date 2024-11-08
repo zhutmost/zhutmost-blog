@@ -13,13 +13,14 @@ import type { Metadata } from 'next'
 
 function PersonCard({ author }: { author: Author }) {
   const { name, avatar, bio, slugPath, icons } = author
+  const avatarSrc: string = new URL(avatar || '/default-avatar.jpg', siteConfig.siteUrl).toString()
 
   return (
     <div className="p-4 md:w-1/2 lg:w-1/4">
       <div className="flex h-full flex-col items-center text-center">
         <NextLink href={`/about/${slugPath}`}>
           <Avatar className="mb-4 h-48 w-48">
-            <AvatarImage className="object-cover" src={avatar || '/default-avatar.jpg'} />
+            <AvatarImage className="object-cover" src={avatarSrc} />
             <AvatarFallback>{name}</AvatarFallback>
           </Avatar>
         </NextLink>
