@@ -7,6 +7,7 @@ banner: /images/posts/docs/style-customize/banner.jpg
 tags:
   - analog
   - tailwindcss
+  - code-highlighting
 ---
 
 This article will introduce how to make some simple customizations to Analog, such as its color scheme, fonts, etc.
@@ -85,3 +86,49 @@ fontFamily: {
 },
 ```
 For some advanced font settings (such as using local fonts instead of Google fonts), you can refer to the [Next.js Font Optimization](https://nextjs.org/docs/app/building-your-application/optimizing/fonts).
+
+## Code Syntax Highlighting
+
+Analog uses [rehype-highlight](https://github.com/rehypejs/rehype-highlight) to highlight code blocks in MDX-based posts.
+It is based on [lowlight](https://github.com/wooorm/lowlight).
+
+### Highlighting Theme
+
+The highlighted theme is defined in the `/src/styles/highlight.css` file. Feel free to modify it.
+
+Rehype-highlight and [highlighting.js](https://highlightjs.readthedocs.io/en/latest/index.html) have the same class names, so you can find a highlighting.js theme on the Internet and then paste the corresponding CSS code into the above file. The default theme is atom-dark-pro. You can find it and many other themes [here](https://highlightjs.org/examples).
+
+### Supported Languages
+
+Lowlight supports a huge number of languages, however by default it only enables a subset. You can find a full list of supported languages and enabled ones on [its README](https://github.com/wooorm/lowlight#data).
+
+To enable one of these languages, you can import the corresponding syntax support in `/content-collections.ts` and add it to the `rephye-highlight` plugin configuration. Here is an example of enabling the `scala` language:
+
+```typescript
+import scala from 'highlight.js/lib/languages/scala'
+import { common as commonLanguages } from 'lowlight'
+
+const mdx = await compileMdx(content, {
+  ...
+  rehypePlugins: [
+    [rehypeHighlight, { detect: true, languages: { ...commonLanguages, scala } }],
+    ...
+  ],
+})
+```
+
+You can also enable all supported languages directly, but it may cause performance loss on the visitor side.
+
+```typescript
+import { all as allLanguages } from 'lowlight'
+
+const mdx = await compileMdx(content, {
+  ...
+  rehypePlugins: [
+    [rehypeHighlight, { detect: true, languages: allLanguages }],
+    ...
+  ],
+})
+```
+
+If you need to add a new language syntax, please refer to the [related lightnight documentation](https://github.com/wooorm/lowlight#lowlightregistergrammars).
