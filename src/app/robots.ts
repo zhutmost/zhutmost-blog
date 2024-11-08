@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: `${siteConfig.siteUrl}/sitemap.xml`,
+    sitemap: new URL('sitemap.xml', siteConfig.siteUrl).toString(),
     host: siteConfig.siteUrl,
   }
 }

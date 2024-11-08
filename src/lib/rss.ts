@@ -11,16 +11,16 @@ export default function generateRssFeed(): Feed {
   const feedOptions: FeedOptions = {
     title: `RSS Feed | ${siteConfig.siteTitle}`,
     description: siteConfig.description,
-    id: siteUrl,
+    id: '/',
     link: siteUrl,
-    image: `${siteUrl}${siteConfig.seo.socialBanner}`,
-    favicon: `${siteUrl}/favicon.ico`,
+    image: new URL(siteConfig.seo.socialBanner, siteUrl).toString(),
+    favicon: new URL('favicon.ico', siteUrl).toString(),
     language: siteConfig.locale,
     updated: new Date(),
     copyright: `All rights reserved ${new Date().getFullYear()} ${siteConfig.author}`,
     author: {
       name: siteConfig.author,
-      link: `${siteUrl}/about`,
+      link: new URL('about', siteUrl).toString(),
     },
   }
 
@@ -28,15 +28,15 @@ export default function generateRssFeed(): Feed {
   allPostsSorted.forEach((post: Post) => {
     feed.addItem({
       title: post.title,
-      id: `${siteUrl}/post/${post.slugPath}`,
-      link: `${siteUrl}/post/${post.slugPath}`,
+      id: `/post/${post.slugPath}`,
+      link: new URL(`post/${post.slugPath}`, siteUrl).toString(),
+      image: new URL(post.banner || siteConfig.seo.socialBanner, siteUrl).toString(),
       description: post.summary,
       content: post.content,
       author: post.authors.map((author) => ({
         name: author,
       })),
       date: post.datePublish,
-      image: `${siteUrl}${post.banner}`,
     })
   })
 
