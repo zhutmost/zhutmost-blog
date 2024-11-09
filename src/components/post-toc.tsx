@@ -4,11 +4,6 @@ import * as React from 'react'
 import { TocItem } from 'remark-flexible-toc'
 import { cn } from '@/lib/utils'
 
-export interface PostTocProps {
-  toc: TocItem[]
-  maxDepth?: 2 | 3
-}
-
 function useActiveItem(itemIds: string[]) {
   const [activeId, setActiveId] = React.useState(null as string | null)
 
@@ -44,16 +39,19 @@ function useActiveItem(itemIds: string[]) {
   return activeId
 }
 
-export default function PostToc({ toc, maxDepth = 3 }: PostTocProps) {
+export interface PostTocProps {
+  toc: TocItem[]
+}
+
+export default function PostToc({ toc }: PostTocProps) {
+  // use .slice(1) to remove the leading '#'
   const activeHeading = useActiveItem(toc.map((item) => item.href.slice(1)))
   const activeHeadingNumbering = toc.find((item) => item.href.slice(1) === activeHeading)?.numbering
-
-  const filteredToc = toc.filter((item) => item.depth <= maxDepth)
 
   return (
     <nav className="max-h-[85svh] overflow-auto py-2 leading-8">
       <ul>
-        {filteredToc.map((item) => (
+        {toc.map((item) => (
           <li
             key={item.href}
             className={cn(

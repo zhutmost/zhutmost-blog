@@ -41,6 +41,9 @@ function PostSidebarItem({
 function PostSidebar({ content, authors, postNext, postPrev }: Omit<PostLayoutProps, 'children'>) {
   const { tags, toc } = content
 
+  // Because the 1st item is the post title, we filter out the 1st item. So it will display 2nd and 3rd level headings.
+  const filteredToc = toc.filter((item) => item.depth <= 3)
+
   return (
     <div className="flex flex-col justify-start divide-border xl:divide-y">
       {/* Author */}
@@ -111,7 +114,7 @@ function PostSidebar({ content, authors, postNext, postPrev }: Omit<PostLayoutPr
       )}
 
       {/* TOC */}
-      {toc && (
+      {filteredToc.length > 0 && (
         <div className="container h-full">
           <PostSidebarItem
             label="Table of Contents"
