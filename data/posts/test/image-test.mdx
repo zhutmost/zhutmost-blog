@@ -6,7 +6,7 @@ authors:
 datePublish: 2020-01-01
 summary: This is a test post for images.
 category: ⚙️ Test
-banner: /images/posts/test/image-test/banner.jpg
+banner: banner.jpg
 tags:
   - test
   - analog
@@ -22,7 +22,10 @@ tags:
 ```markdown
 ![Image alt](/path/to/image.jpg "Image title")
 ```
-其中，图片的路径可以是 URL 或本地路径。如果是本地路径，图片应当放置在 `public/images` 目录下的合适位置，然后使用 `/images/` 开头的相对路径。
+其中，图片的路径可以是 URL 以下三种情况之一：
+- URL：路径以 `http://` 或 `https://` 开头，例如 `https://picsum.photos/300`。此时图片将从网络加载。
+- 本地路径—`public` 目录：路径以 `/` 开头，图片位于站点的 `public` 目录下。例如，`/images/hello.jpg` 指的是 `/public/images/hello.jpg`。
+- 本地路径—asset 目录：图片应当放置在 MDX 博文同一目录下的一个同名文件夹内。例如，`images/hello.jpg` 指的是 `/data/posts/[this_post]/images/hello.jpg`。
 
 上述代码最终会被编译为：
 
@@ -33,12 +36,15 @@ tags:
 下面是两个例子：
 
 ```markdown
-![Image from Internet](https://picsum.photos/300/200?grayscale)
-![Image from local](/images/posts/test/image-test/392-300x200-grayscale.jpg)
+![Image A from Internet](https://picsum.photos/300/200?grayscale)
+![Image B from Public Folder](/images/posts/test/image-test/17-300x200-grayscale.jpg)
+![Image C from Asset Folder](392-300x200-grayscale.jpg)
 ```
-![Image from Internet](https://picsum.photos/300/200?grayscale)
+![Image A from Internet](https://picsum.photos/300/200?grayscale)
 
-![Image from local](/images/posts/test/image-test/392-300x200-grayscale.jpg)
+![Image B from Public Folder](/images/posts/test/image-test/17-300x200-grayscale.jpg)
+
+![Image C from Asset Folder](392-300x200-grayscale.jpg)
 
 ### Image Caption
 
@@ -48,10 +54,10 @@ tags:
 下面是一个例子：
 
 ```markdown
-![Image A](/images/posts/test/image-test/392-300x200-grayscale.jpg "Image B (rather than A)")
+![Image C](392-300x200-grayscale.jpg "Caption of Image C")
 ```
 
-![Image A](/images/posts/test/image-test/392-300x200-grayscale.jpg "Image B (rather than A)")
+![Image C](392-300x200-grayscale.jpg "Caption of Image C")
 
 ## Advanced Usage
 
@@ -69,21 +75,21 @@ Markdown 或 MDX 的标准语法仅能支持基本的图片插入和标题显示
 ```jsx
 <figure className={"max-w-2xl mx-auto"} >
   <img
-    src={'/images/posts/test/image-test/104-600x400-grayscale.jpg'}
+    src={'/images/posts/test/image-test/393-600x400-grayscale.jpg'}
     alt={'Image example 1'}
     title={'Hello World'}
     className={"mx-auto rounded-3xl w-full h-auto blur-sm hover:blur-0"} />
-  <figcaption className={"text-right text-sm text-destructive"} >Image example 1</figcaption>
+  <figcaption className={"text-right text-sm text-destructive"} >Image with blur effect</figcaption>
 </figure>
 ```
 
 <figure className={"max-w-2xl mx-auto"} >
   <img
-    src={'/images/posts/test/image-test/104-600x400-grayscale.jpg'}
-    alt={'Image example 1'}
+    src={'/images/posts/test/image-test/393-600x400-grayscale.jpg'}
+    alt={'Image placeholder with blur effect'}
     title={'Hello World'}
     className={"mx-auto rounded-3xl w-full h-auto blur-sm hover:blur-0"} />
-  <figcaption className={"text-right text-sm text-destructive"} >Image example 1</figcaption>
+  <figcaption className={"text-right text-sm text-destructive"} >Image with blur effect</figcaption>
 </figure>
 
 这已经超出了本文的范围，如果您对此感兴趣，可以进一步了解：

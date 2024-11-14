@@ -22,6 +22,8 @@ import rehypeHighlightLines from 'rehype-highlight-code-lines'
 import rehypePresetMinify from 'rehype-preset-minify'
 import { writeFileSync } from 'fs'
 import { countPostCategories, countPostTags } from '@/lib/content-collections/post-counter'
+import rehypeAssetCopy, { assetSourceRedirect } from '@/lib/content-collections/asset-copy'
+import * as path from 'path'
 
 interface BaseDoc {
   _meta: Meta
@@ -80,6 +82,8 @@ async function commonTransform<D extends BaseDoc>(
   const { mdx, toc } = await context.cache(document as BaseDoc, async () => {
     const toc: TocItem[] = []
 
+    const assetPath = path.join(context.collection.directory, document._meta.path)
+
     const mdx: string = await compileMDX(
       {
         ...context,
@@ -87,13 +91,19 @@ async function commonTransform<D extends BaseDoc>(
       },
       document,
       {
-        remarkPlugins: [remarkGfm, remarkMath, [remarkFlexibleToc, { tocRef: toc }]],
+        remarkPlugins: [
+          remarkGfm,
+          remarkMath,
+          [remarkFlexibleToc, { tocRef: toc }],
+          // remarkSourceRedirect,
+        ],
         rehypePlugins: [
           [rehypeGithubAlerts, rehypeGithubAlertsOptions],
           rehypeKatex,
           [rehypeHighlight, { detect: true, languages: { ...commonLanguages, verilog, scala } }],
           [rehypeHighlightLines, { showLineNumbers: true }],
           rehypeSlug,
+          [rehypeAssetCopy, { assetPath }],
           rehypeUnwrapImages,
           // @ts-expect-error Types not assignable
           [rehypeProbeImageSize, { staticDir: 'public' }],
@@ -141,10 +151,16 @@ const Posts = defineCollection({
   transform: async (document, context) => {
     const readingTime = readingTimeEstimate(document.content).minutes
 
+    const banner: string | undefined = assetSourceRedirect(
+      document.banner,
+      path.join(context.collection.directory, document._meta.path)
+    )
+
     return {
       ...document,
       ...(await commonTransform(document, context)),
       readingTime,
+      banner,
     }
   },
   onSuccess: (docs) => {
@@ -176,9 +192,15 @@ const Authors = defineCollection({
       .optional(),
   }),
   transform: async (document, context) => {
+    const avatar: string | undefined = assetSourceRedirect(
+      document.avatar,
+      path.join(context.collection.directory, document._meta.path)
+    )
+
     return {
       ...document,
       ...(await commonTransform(document, context)),
+      avatar,
     }
   },
 })
