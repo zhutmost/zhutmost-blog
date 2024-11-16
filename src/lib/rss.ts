@@ -3,10 +3,8 @@ import siteConfig from '@/lib/site-config'
 import { Post } from '@/content-collections'
 import allPostsSorted from '@/lib/post-sort'
 
-const isProduction: boolean = process.env.NODE_ENV === 'production'
-
 export default function generateRssFeed(): Feed {
-  const siteUrl = isProduction ? siteConfig.siteUrl : 'http://localhost:3000'
+  const siteUrl = siteConfig.siteUrl
 
   const feedOptions: FeedOptions = {
     title: `RSS Feed | ${siteConfig.siteTitle}`,

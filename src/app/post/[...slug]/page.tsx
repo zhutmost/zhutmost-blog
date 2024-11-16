@@ -31,7 +31,9 @@ export async function generateMetadata({
   const datePublish: string = postCurr.datePublish.toISOString()
   const dateUpdate: string = postCurr.dateUpdate.toISOString()
   const seoImage: string = postCurr.banner ? postCurr.banner : siteConfig.seo.socialBanner
-  const ogImage: string = seoImage.includes('http') ? seoImage : siteConfig.siteUrl + seoImage
+  const ogImage: string = seoImage.includes('http')
+    ? seoImage
+    : new URL(seoImage, siteConfig.siteUrl).toString()
 
   return {
     title: postCurr.title,
