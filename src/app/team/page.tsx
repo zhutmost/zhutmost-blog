@@ -10,10 +10,11 @@ import { allAuthorsNonDefault, sortAuthors } from '@/lib/author-sort'
 import { generatePageMetadata } from '@/lib/page-metadata'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import * as path from 'path'
 
 function PersonCard({ author }: { author: Author }) {
   const { name, avatar, bio, slugPath, icons } = author
-  const avatarSrc: string = siteConfig.siteRoot + (avatar || '/default-avatar.jpg')
+  const avatarSrc: string = path.join(siteConfig.siteRoot || '', avatar || '/default-avatar.jpg')
 
   return (
     <div className="p-4 md:w-1/2 lg:w-1/4">

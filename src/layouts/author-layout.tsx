@@ -1,4 +1,5 @@
 import React from 'react'
+import * as path from 'path'
 import { Author } from '@/content-collections'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { IconMapPinFilled } from '@tabler/icons-react'
@@ -15,7 +16,7 @@ export interface AuthorLayoutProps {
 
 export default function AuthorLayout({ children, author }: AuthorLayoutProps) {
   const { name, avatar, bio, affiliation, icons } = author
-  const avatarSrc: string = siteConfig.siteRoot + (avatar || '/default-avatar.jpg')
+  const avatarSrc: string = path.join(siteConfig.siteRoot || '', avatar || '/default-avatar.jpg')
 
   return (
     <>

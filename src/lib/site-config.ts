@@ -133,7 +133,7 @@ export interface SiteConfig {
 // Default site config. You can override it in the user config (/data/site-config.ts).
 export const defaultSiteConfig: SiteConfig = {
   siteUrl: 'https://example.com',
-  siteRoot: process.env.BASE_PATH || '/',
+  siteRoot: process.env.BASE_PATH || undefined,
   siteTitle: 'Example Site',
   description: 'This is an example site',
   locale: 'en-US',
