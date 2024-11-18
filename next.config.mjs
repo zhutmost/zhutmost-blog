@@ -1,8 +1,8 @@
 import { withContentCollections } from '@content-collections/next'
 
-const output = process.env.EXPORT ? 'export' : undefined
+const output = process.env.STATIC_EXPORT ? 'export' : undefined
+const unoptimized = process.env.STATIC_EXPORT ? true : undefined
 const basePath = process.env.BASE_PATH || undefined
-const unoptimized = process.env.UNOPTIMIZED ? true : undefined
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

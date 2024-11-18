@@ -13,7 +13,7 @@ import type { Metadata } from 'next'
 
 function PersonCard({ author }: { author: Author }) {
   const { name, avatar, bio, slugPath, icons } = author
-  const avatarSrc: string = new URL(avatar || '/default-avatar.jpg', siteConfig.siteUrl).toString()
+  const avatarSrc: string = siteConfig.siteRoot + (avatar || '/default-avatar.jpg')
 
   return (
     <div className="p-4 md:w-1/2 lg:w-1/4">

@@ -22,7 +22,13 @@ export type CreativeCommonsLicense =
 
 export interface SiteConfig {
   // The URL of your site, without trailing slash.
+  // Note that it should include the protocol (https://) and the subdirectory if applicable.
+  // For example, 'https://example.com' or 'https://example.com/blog'.
   siteUrl: string
+  // The root path of your site (only needed when the site is at a subdirectory).
+  // For example, if your site is at 'https://example.com/blog', set it to '/blog'.
+  // Leave it blank to use the environment variable `BASE_PATH`.
+  siteRoot?: string
   // The title of your site, such as "John's Blog".
   siteTitle: string
   // A short description used for SEO and social media.
@@ -127,6 +133,7 @@ export interface SiteConfig {
 // Default site config. You can override it in the user config (/data/site-config.ts).
 export const defaultSiteConfig: SiteConfig = {
   siteUrl: 'https://example.com',
+  siteRoot: process.env.BASE_PATH || '/',
   siteTitle: 'Example Site',
   description: 'This is an example site',
   locale: 'en-US',

@@ -42,8 +42,7 @@ jobs:
       - run: yarn
       - run: yarn build
         env:
-          EXPORT: 1
-          UNOPTIMIZED: 1
+          STATIC_EXPORT: 1
           BASE_PATH: ${{ steps.configurepages.outputs.base_path }}
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -15,7 +15,7 @@ export interface AuthorLayoutProps {
 
 export default function AuthorLayout({ children, author }: AuthorLayoutProps) {
   const { name, avatar, bio, affiliation, icons } = author
-  const avatarSrc: string = new URL(avatar || '/default-avatar.jpg', siteConfig.siteUrl).toString()
+  const avatarSrc: string = siteConfig.siteRoot + (avatar || '/default-avatar.jpg')
 
   return (
     <>
