@@ -4,10 +4,12 @@ import NextLink from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { IconArrowRight } from '@tabler/icons-react'
 
+type StringOrReactNode = string | React.ReactNode
+
 export interface TimelineItemProps {
   date: Date
-  title: string
-  description?: string
+  title: StringOrReactNode
+  description?: StringOrReactNode
   icons?: Record<string, { icon: string; href: string }>
 }
 
