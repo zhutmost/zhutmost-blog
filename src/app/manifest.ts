@@ -6,20 +6,22 @@ export default function manifest(): MetadataRoute.Manifest {
     name: siteConfig.siteTitle,
     short_name: siteConfig.siteTitle,
     description: siteConfig.description,
-    start_url: '/',
+    start_url: siteConfig.siteUrl,
     display: 'standalone',
     background_color: '#fff',
     theme_color: '#fff',
     icons: [
       {
-        src: '/favicons/android-chrome-192x192.png',
+        src: '/favicons/web-app-manifest-192x192.png',
         sizes: '192x192',
         type: 'image/png',
+        purpose: 'maskable',
       },
       {
-        src: '/favicons/android-chrome-512x512.png',
+        src: '/favicons/web-app-manifest-512x512.png',
         sizes: '512x512',
         type: 'image/png',
+        purpose: 'maskable',
       },
     ],
   }

@@ -7,6 +7,7 @@ import SmartImage from '@/components/smart-image'
 import { IconArrowRight } from '@tabler/icons-react'
 import slugify from '@sindresorhus/slugify'
 import Twemojify from '@/components/twemoji'
+import { AspectRatio } from '@/components/ui/aspect-ratio'
 
 interface PostCardProps {
   post: Post
@@ -19,13 +20,14 @@ export default function PostCard({ post }: PostCardProps) {
       {banner && (
         <div className="mx-auto h-auto w-full pb-5 xl:col-span-6">
           <NextLink href={`/post/${slugPath}`}>
-            <SmartImage
-              src={banner}
-              alt={`Cover image of post: ${title}`}
-              height={400}
-              width={1000}
-              className="rounded-lg"
-            />
+            <AspectRatio ratio={5 / 2}>
+              <SmartImage
+                src={banner}
+                alt={`Cover image of post: ${title}`}
+                fill
+                className="rounded-lg object-cover"
+              />
+            </AspectRatio>
           </NextLink>
         </div>
       )}

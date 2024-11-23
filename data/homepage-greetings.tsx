@@ -5,33 +5,35 @@ const homepageGreetings: HomepageGreetings = {
   weOrI: 'I',
   fixed: [
     <>
-      I am a dedicated&nbsp;<span className="font-medium">software developer</span>&nbsp;and a tech
+      I am a dedicated&nbsp;<span className="font-medium">silicon designer</span>&nbsp;and a tech
       enthusiast.
     </>,
   ],
   scrolled: [
     <>
-      I am aliased as <b className="font-medium">Alice</b> at work 💼.
+      I am currently a <b className="font-medium">post-doctor</b> 🔬 at{' '}
+      <b className="font-medium">Fudan University</b>.
     </>,
     <>
       I live in <b className="font-medium">Shanghai, China 🇨🇳</b>.
     </>,
     <>
-      I was born in the beautiful <b className="font-medium">Jiaxing</b> city.
+      I grew up in the picturesque city of <b className="font-medium">Jiaxing</b>.
     </>,
     <>
-      My first programming language I learned was <b className="font-medium">C++</b>.
+      My programming journey began with <b className="font-medium">Pascal and C</b>.
     </>,
     <>
-      I am focusing on building <b className="font-medium">GPU drivers</b>.
+      I am passionate about creating cutting-edge <b className="font-medium">AI chips</b>🤖.
     </>,
     <>
-      I work mostly with <b className="font-medium">Javascript/Typescript</b> technologies.
+      I work mostly with <b className="font-medium">Verilog/Chisel</b> technologies.
     </>,
-    'I am a cat-person🐱.',
-    'I am a sporty-guy. I love tennis 🎾 and soccer️ ⚽️.',
-    'I love listening piano 🎹 and rap music🎵.',
-    'I love playing video game🎮, StarCraft II is my favorite one.',
+    <>
+      My 🎵 playlist has everything from <b className="font-medium">Jay Chou</b> to{' '}
+      <b className="font-medium">JJ Lin</b>.
+    </>,
+    'I am a video gamer 🎮 in my spare time.',
   ],
 }
 

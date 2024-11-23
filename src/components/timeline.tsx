@@ -18,14 +18,14 @@ export interface TimelineProps {
 
 function TimelineItem({ date, title, description, icons }: TimelineItemProps) {
   return (
-    <li className="mb-6 ms-4">
-      <div className="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full border border-background bg-border" />
+    <li className="mb-3 ms-4">
+      <div className="absolute -start-1.5 mt-2 h-3 w-3 rounded-full border border-background bg-border" />
       <time className="mb-1 text-sm font-normal leading-none text-muted-foreground">
         {date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
       </time>
-      <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+      <h3 className="text-base font-semibold text-foreground">{title}</h3>
       {description && (
-        <p className="mb-2 text-base font-normal text-muted-foreground">{description}</p>
+        <p className="mb-1 text-sm font-normal text-muted-foreground">{description}</p>
       )}
       {icons && (
         <div className="flex gap-2">

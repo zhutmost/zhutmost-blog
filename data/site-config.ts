@@ -1,11 +1,13 @@
 import { SiteConfig } from '@/lib/site-config'
 
 const userConfig: Partial<SiteConfig> = {
-  siteUrl: 'https://analog-demo.zhutmost.com',
-  siteTitle: 'Analog Demo',
-  description: 'Analog: Another Blog Template with Next.js',
+  siteUrl: 'https://blog.zhutmost.com',
+  siteTitle: "Haozhe's Blog",
+  description:
+    "This is Haozhe Zhu (@zhutmost)'s personal blog. I write about my research, thoughts, and life.",
   locale: 'en-US',
-  author: 'John Doe',
+  author: 'Haozhe Zhu',
+  teamPage: false,
   popularTags: [
     { tag: 'markdown', icon: 'IconMarkdown', title: 'Markdown' },
     { tag: 'mac', icon: 'IconCommand', title: 'MacOS' },
@@ -16,7 +18,7 @@ const userConfig: Partial<SiteConfig> = {
   githubCalendar: 'zhutmost',
   header: {
     logo: '/favicons/favicon.svg',
-    title: 'Analog Demo',
+    title: "Haozhe's Blog",
     themeSwitch: true,
     menu: {
       Home: '/',
@@ -27,20 +29,18 @@ const userConfig: Partial<SiteConfig> = {
     },
   },
   footer: {
-    // beian: '粤ICP备2021******号',
     icons: {
-      Facebook: { icon: 'IconBrandFacebook', href: 'https://facebook.com' },
-      X: { icon: 'IconBrandX', href: 'https://x.com' },
+      GitHub: { icon: 'IconBrandGithub', href: 'https://github.com/zhutmost' },
       RSS: { icon: 'IconRss', href: '/rss.xml' },
       Analytics: {
         icon: 'IconChartDots',
-        href: 'https://cloud.umami.is/share/unndQ4BKaNaSgfys/analog-demo.zhutmost.com',
+        href: 'https://cloud.umami.is/share/Xhuqb7y5CtlUaz3U/blog.zhutmost.com',
       },
     },
   },
   analytics: {
     umamiAnalytics: {
-      umamiWebsiteId: '4ae56858-7872-446f-980e-32d1c8db927e',
+      umamiWebsiteId: 'd4fee704-edd5-4eee-bc79-5dd8fa412c2b',
     },
   },
   comment: {
