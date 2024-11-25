@@ -1,7 +1,7 @@
 import { SiteConfig } from '@/lib/site-config'
 
 const userConfig: Partial<SiteConfig> = {
-  siteUrl: 'https://blog.zhutmost.com',
+  siteUrl: 'https://zhutmost.com',
   siteTitle: "Haozhe's Blog",
   description:
     "This is Haozhe Zhu (@zhutmost)'s personal blog. I write about my research, thoughts, and life.",
@@ -46,10 +46,10 @@ const userConfig: Partial<SiteConfig> = {
   comment: {
     provider: 'giscus',
     giscusConfig: {
-      repo: 'zhutmost/analog-blog-starter',
-      repoId: 'R_kgDONEFqpw',
+      repo: 'zhutmost/zhutmost-blog',
+      repoId: 'R_kgDONUD9-A',
       category: 'Announcements',
-      categoryId: 'DIC_kwDONEFqp84CjmEV',
+      categoryId: 'DIC_kwDONUD9-M4Ckkm1',
     },
   },
   license: 'cc-by-nc-sa',
