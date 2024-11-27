@@ -1,9 +1,9 @@
 import * as React from 'react'
-import ScrolledGreetings from '@/components/scrolled-greetings'
+import ScrolledGreetings from '@/components/homepage/scrolled-greetings'
 import Twemojify from '@/components/twemoji'
 import homepageGreetings from '@/data/homepage-greetings'
 import siteConfig from '@/lib/site-config'
-import GithubCalendar from '@/components/github-calendar'
+import GithubCalendar from '@/components/homepage/github-calendar'
 import SmartLink from '@/components/smart-link'
 
 export type HomepageGreetingsItem = string | React.ReactNode
@@ -38,20 +38,20 @@ export default function HomepageIntro() {
 
         {homepageGreetings.scrolled && <ScrolledGreetings greetings={homepageGreetings.scrolled} />}
 
-        {siteConfig.githubCalendar && (
+        {siteConfig.homepage.githubCalendar && (
           <div className="space-y-4 py-4">
             <p>
               I also go by&nbsp;
               <SmartLink
-                href={`https://github.com/${siteConfig.githubCalendar}`}
+                href={`https://github.com/${siteConfig.homepage.githubCalendar}`}
                 className="inline text-primary hover:text-primary/80 hover:underline hover:underline-offset-2"
               >
-                @{siteConfig.githubCalendar}
+                @{siteConfig.homepage.githubCalendar}
               </SmartLink>
               &nbsp;when coding. Catch me on GitHub!
             </p>
             <div className="py-8">
-              <GithubCalendar username={siteConfig.githubCalendar} />
+              <GithubCalendar username={siteConfig.homepage.githubCalendar} />
             </div>
           </div>
         )}

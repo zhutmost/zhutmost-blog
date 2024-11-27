@@ -1,6 +1,7 @@
 import { SiteConfig } from '@/lib/site-config'
+import { DeepPartial } from '@/lib/utils'
 
-const userConfig: Partial<SiteConfig> = {
+const userConfig: DeepPartial<SiteConfig> = {
   siteUrl: 'https://zhutmost.com',
   siteTitle: "Haozhe's Blog",
   description:
@@ -8,14 +9,11 @@ const userConfig: Partial<SiteConfig> = {
   locale: 'en-US',
   author: 'Haozhe Zhu',
   teamPage: false,
-  popularTags: [
-    { tag: 'markdown', icon: 'IconMarkdown', title: 'Markdown' },
-    { tag: 'mac', icon: 'IconCommand', title: 'MacOS' },
-    { tag: 'shopping', icon: 'IconTag', title: 'Shopping' },
-    { tag: 'writing', icon: 'IconNote', title: 'Writing' },
-    { tag: 'windows', icon: 'IconBrandWindows', title: 'Windows' },
-  ],
-  githubCalendar: 'zhutmost',
+  homepage: {
+    sections: ['latestNews', 'recentPosts'],
+    popularTags: [],
+    githubCalendar: 'zhutmost',
+  },
   header: {
     logo: '/favicons/favicon.svg',
     title: "Haozhe's Blog",
