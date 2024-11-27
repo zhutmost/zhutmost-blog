@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { HomepageGreetings } from '@/components/homepage-intro'
+import { HomepageGreetings } from '@/components/homepage/homepage-intro'
 
 const homepageGreetings: HomepageGreetings = {
   weOrI: 'I',

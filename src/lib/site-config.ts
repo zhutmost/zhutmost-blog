@@ -1,3 +1,4 @@
+import { deepmerge } from 'deepmerge-ts'
 import { DisqusProps, UtterancesProps } from 'pliny/comments/index.js'
 import { GiscusProps } from '@/components/comment/giscus-comments'
 import {
@@ -8,6 +9,7 @@ import {
   UmamiProps,
 } from 'pliny/analytics/index.js'
 import userConfig from '@/data/site-config'
+import { homepageSectionMap } from '@/components/homepage/homepage-section'
 
 export type CommentProviders = 'giscus' | 'utterances' | 'disqus'
 
@@ -46,24 +48,33 @@ export interface SiteConfig {
   teamPage: boolean
   // The number of posts per page in the pagination. (Default: 10)
   postPerPage: number
-  // Popular tags displayed on the homepage. If blank, tags with the most posts will be used.
-  popularTags: { tag: string; icon?: string; title?: string }[]
-  // GitHub username for the GitHub calendar on the homepage. (Example: 'zhutmost')
-  // Leave it blank to disable the GitHub calendar.
-  githubCalendar: string | null
+
+  // The settings for the homepage.
+  homepage: {
+    // The sections displayed on the homepage. You can customize your homepage by changing the order or adding/removing sections.
+    // The available sections are 'popularTags', 'recentPosts', and 'latestNews'.
+    sections: (keyof typeof homepageSectionMap)[]
+    // Popular tags displayed on the homepage. If blank, tags with the most posts will be used.
+    popularTags: { tag: string; icon?: string; title?: string }[]
+    // GitHub username for the GitHub calendar on the homepage. (Example: 'zhutmost')
+    // Leave it blank to disable the GitHub calendar.
+    githubCalendar: string | null
+    // The number of latest news displayed on the homepage. (Default: 5)
+    latestNewsNum: number
+  }
 
   // Set the greetings (displayed under the page header) for different pages.
   pageGreetings: {
     // Greetings for 'Authors'(/about/[...]) pages.
-    about?: string
+    about: string
     // Greetings for 'All Posts'(/archive & /category/... & /tags/...) pages.
-    archive?: string
+    archive: string
     // Greetings for 'News'(/news) pages
-    news?: string
+    news: string
     // Greetings for the 'Popular Tags' section on the homepage.
-    tags?: string
+    tags: string
     // Greetings for 'Team'(/team) page.
-    team?: string
+    team: string
   }
 
   header: {
@@ -111,17 +122,17 @@ export interface SiteConfig {
     socialBanner: string
     // OpenGraph settings. Keep them blank to use the default values.
     openGraph?: {
-      title?: string
-      description?: string
-      siteName?: string
-      locale?: string
-      images?: string
+      title: string
+      description: string
+      siteName: string
+      locale: string
+      images: string
     }
     // OpenGraph settings. Keep them blank to use the default values.
     twitter?: {
-      title?: string
-      description?: string
-      images?: string
+      title: string
+      description: string
+      images: string
     }
   }
 
@@ -142,7 +153,12 @@ export const defaultSiteConfig: SiteConfig = {
   multiCategories: true,
   teamPage: true,
   keywords: [],
-  popularTags: [],
+  homepage: {
+    sections: ['latestNews', 'popularTags', 'recentPosts'],
+    popularTags: [],
+    githubCalendar: null,
+    latestNewsNum: 5,
+  },
   pageGreetings: {
     about: 'Hello, Bonjour, こんにちは, 你好! Glad to see you!',
     archive: 'My digital garden, where I share my thoughts and ideas.',
@@ -150,7 +166,6 @@ export const defaultSiteConfig: SiteConfig = {
     tags: 'Popular tags feature the most widely favored topics.',
     team: 'Meet the team behind the scenes.',
   },
-  githubCalendar: null,
   header: {
     logo: '/favicons/favicon.svg',
     title: 'Analog Demo',
@@ -169,15 +184,15 @@ export const defaultSiteConfig: SiteConfig = {
   analytics: {},
   seo: {
     socialBanner: '/banner.png',
-    openGraph: {},
-    twitter: {},
+    openGraph: undefined,
+    twitter: undefined,
   },
   license: null,
 }
 
 const siteConfig: SiteConfig = (() => {
   // Merge default config with user config
-  const c = { ...defaultSiteConfig, ...userConfig }
+  const c = deepmerge(defaultSiteConfig, userConfig) as SiteConfig
 
   c.siteUrl = new URL(c.siteUrl).toString()
 

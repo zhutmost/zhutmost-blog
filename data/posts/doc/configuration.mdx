@@ -110,7 +110,31 @@ postPerPage: 10,
 
 The `postPerPage` field is the number of posts displayed per page on the homepage and archive pages. The default value is `10`.
 
-#### Popular Tags - `popularTags`
+#### Page Greetings - `homepage.pageGreetings`
+
+```yaml
+pageGreetings: {
+  about: 'Hello, Bonjour, こんにちは, 你好! Glad to see you!',
+  archive: 'My digital garden, where I share my thoughts and ideas.',
+  news: 'Stay up-to-date with the latest happenings.',
+  tags: 'Popular tags feature the most widely favored topics.',
+  team: 'Meet the team behind the scenes.',
+}
+```
+
+The `pageGreetings` field is an object that contains greetings for different pages. You can customize the greetings for the `about`, `archive`, `news`, `tags`, and `team` pages.
+
+### Homepage
+
+#### sections - `homepage.sections`
+
+```yaml
+sections: ['latestNews', 'popularTags', 'recentPosts'],
+```
+
+The `sections` field is an array of sections displayed on the homepage. The default value is `['latestNews', 'popularTags', 'recentPosts']`.
+
+#### Popular Tags - `homepage.popularTags`
 
 ```yaml
 popularTags: [
@@ -126,21 +150,15 @@ The `popularTags` field is an array of popular tags displayed on the homepage. I
 
 For each popular tag, a button will be generated with `icon` and `title` displayed. The button will link to the tag archive page `/tags/[tag]`. The `icon` fields should be the React names of [Tabler Icons](https://tabler.io/icons).
 
-#### Page Greetings - `pageGreetings`
+#### Latest News Number - `homepage.latestNewsNum`
 
 ```yaml
-pageGreetings: {
-  about: 'Hello, Bonjour, こんにちは, 你好! Glad to see you!',
-  archive: 'My digital garden, where I share my thoughts and ideas.',
-  news: 'Stay up-to-date with the latest happenings.',
-  tags: 'Popular tags feature the most widely favored topics.',
-  team: 'Meet the team behind the scenes.',
-}
+latestNewsNum: 5,
 ```
 
-The `pageGreetings` field is an object that contains greetings for different pages. You can customize the greetings for the `about`, `archive`, `news`, `tags`, and `team` pages.
+The `latestNewsNum` field is the number of latest news displayed on the homepage. The default value is `5`.
 
-#### GitHub Calendar - `githubCalendar`
+#### GitHub Calendar - `homepage.githubCalendar`
 
 ```yaml
 githubCalendar: 'your-github-username',

@@ -10,8 +10,8 @@ import { cn } from '@/lib/utils'
 
 export default function PopularTags() {
   let popularTags: { tag: string; icon?: string; title?: string }[]
-  if (siteConfig.popularTags) {
-    popularTags = siteConfig.popularTags
+  if (siteConfig.homepage.popularTags) {
+    popularTags = siteConfig.homepage.popularTags
   } else {
     const tagCounter = tagData as TagCounter
     const tagsSorted = Object.keys(tagCounter).sort((a, b) => tagCounter[b] - tagCounter[a])
