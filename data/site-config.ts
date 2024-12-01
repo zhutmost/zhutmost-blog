@@ -2,21 +2,24 @@ import { SiteConfig } from '@/lib/site-config'
 import { DeepPartial } from '@/lib/utils'
 
 const userConfig: DeepPartial<SiteConfig> = {
-  siteUrl: 'https://zhutmost.com',
-  siteTitle: "Haozhe's Blog",
-  description:
-    "This is Haozhe Zhu (@zhutmost)'s personal blog. I write about my research, thoughts, and life.",
+  siteUrl: 'https://analog-demo.zhutmost.com',
+  siteTitle: 'Analog Demo',
+  description: 'Analog: Another Blog Template with Next.js',
   locale: 'en-US',
-  author: 'Haozhe Zhu',
-  teamPage: false,
+  author: 'John Doe',
   homepage: {
-    sections: ['latestNews', 'recentPosts'],
-    popularTags: [],
+    popularTags: [
+      { tag: 'markdown', icon: 'IconMarkdown', title: 'Markdown' },
+      { tag: 'mac', icon: 'IconCommand', title: 'MacOS' },
+      { tag: 'shopping', icon: 'IconTag', title: 'Shopping' },
+      { tag: 'writing', icon: 'IconNote', title: 'Writing' },
+      { tag: 'windows', icon: 'IconBrandWindows', title: 'Windows' },
+    ],
     githubCalendar: 'zhutmost',
   },
   header: {
     logo: '/favicons/favicon.svg',
-    title: "Haozhe's Blog",
+    title: 'Analog Demo',
     themeSwitch: true,
     menu: {
       Home: '/',
@@ -27,27 +30,29 @@ const userConfig: DeepPartial<SiteConfig> = {
     },
   },
   footer: {
+    // beian: '粤ICP备2021******号',
     icons: {
-      GitHub: { icon: 'IconBrandGithub', href: 'https://github.com/zhutmost' },
+      Facebook: { icon: 'IconBrandFacebook', href: 'https://facebook.com' },
+      X: { icon: 'IconBrandX', href: 'https://x.com' },
       RSS: { icon: 'IconRss', href: '/rss.xml' },
       Analytics: {
         icon: 'IconChartDots',
-        href: 'https://cloud.umami.is/share/Xhuqb7y5CtlUaz3U/blog.zhutmost.com',
+        href: 'https://cloud.umami.is/share/unndQ4BKaNaSgfys/analog-demo.zhutmost.com',
       },
     },
   },
   analytics: {
     umamiAnalytics: {
-      umamiWebsiteId: 'd4fee704-edd5-4eee-bc79-5dd8fa412c2b',
+      umamiWebsiteId: '4ae56858-7872-446f-980e-32d1c8db927e',
     },
   },
   comment: {
     provider: 'giscus',
     giscusConfig: {
-      repo: 'zhutmost/zhutmost-blog',
-      repoId: 'R_kgDONUD9-A',
+      repo: 'zhutmost/analog-blog-starter',
+      repoId: 'R_kgDONEFqpw',
       category: 'Announcements',
-      categoryId: 'DIC_kwDONUD9-M4Ckkm1',
+      categoryId: 'DIC_kwDONEFqp84CjmEV',
     },
   },
   license: 'cc-by-nc-sa',
