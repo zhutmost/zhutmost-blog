@@ -9,7 +9,7 @@ import { generatePageMetadata } from '@/lib/page-metadata'
 import { allAuthorsNonDefault } from '@/lib/author-sort'
 
 export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
-  return allAuthorsNonDefault.map((author) => ({ slug: author.slug }))
+  return allAuthorsNonDefault.map((author) => ({ slug: author.slug.split('/') }))
 }
 
 export async function generateMetadata({
@@ -18,7 +18,7 @@ export async function generateMetadata({
   params: { slug: string[] }
 }): Promise<Metadata | undefined> {
   const author: Author | undefined = allAuthorsNonDefault.find(
-    (author) => author.slugPath === params.slug.join('/')
+    (author) => author.slug === params.slug.join('/')
   )
   if (!author) {
     return
@@ -31,7 +31,7 @@ export async function generateMetadata({
 
 export default function Page({ params }: { params: { slug: string[] } }) {
   const author: Author | undefined = allAuthorsNonDefault.find(
-    (author) => author.slugPath === params.slug.join('/')
+    (author) => author.slug === params.slug.join('/')
   )
   if (!author) {
     return notFound()

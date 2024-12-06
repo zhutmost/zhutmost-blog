@@ -1,12 +1,12 @@
 import { allAuthors, Author } from '@/content-collections'
 
-const allAuthorsNonDefault: Author[] = allAuthors.filter((a) => a.slugPath !== 'default')
+const allAuthorsNonDefault: Author[] = allAuthors.filter((a) => a.slug !== 'default')
 
-const authorDefault: Author = allAuthors.find((a) => a.slugPath === 'default')!
+const authorDefault: Author = allAuthors.find((a) => a.slug === 'default')!
 
 type SortOrder = 'asc' | 'desc'
 
-type SortMethod = 'name' | 'slugPath' | 'dateUpdate'
+type SortMethod = 'name' | 'slug' | 'dateUpdate'
 
 export function sortAuthors(
   authors: Author[],
@@ -16,8 +16,8 @@ export function sortAuthors(
   const compareFn = (a: Author, b: Author): number => {
     if (method === 'name') {
       return a.name.localeCompare(b.name)
-    } else if (method === 'slugPath') {
-      return a.slugPath.localeCompare(b.slugPath)
+    } else if (method === 'slug') {
+      return a.slug.localeCompare(b.slug)
     } else if (method === 'dateUpdate') {
       return b.dateUpdate.getTime() - a.dateUpdate.getTime()
     } else {

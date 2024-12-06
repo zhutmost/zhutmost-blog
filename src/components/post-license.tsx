@@ -17,8 +17,8 @@ export interface PostLicenseProps {
 export default function PostLicense({ post, authors }: PostLicenseProps) {
   if (!(siteConfig.license || post.license)) return null
 
-  const { title, slugPath, datePublish, dateUpdate, license } = post
-  const postUrl = new URL(`post/${slugPath}`, siteConfig.siteUrl).toString()
+  const { title, slug, datePublish, dateUpdate, license } = post
+  const postUrl = new URL(`post/${slug}`, siteConfig.siteUrl).toString()
 
   const authorName = authors[0].name + (authors.length > 1 ? ' et al.' : '')
 

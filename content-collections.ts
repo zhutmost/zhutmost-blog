@@ -74,9 +74,8 @@ async function commonTransform<D extends BaseDoc>(
   context: Context
 ): Promise<{
   mdx: string
+  slug: string
   dateUpdate: Date
-  slug: string[]
-  slugPath: string
   toc: TocItem[]
 }> {
   const { mdx, toc } = await context.cache(document as BaseDoc, async () => {
@@ -91,12 +90,7 @@ async function commonTransform<D extends BaseDoc>(
       },
       document,
       {
-        remarkPlugins: [
-          remarkGfm,
-          remarkMath,
-          [remarkFlexibleToc, { tocRef: toc }],
-          // remarkSourceRedirect,
-        ],
+        remarkPlugins: [remarkGfm, remarkMath, [remarkFlexibleToc, { tocRef: toc }]],
         rehypePlugins: [
           [rehypeGithubAlerts, rehypeGithubAlertsOptions],
           rehypeKatex,
@@ -114,10 +108,11 @@ async function commonTransform<D extends BaseDoc>(
     return { mdx, toc }
   })
 
-  // Slugged path in array (i.e., slugPath.split('/'))
-  const slug: string[] = document._meta.path.split('/').map((part) => slugify(part))
-  // Slugged path (without special chars)
-  const slugPath: string = slug.join('/')
+  // Slugged path without special chars
+  const slug: string = document._meta.path
+    .split('/')
+    .map((part) => slugify(part)) // remove special chars
+    .join('/')
 
   let dataUpdateStdout: string
   try {
@@ -129,7 +124,7 @@ async function commonTransform<D extends BaseDoc>(
   }
   const dateUpdate: Date = dataUpdateStdout ? new Date(dataUpdateStdout) : new Date()
 
-  return { mdx, toc, dateUpdate, slug, slugPath }
+  return { mdx, slug, toc, dateUpdate }
 }
 
 const Posts = defineCollection({
@@ -149,7 +144,7 @@ const Posts = defineCollection({
     license: z.string().optional(),
   }),
   transform: async (document, context) => {
-    const readingTime = readingTimeEstimate(document.content).minutes
+    const readingTime: number = readingTimeEstimate(document.content).minutes
 
     const banner: string | undefined = assetSourceRedirect(
       document.banner,

@@ -14,12 +14,12 @@ interface PostCardProps {
 }
 
 export default function PostCard({ post }: PostCardProps) {
-  const { title, summary, datePublish, slugPath, tags, banner, category, readingTime } = post
+  const { title, summary, datePublish, slug, tags, banner, category, readingTime } = post
   return (
     <article className="xl:grid xl:grid-cols-4 xl:items-baseline">
       {banner && (
         <div className="mx-auto h-auto w-full pb-5 xl:col-span-6">
-          <NextLink href={`/post/${slugPath}`}>
+          <NextLink href={`/post/${slug}`}>
             <AspectRatio ratio={5 / 2}>
               <SmartImage
                 src={banner}
@@ -58,7 +58,7 @@ export default function PostCard({ post }: PostCardProps) {
       <div className="space-y-3 xl:col-span-3">
         <div>
           <h3 className="text-2xl font-bold leading-8 tracking-tight">
-            <NextLink href={`/post/${slugPath}`} className="text-foreground">
+            <NextLink href={`/post/${slug}`} className="text-foreground">
               {title}
             </NextLink>
           </h3>
@@ -67,7 +67,7 @@ export default function PostCard({ post }: PostCardProps) {
         <div className="prose max-w-none text-muted-foreground">{summary}</div>
         <div className="text-base font-medium leading-6">
           <NextLink
-            href={`/post/${slugPath}`}
+            href={`/post/${slug}`}
             className="inline-flex items-center text-primary hover:text-primary/80"
             aria-label={`Read more: "${title}"`}
           >

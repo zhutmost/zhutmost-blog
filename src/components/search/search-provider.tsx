@@ -47,7 +47,7 @@ export default function SearchProvider({ children }: { children: React.ReactNode
     },
   ]
   const postActions = allPostsSorted.map((post) => ({
-    id: `posts/${post.slugPath}`,
+    id: `posts/${post.slug}`,
     name: post.title,
     keywords: post.summary || '',
     section: 'Posts',
@@ -56,7 +56,7 @@ export default function SearchProvider({ children }: { children: React.ReactNode
       month: 'long',
       day: 'numeric',
     }),
-    perform: () => router.push('/post/' + post.slugPath),
+    perform: () => router.push(`posts/${post.slug}`),
     priority: 10,
   }))
   return (

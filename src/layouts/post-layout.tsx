@@ -54,7 +54,7 @@ function PostSidebar({ content, authors, postNext, postPrev }: Omit<PostLayoutPr
             {authors.map((author) => (
               <li className="flex items-center space-x-2" key={author.name}>
                 {author.avatar && (
-                  <NextLink href={`/about/${author.slugPath}`}>
+                  <NextLink href={`/about/${author.slug}`}>
                     <SmartImage
                       src={author.avatar}
                       width={38}
@@ -65,7 +65,7 @@ function PostSidebar({ content, authors, postNext, postPrev }: Omit<PostLayoutPr
                   </NextLink>
                 )}
                 <dl className="whitespace-nowrap indent-3 text-sm font-medium leading-5">
-                  <NextLink href={`/about/${author.slugPath}`}>
+                  <NextLink href={`/about/${author.slug}`}>
                     <dt className="sr-only">Name</dt>
                     <dd className="text-foreground">{author.name}</dd>
                   </NextLink>
@@ -99,14 +99,14 @@ function PostSidebar({ content, authors, postNext, postPrev }: Omit<PostLayoutPr
           {postPrev && (
             <PostSidebarItem label="Previous Article" className="py-0 xl:py-0">
               <div className="text-primary hover:text-primary/80">
-                <NextLink href={`/post/${postPrev.slugPath}`}>{postPrev.title}</NextLink>
+                <NextLink href={`/post/${postPrev.slug}`}>{postPrev.title}</NextLink>
               </div>
             </PostSidebarItem>
           )}
           {postNext && (
             <PostSidebarItem label="Next Article" className="py-0 xl:py-0">
               <div className="text-primary hover:text-primary/80">
-                <NextLink href={`/post/${postNext.slugPath}`}>{postNext.title}</NextLink>
+                <NextLink href={`/post/${postNext.slug}`}>{postNext.title}</NextLink>
               </div>
             </PostSidebarItem>
           )}
@@ -135,7 +135,7 @@ export default function PostLayout({
   postPrev,
   children,
 }: PostLayoutProps) {
-  const { title, datePublish, slugPath, banner } = content
+  const { title, datePublish, slug, banner } = content
   return (
     <>
       <BackToTop />
@@ -187,7 +187,7 @@ export default function PostLayout({
 
               {siteConfig.comment.provider && (
                 <div className="pt-10" id="comment">
-                  <Comments slug={slugPath} />
+                  <Comments slug={slug} />
                 </div>
               )}
             </div>

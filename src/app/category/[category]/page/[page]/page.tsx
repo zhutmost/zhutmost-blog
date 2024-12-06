@@ -82,7 +82,7 @@ export default function Page({ params }: { params: { category: string; page: str
         <ul>
           {!posts.length && 'No posts found.'}
           {posts.map((post) => (
-            <li key={post.slugPath} className="py-4">
+            <li key={post.slug} className="py-4">
               <PostCard post={post} />
             </li>
           ))}

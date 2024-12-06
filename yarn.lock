@@ -1128,12 +1128,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:14.2.18":
-  version: 14.2.18
-  resolution: "@next/eslint-plugin-next@npm:14.2.18"
+"@next/eslint-plugin-next@npm:14.2.19":
+  version: 14.2.19
+  resolution: "@next/eslint-plugin-next@npm:14.2.19"
   dependencies:
     glob: "npm:10.3.10"
-  checksum: 10c0/1696974728438e7f37a36664003d87e81c4c30f802a1d91c023d54bc771b2d5c169df08ff36d9d11ab19f62fb29464f424c48ee1cfc0e17332726c0f2ab6ea80
+  checksum: 10c0/cc4d879fc14aa2b414b355e8824240eb6b37d83eeb9f10ee07e77a3bc15c83d863892c1fa1192328af728685b2e6a6ce0a0afec7eca888caef7a70753c777bfc
   languageName: node
   linkType: hard
 
@@ -2230,21 +2230,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tabler/icons-react@npm:^3.22.0":
-  version: 3.22.0
-  resolution: "@tabler/icons-react@npm:3.22.0"
+"@tabler/icons-react@npm:^3.24.0":
+  version: 3.24.0
+  resolution: "@tabler/icons-react@npm:3.24.0"
   dependencies:
-    "@tabler/icons": "npm:3.22.0"
+    "@tabler/icons": "npm:3.24.0"
   peerDependencies:
     react: ">= 16"
-  checksum: 10c0/1973d4203b6c84f464231ad1bb0a43f2c9b3e06597b662496f61db8483957b75e7d40202b5cf3e57326c6d472c6535b9d8151df1114219f626e84a83cf6eee3f
+  checksum: 10c0/b47b32eaefacc99714158cbe0684ee7fae26a6dcd424493367abf0cbd74bf6dc43b2bc7ea9990ac194c20f79914650c060c1fef5e47e0a69ff4a36f7ecd75bdd
   languageName: node
   linkType: hard
 
-"@tabler/icons@npm:3.22.0":
-  version: 3.22.0
-  resolution: "@tabler/icons@npm:3.22.0"
-  checksum: 10c0/d46eb2199010509d457e03fd4206c9e47b9ba6a01bc17c94f68a3696028f3320a2f149bbc28bf3af5479219195f609f5a4557ad1b7965bc359ccfb2f5073d026
+"@tabler/icons@npm:3.24.0":
+  version: 3.24.0
+  resolution: "@tabler/icons@npm:3.24.0"
+  checksum: 10c0/7f8abb6175a7c233cbe38aaac3b1198b312b9d873c6276d06fa48a9616397bfeac93ba850023940678471da61868c57efed45653c6ab450608f63ff78a49d6b5
   languageName: node
   linkType: hard
 
@@ -2384,12 +2384,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.17.8":
-  version: 20.17.8
-  resolution: "@types/node@npm:20.17.8"
+"@types/node@npm:^20.17.9":
+  version: 20.17.9
+  resolution: "@types/node@npm:20.17.9"
   dependencies:
     undici-types: "npm:~6.19.2"
-  checksum: 10c0/d68bbd9f8946a56d3f405e2dbfcc98d1d7a3cdbaa45d0a8fea2865e63ecdf3a2c9a0e992d9ea1658651909273026d341047e593596e133e842374371e04031c3
+  checksum: 10c0/1c37c3618407d56b76301578edabcb4c6a7ef093d0811c50fc4df8df68fc546797a294cafac0e50789f4e0e485cd1d6871964d8e6222fd420658bdae89c1fb4a
   languageName: node
   linkType: hard
 
@@ -4053,11 +4053,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:14.2.18":
-  version: 14.2.18
-  resolution: "eslint-config-next@npm:14.2.18"
+"eslint-config-next@npm:14.2.19":
+  version: 14.2.19
+  resolution: "eslint-config-next@npm:14.2.19"
   dependencies:
-    "@next/eslint-plugin-next": "npm:14.2.18"
+    "@next/eslint-plugin-next": "npm:14.2.19"
     "@rushstack/eslint-patch": "npm:^1.3.3"
     "@typescript-eslint/eslint-plugin": "npm:^5.4.2 || ^6.0.0 || ^7.0.0 || ^8.0.0"
     "@typescript-eslint/parser": "npm:^5.4.2 || ^6.0.0 || ^7.0.0 || ^8.0.0"
@@ -4073,7 +4073,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/325f467e9d4686fbafd3ec3843fc32267f999eb9854d59a1170fe14ae710f40c36c3a8f6f32d3319b43e2aacd6cf8c849135e54b0298887237ac11b11635e889
+  checksum: 10c0/673face6c8e9817a67280b7e177d13b71ccda936466b81f377ad9fa0c096bd3739b5fbcef38a5854327bbe2143a3d4ecd6b4362bccc5154f90356f8299b1b98d
   languageName: node
   linkType: hard
 
@@ -10386,11 +10386,11 @@ __metadata:
     "@radix-ui/react-slot": "npm:^1.1.0"
     "@radix-ui/react-tooltip": "npm:^1.1.4"
     "@sindresorhus/slugify": "npm:^2.2.1"
-    "@tabler/icons-react": "npm:^3.22.0"
+    "@tabler/icons-react": "npm:^3.24.0"
     "@tailwindcss/typography": "npm:^0.5.15"
     "@tsconfig/next": "npm:^2.0.3"
     "@twemoji/parser": "npm:^15.1.1"
-    "@types/node": "npm:^20.17.8"
+    "@types/node": "npm:^20.17.9"
     "@types/react": "npm:^18.3.12"
     "@types/react-dom": "npm:^18.3.1"
     "@types/react-twemoji": "npm:^0.4.3"
@@ -10398,7 +10398,7 @@ __metadata:
     class-variance-authority: "npm:^0.7.1"
     deepmerge-ts: "npm:^7.1.3"
     eslint: "npm:^8.57.1"
-    eslint-config-next: "npm:14.2.18"
+    eslint-config-next: "npm:14.2.19"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-prettier: "npm:^5.2.1"
     feed: "npm:^4.2.2"

@@ -4,7 +4,7 @@ import { authorDefault } from '@/lib/author-sort'
 export default function authorsFind(authors: string[]): Author[] {
   function findAuthor(author: string): Author {
     return (
-      allAuthors.find((a: Author) => author === a.slugPath) ||
+      allAuthors.find((a: Author) => author === a.slug) ||
       allAuthors.find((a: Author) => author === a._meta.path) ||
       allAuthors.find((a: Author) => author === a.name) ||
       authorDefault

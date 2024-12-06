@@ -12,7 +12,7 @@ import allPostsSorted from '@/lib/post-sort'
 import authorsFind from '@/lib/authors-find'
 
 export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
-  return allPosts.map((post) => ({ slug: post.slug }))
+  return allPosts.map((post) => ({ slug: post.slug.split('/') }))
 }
 
 export async function generateMetadata({
@@ -21,7 +21,7 @@ export async function generateMetadata({
   params: { slug: string[] }
 }): Promise<Metadata | undefined> {
   const postCurr: Post | undefined = allPostsSorted.find(
-    (post: Post) => post.slugPath === params.slug.join('/')
+    (post: Post) => post.slug === params.slug.join('/')
   )
   if (!postCurr) {
     return
@@ -60,9 +60,7 @@ export async function generateMetadata({
 }
 
 export default function Page({ params }: { params: { slug: string[] } }) {
-  const postIndex = allPostsSorted.findIndex(
-    (post: Post) => post.slugPath === params.slug.join('/')
-  )
+  const postIndex = allPostsSorted.findIndex((post: Post) => post.slug === params.slug.join('/'))
   if (postIndex === -1) {
     return notFound()
   }
