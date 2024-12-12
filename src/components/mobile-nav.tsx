@@ -24,18 +24,15 @@ export default function MobileNav() {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
+      <SheetTrigger
+        className={buttonVariants({ variant: 'ghost', size: 'icon' })}
+        id="mobileNavOpen"
+        aria-label="Open Navigation Menu"
+      >
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                id="mobileNavOpen"
-                aria-label="Open Navigation Menu"
-                variant={'ghost'}
-                size={'icon'}
-              >
-                <IconMenu2 className="h-6 w-6" />
-              </Button>
+              <IconMenu2 className="h-6 w-6" />
             </TooltipTrigger>
             <TooltipContent>
               <p>Menu</p>
