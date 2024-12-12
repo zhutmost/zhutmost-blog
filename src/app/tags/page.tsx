@@ -1,6 +1,7 @@
-import NextLink from 'next/link'
-import Tag from '@/components/tag'
 import slugify from '@sindresorhus/slugify'
+import NextLink from 'next/link'
+
+import Tag from '@/components/tag'
 import tagData from '@/data/tag-data.json'
 import { TagCounter } from '@/lib/content-collections/post-counter'
 import { generatePageMetadata } from '@/lib/page-metadata'
@@ -10,6 +11,7 @@ export const metadata = generatePageMetadata({
   description: 'Things I blog about',
 })
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export default async function Page() {
   const tagCounter = tagData as TagCounter
   const tags = Object.keys(tagCounter)

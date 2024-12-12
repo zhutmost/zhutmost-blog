@@ -1,12 +1,12 @@
 import { allAuthors, Author } from '@/content-collections'
 
-const allAuthorsNonDefault: Author[] = allAuthors.filter((a) => a.slugPath !== 'default')
+const allAuthorsNonDefault: Author[] = allAuthors.filter((a) => a.slug !== 'default')
 
-const authorDefault: Author = allAuthors.find((a) => a.slugPath === 'default')!
+const authorDefault: Author = allAuthors.find((a) => a.slug === 'default')!
 
 type SortOrder = 'asc' | 'desc'
 
-type SortMethod = 'name' | 'slugPath' | 'dateUpdate'
+type SortMethod = 'name' | 'slug' | 'dateUpdate'
 
 export function sortAuthors(
   authors: Author[],
@@ -14,15 +14,12 @@ export function sortAuthors(
   method: SortMethod = 'name'
 ): Author[] {
   const compareFn = (a: Author, b: Author): number => {
-    if (method === 'name') {
-      return a.name.localeCompare(b.name)
-    } else if (method === 'slugPath') {
-      return a.slugPath.localeCompare(b.slugPath)
-    } else if (method === 'dateUpdate') {
-      return b.dateUpdate.getTime() - a.dateUpdate.getTime()
-    } else {
-      throw new Error(`Unknown author sorting method: ${method}`)
+    const methods = {
+      name: () => a.name.localeCompare(b.name),
+      slug: () => a.slug.localeCompare(b.slug),
+      dateUpdate: () => b.dateUpdate.getTime() - a.dateUpdate.getTime(),
     }
+    return methods[method]()
   }
   const authorsSorted: Author[] = authors.toSorted(compareFn)
   return order === 'asc' ? authorsSorted : authorsSorted.reverse()

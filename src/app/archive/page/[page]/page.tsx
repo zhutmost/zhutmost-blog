@@ -1,14 +1,16 @@
 import * as React from 'react'
-import siteConfig from '@/lib/site-config'
-import allPostsSorted from '@/lib/post-sort'
-import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
-import PostPagination from '@/components/post-pagination'
-import { redirect } from 'next/navigation'
-import PostCard from '@/components/post-card'
-import Twemojify from '@/components/twemoji'
 import { Metadata } from 'next'
-import { generatePageMetadata } from '@/lib/page-metadata'
+import { redirect } from 'next/navigation'
 
+import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
+import PostCard from '@/components/post-card'
+import PostPagination from '@/components/post-pagination'
+import Twemojify from '@/components/twemoji'
+import { generatePageMetadata } from '@/lib/page-metadata'
+import allPostsSorted from '@/lib/post-sort'
+import siteConfig from '@/lib/site-config'
+
+// eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ page: string }[]> {
   const totalPages = Math.ceil(allPostsSorted.length / siteConfig.postPerPage)
   return Array.from({ length: totalPages }, (_, i) => ({ page: (i + 1).toString() }))
@@ -18,9 +20,9 @@ export const metadata: Metadata = generatePageMetadata({
   title: 'All Posts',
 })
 
-export default function Page({ params }: { params: { page: string } }) {
+export default async function Page({ params }: { params: Promise<{ page: string }> }) {
   const totalPages = Math.ceil(allPostsSorted.length / siteConfig.postPerPage)
-  const currPage = parseInt(params.page)
+  const currPage = parseInt((await params).page)
   if (currPage < 1 || currPage > totalPages) {
     redirect('/archive/page/1')
   }
@@ -42,7 +44,7 @@ export default function Page({ params }: { params: { page: string } }) {
         <ul>
           {!posts.length && 'No posts found.'}
           {posts.map((post) => (
-            <li key={post.slugPath} className="py-4">
+            <li key={post.slug} className="py-4">
               <PostCard post={post} />
             </li>
           ))}

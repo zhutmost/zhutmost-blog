@@ -1,12 +1,11 @@
 'use client'
 
 import * as React from 'react'
+import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react'
 import { useTheme } from 'next-themes'
-import { IconSun, IconMoon, IconSunMoon } from '@tabler/icons-react'
-import { Button, buttonVariants } from '@/components/ui/button'
+
+import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import SmartLink from '@/components/smart-link'
-import { cn } from '@/lib/utils'
 
 const IconLight = () => <IconSun className="h-6 w-6" />
 const IconDark = () => <IconMoon className="h-6 w-6" />
@@ -16,7 +15,9 @@ export default function ThemeSwitch() {
   const [mounted, setMounted] = React.useState(false)
   const { setTheme, resolvedTheme } = useTheme()
 
-  React.useEffect(() => setMounted(true), [])
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const toggle = () => {
     if (resolvedTheme !== 'dark') {

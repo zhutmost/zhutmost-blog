@@ -1,7 +1,8 @@
 import { Feed, FeedOptions } from 'feed'
-import siteConfig from '@/lib/site-config'
+
 import { Post } from '@/content-collections'
 import allPostsSorted from '@/lib/post-sort'
+import siteConfig from '@/lib/site-config'
 
 export default function generateRssFeed(): Feed {
   const siteUrl = siteConfig.siteUrl
@@ -26,9 +27,9 @@ export default function generateRssFeed(): Feed {
   allPostsSorted.forEach((post: Post) => {
     feed.addItem({
       title: post.title,
-      id: `/post/${post.slugPath}`,
-      link: new URL(`post/${post.slugPath}`, siteUrl).toString(),
-      image: new URL(post.banner || siteConfig.seo.socialBanner, siteUrl).toString(),
+      id: `/post/${post.slug}`,
+      link: new URL(`post/${post.slug}`, siteUrl).toString(),
+      image: new URL(post.banner ?? siteConfig.seo.socialBanner, siteUrl).toString(),
       description: post.summary,
       content: post.content,
       author: post.authors.map((author) => ({

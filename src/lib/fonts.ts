@@ -1,5 +1,5 @@
-import { JetBrains_Mono, Noto_Sans_SC, Space_Grotesk } from 'next/font/google'
 import { NextFontWithVariable } from 'next/dist/compiled/@next/font'
+import { JetBrains_Mono, Noto_Sans_SC, Space_Grotesk } from 'next/font/google'
 
 const fontSpaceGrotesk = Space_Grotesk({
   subsets: ['latin'],

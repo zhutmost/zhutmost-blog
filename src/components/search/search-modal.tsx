@@ -1,15 +1,16 @@
 import * as React from 'react'
+import { IconSearch } from '@tabler/icons-react'
 import {
-  KBarPortal,
-  KBarSearch,
+  Action,
   KBarAnimator,
+  KBarPortal,
   KBarPositioner,
   KBarResults,
+  KBarSearch,
   useMatches,
-  Action,
   useRegisterActions,
 } from 'kbar'
-import { IconSearch } from '@tabler/icons-react'
+
 import { cn } from '@/lib/utils'
 
 function Kbd({ className, ...rest }: React.HTMLAttributes<HTMLDivElement>) {

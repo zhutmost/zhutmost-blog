@@ -7,7 +7,7 @@ export type TagCounter = Record<string, number>
 export function countPostTags(posts: { tags: string[]; draft: boolean }[]): TagCounter {
   const tagCounter: TagCounter = {}
   posts.forEach((post) => {
-    if (post.tags && (!isProduction || !post.draft)) {
+    if (post.tags.length && (!isProduction || !post.draft)) {
       post.tags.forEach((tag) => {
         tagCounter[tag] = (tagCounter[tag] || 0) + 1
       })

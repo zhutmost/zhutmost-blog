@@ -1,18 +1,20 @@
-import categoryData from '@/data/category-data.json'
-import { type CategoryCounter, TagCounter } from '@/lib/content-collections/post-counter'
-import siteConfig from '@/lib/site-config'
+import * as React from 'react'
 import slugify from '@sindresorhus/slugify'
 import type { Metadata } from 'next'
-import tagData from '@/data/tag-data.json'
-import allPostsSorted from '@/lib/post-sort'
 import { notFound, redirect } from 'next/navigation'
+
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
 import PostCard from '@/components/post-card'
 import PostPagination from '@/components/post-pagination'
-import * as React from 'react'
 import Twemojify from '@/components/twemoji'
+import categoryData from '@/data/category-data.json'
+import tagData from '@/data/tag-data.json'
+import { TagCounter, type CategoryCounter } from '@/lib/content-collections/post-counter'
 import { generatePageMetadata } from '@/lib/page-metadata'
+import allPostsSorted from '@/lib/post-sort'
+import siteConfig from '@/lib/site-config'
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ category: string }[]> {
   const categoryCounter = categoryData as CategoryCounter
   return Object.keys(categoryCounter).flatMap((category) => {
@@ -24,11 +26,10 @@ export async function generateStaticParams(): Promise<{ category: string }[]> {
   })
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { category: string; page: string }
+export async function generateMetadata(props: {
+  params: Promise<{ category: string; page: string }>
 }): Promise<Metadata | undefined> {
+  const params = await props.params
   const categoryCounter = tagData as TagCounter
   const category = Object.keys(categoryCounter).find(
     (t) => slugify(t) === decodeURI(params.category)
@@ -42,7 +43,8 @@ export async function generateMetadata({
   })
 }
 
-export default function Page({ params }: { params: { category: string; page: string } }) {
+export default async function Page(props: { params: Promise<{ category: string; page: string }> }) {
+  const params = await props.params
   const categoryCounter = categoryData as CategoryCounter
   const category = Object.keys(categoryCounter).find(
     (t) => slugify(t) === decodeURI(params.category)
@@ -82,7 +84,7 @@ export default function Page({ params }: { params: { category: string; page: str
         <ul>
           {!posts.length && 'No posts found.'}
           {posts.map((post) => (
-            <li key={post.slugPath} className="py-4">
+            <li key={post.slug} className="py-4">
               <PostCard post={post} />
             </li>
           ))}

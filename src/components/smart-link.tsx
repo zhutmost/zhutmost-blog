@@ -1,5 +1,6 @@
 import * as React from 'react'
 import NextLink from 'next/link'
+
 import { cn } from '@/lib/utils'
 
 export default function SmartLink({
@@ -7,14 +8,13 @@ export default function SmartLink({
   className,
   ...rest
 }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
-  const isInternalPage = href && href.startsWith('/')
-  const isInternalAnchor = href && href.startsWith('#')
-
-  if (isInternalPage) {
+  // internal page
+  if (href?.startsWith('/')) {
     return <NextLink className={cn('break-words', className)} href={href} {...rest} />
   }
 
-  if (isInternalAnchor) {
+  // internal anchor link
+  if (href?.startsWith('#')) {
     return <a className={cn('break-words', className)} href={href} {...rest} />
   }
 

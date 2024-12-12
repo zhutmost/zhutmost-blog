@@ -1,10 +1,11 @@
 'use client'
 
 import * as React from 'react'
-import { Action, KBarProvider } from 'kbar'
-import KBarModal from '@/components/search/search-modal'
-import { useRouter } from 'next/navigation'
 import { IconHome, IconNews, IconUser } from '@tabler/icons-react'
+import { Action, KBarProvider } from 'kbar'
+import { useRouter } from 'next/navigation'
+
+import KBarModal from '@/components/search/search-modal'
 import timelineNews from '@/data/timeline-news'
 import allPostsSorted from '@/lib/post-sort'
 import siteConfig from '@/lib/site-config'
@@ -21,7 +22,9 @@ export default function SearchProvider({ children }: { children: React.ReactNode
       section: 'Pages',
       shortcut: ['h'],
       keywords: 'back',
-      perform: () => router.push('/'),
+      perform: () => {
+        router.push('/')
+      },
       priority: 5,
     },
     {
@@ -32,22 +35,33 @@ export default function SearchProvider({ children }: { children: React.ReactNode
       section: 'Pages',
       shortcut: ['c'],
       keywords: 'email author',
-      perform: () => router.push('/about'),
-      priority: 5,
-    },
-    timelineNews && {
-      id: 'news',
-      name: 'News',
-      subtitle: 'Latest news and updates',
-      icon: <IconNews />,
-      section: 'Pages',
-      shortcut: ['n'],
-      perform: () => router.push('/news'),
+      perform: () => {
+        router.push('/about')
+      },
       priority: 5,
     },
   ]
+
+  const newsAction: Action[] =
+    timelineNews.length > 0
+      ? [
+          {
+            id: 'news',
+            name: 'News',
+            subtitle: 'Latest news and updates',
+            icon: <IconNews />,
+            section: 'Pages',
+            shortcut: ['n'],
+            perform: () => {
+              router.push('/news')
+            },
+            priority: 5,
+          },
+        ]
+      : []
+
   const postActions = allPostsSorted.map((post) => ({
-    id: `posts/${post.slugPath}`,
+    id: `posts/${post.slug}`,
     name: post.title,
     keywords: post.summary || '',
     section: 'Posts',
@@ -56,11 +70,13 @@ export default function SearchProvider({ children }: { children: React.ReactNode
       month: 'long',
       day: 'numeric',
     }),
-    perform: () => router.push('/post/' + post.slugPath),
+    perform: () => {
+      router.push(`posts/${post.slug}`)
+    },
     priority: 10,
   }))
   return (
-    <KBarProvider actions={[...pageActions, ...postActions]}>
+    <KBarProvider actions={[...pageActions, ...newsAction, ...postActions]}>
       <KBarModal actions={[]} isLoading={false} />
       {children}
     </KBarProvider>

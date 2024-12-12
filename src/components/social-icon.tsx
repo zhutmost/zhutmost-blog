@@ -1,8 +1,9 @@
-import { buttonVariants } from '@/components/ui/button'
 import { icons } from '@tabler/icons-react'
-import { cn } from '@/lib/utils'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+
 import SmartLink from '@/components/smart-link'
+import { buttonVariants } from '@/components/ui/button'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { cn } from '@/lib/utils'
 
 interface SocialIconProps {
   name: string
@@ -12,7 +13,7 @@ interface SocialIconProps {
 }
 
 export default function SocialIcon({ name, icon, href, size = 6 }: SocialIconProps) {
-  const IconSvg = icons[icon as keyof typeof icons] || icons.IconFileUnknown
+  const IconSvg = icon in icons ? icons[icon as keyof typeof icons] : icons.IconFileUnknown
 
   return (
     <TooltipProvider>

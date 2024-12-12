@@ -1,13 +1,14 @@
 'use client'
 
 import NextLink from 'next/link'
+
+import MobileNav from '@/components/mobile-nav'
+import SearchButton from '@/components/search/search-button'
+import SmartImage from '@/components/smart-image'
+import ThemeSwitch from '@/components/theme-switch'
 import { buttonVariants } from '@/components/ui/button'
 import siteConfig from '@/lib/site-config'
 import { cn } from '@/lib/utils'
-import MobileNav from '@/components/mobile-nav'
-import ThemeSwitch from '@/components/theme-switch'
-import SearchButton from '@/components/search/search-button'
-import SmartImage from '@/components/smart-image'
 
 export default function SiteHeader() {
   const isBlurred = true
@@ -18,7 +19,9 @@ export default function SiteHeader() {
     <header
       className={cn(
         'z-50 flex h-auto w-full items-center justify-center',
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         isSticky ? 'sticky inset-x-0 top-0' : 'static',
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         isBlurred ? 'bg-background/70 backdrop-blur-lg backdrop-saturate-150' : 'bg-background'
       )}
     >

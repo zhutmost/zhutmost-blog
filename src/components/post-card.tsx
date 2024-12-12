@@ -1,25 +1,26 @@
-import type { Post } from '@/content-collections'
-import NextLink from 'next/link'
 import * as React from 'react'
-import siteConfig from '@/lib/site-config'
-import Tag from '@/components/tag'
-import SmartImage from '@/components/smart-image'
-import { IconArrowRight } from '@tabler/icons-react'
 import slugify from '@sindresorhus/slugify'
+import { IconArrowRight } from '@tabler/icons-react'
+import NextLink from 'next/link'
+
+import SmartImage from '@/components/smart-image'
+import Tag from '@/components/tag'
 import Twemojify from '@/components/twemoji'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
+import type { Post } from '@/content-collections'
+import siteConfig from '@/lib/site-config'
 
 interface PostCardProps {
   post: Post
 }
 
 export default function PostCard({ post }: PostCardProps) {
-  const { title, summary, datePublish, slugPath, tags, banner, category, readingTime } = post
+  const { title, summary, datePublish, slug, tags, banner, category, readingTime } = post
   return (
     <article className="xl:grid xl:grid-cols-4 xl:items-baseline">
       {banner && (
         <div className="mx-auto h-auto w-full pb-5 xl:col-span-6">
-          <NextLink href={`/post/${slugPath}`}>
+          <NextLink href={`/post/${slug}`}>
             <AspectRatio ratio={5 / 2}>
               <SmartImage
                 src={banner}
@@ -58,16 +59,20 @@ export default function PostCard({ post }: PostCardProps) {
       <div className="space-y-3 xl:col-span-3">
         <div>
           <h3 className="text-2xl font-bold leading-8 tracking-tight">
-            <NextLink href={`/post/${slugPath}`} className="text-foreground">
+            <NextLink href={`/post/${slug}`} className="text-foreground">
               {title}
             </NextLink>
           </h3>
-          <div className="flex flex-wrap">{tags?.map((tag) => <Tag key={tag} text={tag} />)}</div>
+          <div className="flex flex-wrap">
+            {tags.map((tag) => (
+              <Tag key={tag} text={tag} />
+            ))}
+          </div>
         </div>
         <div className="prose max-w-none text-muted-foreground">{summary}</div>
         <div className="text-base font-medium leading-6">
           <NextLink
-            href={`/post/${slugPath}`}
+            href={`/post/${slug}`}
             className="inline-flex items-center text-primary hover:text-primary/80"
             aria-label={`Read more: "${title}"`}
           >

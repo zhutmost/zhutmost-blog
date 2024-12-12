@@ -1,6 +1,7 @@
 import NextLink from 'next/link'
-import siteConfig from '@/lib/site-config'
+
 import SocialIcon from '@/components/social-icon'
+import siteConfig from '@/lib/site-config'
 
 function SiteFooter() {
   const thisYear = new Date().getFullYear()

@@ -13,7 +13,9 @@ export default function BackToTop() {
     }
 
     window.addEventListener('scroll', handleWindowScroll)
-    return () => window.removeEventListener('scroll', handleWindowScroll)
+    return () => {
+      window.removeEventListener('scroll', handleWindowScroll)
+    }
   }, [])
 
   const handleScrollTop = () => {

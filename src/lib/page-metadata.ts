@@ -1,5 +1,6 @@
-import siteConfig from '@/lib/site-config'
 import { Metadata } from 'next'
+
+import siteConfig from '@/lib/site-config'
 
 interface PageMetadataProps {
   title: string
@@ -13,16 +14,16 @@ export function generatePageMetadata({ title, description, ...rest }: PageMetada
     title,
     openGraph: {
       title: `${title} | ${siteConfig.seo.openGraph!.title}`,
-      description: description || siteConfig.seo.openGraph!.description,
+      description: description ?? siteConfig.seo.openGraph!.description,
       url: './',
       siteName: siteConfig.seo.openGraph!.siteName,
-      images: siteConfig.seo.openGraph!.images!,
+      images: siteConfig.seo.openGraph!.images,
       locale: siteConfig.seo.openGraph!.locale,
       type: 'website',
     },
     twitter: {
       title: `${title} | ${siteConfig.seo.twitter!.title}`,
-      description: description || siteConfig.seo.twitter!.description,
+      description: description ?? siteConfig.seo.twitter!.description,
       card: 'summary_large_image',
       images: siteConfig.seo.twitter!.images,
     },

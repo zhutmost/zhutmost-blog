@@ -1,14 +1,15 @@
 import * as React from 'react'
-import type { Author, Post } from '@/content-collections'
-import BackToTop from '@/components/back-to-top'
-import siteConfig from '@/lib/site-config'
 import NextLink from 'next/link'
-import Tag from '@/components/tag'
-import PostLicense from '@/components/post-license'
+
+import BackToTop from '@/components/back-to-top'
 import Comments from '@/components/comments'
+import PostLicense from '@/components/post-license'
 import PostToc from '@/components/post-toc'
-import { cn } from '@/lib/utils'
 import SmartImage from '@/components/smart-image'
+import Tag from '@/components/tag'
+import type { Author, Post } from '@/content-collections'
+import siteConfig from '@/lib/site-config'
+import { cn } from '@/lib/utils'
 
 export interface PostLayoutProps {
   children: React.ReactNode
@@ -54,7 +55,7 @@ function PostSidebar({ content, authors, postNext, postPrev }: Omit<PostLayoutPr
             {authors.map((author) => (
               <li className="flex items-center space-x-2" key={author.name}>
                 {author.avatar && (
-                  <NextLink href={`/about/${author.slugPath}`}>
+                  <NextLink href={`/about/${author.slug}`}>
                     <SmartImage
                       src={author.avatar}
                       width={38}
@@ -65,7 +66,7 @@ function PostSidebar({ content, authors, postNext, postPrev }: Omit<PostLayoutPr
                   </NextLink>
                 )}
                 <dl className="whitespace-nowrap indent-3 text-sm font-medium leading-5">
-                  <NextLink href={`/about/${author.slugPath}`}>
+                  <NextLink href={`/about/${author.slug}`}>
                     <dt className="sr-only">Name</dt>
                     <dd className="text-foreground">{author.name}</dd>
                   </NextLink>
@@ -83,7 +84,7 @@ function PostSidebar({ content, authors, postNext, postPrev }: Omit<PostLayoutPr
       </dl>
 
       {/* Tags */}
-      {tags && (
+      {tags.length && (
         <PostSidebarItem label="Tags">
           <div className="flex flex-wrap">
             {tags.map((tag) => (
@@ -94,19 +95,19 @@ function PostSidebar({ content, authors, postNext, postPrev }: Omit<PostLayoutPr
       )}
 
       {/* Next, Prev */}
-      {(postNext || postPrev) && (
+      {(postNext ?? postPrev) && (
         <div className="flex flex-wrap justify-between gap-8 py-4 xl:py-8">
           {postPrev && (
             <PostSidebarItem label="Previous Article" className="py-0 xl:py-0">
               <div className="text-primary hover:text-primary/80">
-                <NextLink href={`/post/${postPrev.slugPath}`}>{postPrev.title}</NextLink>
+                <NextLink href={`/post/${postPrev.slug}`}>{postPrev.title}</NextLink>
               </div>
             </PostSidebarItem>
           )}
           {postNext && (
             <PostSidebarItem label="Next Article" className="py-0 xl:py-0">
               <div className="text-primary hover:text-primary/80">
-                <NextLink href={`/post/${postNext.slugPath}`}>{postNext.title}</NextLink>
+                <NextLink href={`/post/${postNext.slug}`}>{postNext.title}</NextLink>
               </div>
             </PostSidebarItem>
           )}
@@ -135,7 +136,7 @@ export default function PostLayout({
   postPrev,
   children,
 }: PostLayoutProps) {
-  const { title, datePublish, slugPath, banner } = content
+  const { title, datePublish, slug, banner } = content
   return (
     <>
       <BackToTop />
@@ -187,7 +188,7 @@ export default function PostLayout({
 
               {siteConfig.comment.provider && (
                 <div className="pt-10" id="comment">
-                  <Comments slug={slugPath} />
+                  <Comments slug={slug} />
                 </div>
               )}
             </div>

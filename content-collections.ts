@@ -1,29 +1,30 @@
+import child_process from 'child_process'
+import { writeFileSync } from 'fs'
+import * as path from 'path'
 import { defineCollection, defineConfig, type Context, type Meta } from '@content-collections/core'
 import { compileMDX } from '@content-collections/mdx'
 import slugify from '@sindresorhus/slugify'
-import child_process from 'child_process'
+import scala from 'highlight.js/lib/languages/scala'
+import verilog from 'highlight.js/lib/languages/verilog'
+import { common as commonLanguages } from 'lowlight'
 import readingTimeEstimate from 'reading-time'
-import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math'
-import remarkFlexibleToc, { HeadingDepth, HeadingParent } from 'remark-flexible-toc'
-import rehypeSlug from 'rehype-slug'
-import rehypeUnwrapImages from 'rehype-unwrap-images'
 import {
   rehypeGithubAlerts,
   type IOptions as rehypeGithubAlertsOptionsType,
 } from 'rehype-github-alerts'
-import rehypeKatex from 'rehype-katex'
-import rehypeProbeImageSize from 'rehype-probe-image-size'
-import scala from 'highlight.js/lib/languages/scala'
-import verilog from 'highlight.js/lib/languages/verilog'
-import { common as commonLanguages } from 'lowlight'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeHighlightLines from 'rehype-highlight-code-lines'
+import rehypeKatex from 'rehype-katex'
 import rehypePresetMinify from 'rehype-preset-minify'
-import { writeFileSync } from 'fs'
-import { countPostCategories, countPostTags } from '@/lib/content-collections/post-counter'
+import rehypeProbeImageSize from 'rehype-probe-image-size'
+import rehypeSlug from 'rehype-slug'
+import rehypeUnwrapImages from 'rehype-unwrap-images'
+import remarkFlexibleToc, { HeadingDepth, HeadingParent } from 'remark-flexible-toc'
+import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+
 import rehypeAssetCopy, { assetSourceRedirect } from '@/lib/content-collections/asset-copy'
-import * as path from 'path'
+import { countPostCategories, countPostTags } from '@/lib/content-collections/post-counter'
 
 interface BaseDoc {
   _meta: Meta
@@ -69,17 +70,16 @@ const rehypeGithubAlertsOptions: rehypeGithubAlertsOptionsType = {
   ],
 }
 
-async function commonTransform<D extends BaseDoc>(
-  document: D,
+async function commonTransform(
+  document: BaseDoc,
   context: Context
 ): Promise<{
   mdx: string
+  slug: string
   dateUpdate: Date
-  slug: string[]
-  slugPath: string
   toc: TocItem[]
 }> {
-  const { mdx, toc } = await context.cache(document as BaseDoc, async () => {
+  const { mdx, toc } = await context.cache(document, async () => {
     const toc: TocItem[] = []
 
     const assetPath = path.join(context.collection.directory, document._meta.path)
@@ -91,12 +91,7 @@ async function commonTransform<D extends BaseDoc>(
       },
       document,
       {
-        remarkPlugins: [
-          remarkGfm,
-          remarkMath,
-          [remarkFlexibleToc, { tocRef: toc }],
-          // remarkSourceRedirect,
-        ],
+        remarkPlugins: [remarkGfm, remarkMath, [remarkFlexibleToc, { tocRef: toc }]],
         rehypePlugins: [
           [rehypeGithubAlerts, rehypeGithubAlertsOptions],
           rehypeKatex,
@@ -114,10 +109,11 @@ async function commonTransform<D extends BaseDoc>(
     return { mdx, toc }
   })
 
-  // Slugged path in array (i.e., slugPath.split('/'))
-  const slug: string[] = document._meta.path.split('/').map((part) => slugify(part))
-  // Slugged path (without special chars)
-  const slugPath: string = slug.join('/')
+  // Slugged path without special chars
+  const slug: string = document._meta.path
+    .split('/')
+    .map((part) => slugify(part)) // remove special chars
+    .join('/')
 
   let dataUpdateStdout: string
   try {
@@ -129,7 +125,7 @@ async function commonTransform<D extends BaseDoc>(
   }
   const dateUpdate: Date = dataUpdateStdout ? new Date(dataUpdateStdout) : new Date()
 
-  return { mdx, toc, dateUpdate, slug, slugPath }
+  return { mdx, slug, toc, dateUpdate }
 }
 
 const Posts = defineCollection({
@@ -149,7 +145,7 @@ const Posts = defineCollection({
     license: z.string().optional(),
   }),
   transform: async (document, context) => {
-    const readingTime = readingTimeEstimate(document.content).minutes
+    const readingTime: number = readingTimeEstimate(document.content).minutes
 
     const banner: string | undefined = assetSourceRedirect(
       document.banner,

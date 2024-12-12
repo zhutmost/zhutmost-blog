@@ -1,25 +1,26 @@
 import * as React from 'react'
-import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
-import Twemojify from '@/components/twemoji'
-import siteConfig from '@/lib/site-config'
+import * as path from 'path'
+import type { Metadata } from 'next'
 import NextLink from 'next/link'
-import { Author } from '@/content-collections'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { notFound } from 'next/navigation'
+
+import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
 import SocialIcon from '@/components/social-icon'
+import Twemojify from '@/components/twemoji'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Author } from '@/content-collections'
 import { allAuthorsNonDefault, sortAuthors } from '@/lib/author-sort'
 import { generatePageMetadata } from '@/lib/page-metadata'
-import { notFound } from 'next/navigation'
-import type { Metadata } from 'next'
-import * as path from 'path'
+import siteConfig from '@/lib/site-config'
 
 function PersonCard({ author }: { author: Author }) {
-  const { name, avatar, bio, slugPath, icons } = author
-  const avatarSrc: string = path.join(siteConfig.siteRoot || '', avatar || '/default-avatar.jpg')
+  const { name, avatar, bio, slug, icons } = author
+  const avatarSrc: string = path.join(siteConfig.siteRoot ?? '', avatar ?? '/default-avatar.jpg')
 
   return (
     <div className="p-4 md:w-1/2 lg:w-1/4">
       <div className="flex h-full flex-col items-center text-center">
-        <NextLink href={`/about/${slugPath}`}>
+        <NextLink href={`/about/${slug}`}>
           <Avatar className="mb-4 h-48 w-48">
             <AvatarImage className="object-cover" src={avatarSrc} />
             <AvatarFallback>{name}</AvatarFallback>
@@ -27,7 +28,7 @@ function PersonCard({ author }: { author: Author }) {
         </NextLink>
         <div className="w-full">
           <h2 className="text-lg font-medium text-foreground hover:text-foreground/80">
-            <NextLink href={`/about/${slugPath}`}>{name}</NextLink>
+            <NextLink href={`/about/${slug}`}>{name}</NextLink>
           </h2>
           <h3 className="text-muted-foreground">{bio}</h3>
           <span className="inline-flex">
@@ -42,6 +43,7 @@ function PersonCard({ author }: { author: Author }) {
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export async function generateMetadata(): Promise<Metadata | undefined> {
   if (!siteConfig.teamPage) {
     return
@@ -60,7 +62,7 @@ export default function Page() {
     Record<string, Author[]>
   >((acc, a) => {
     const key: string = a._meta.directory
-    acc[key] = acc[key] || []
+    acc[key] = key in acc ? acc[key] : []
     acc[key].push(a)
     return acc
   }, {})

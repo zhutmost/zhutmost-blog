@@ -1,17 +1,19 @@
 import * as React from 'react'
-import tagData from '@/data/tag-data.json'
-import { type Metadata } from 'next'
-import siteConfig from '@/lib/site-config'
-import allPostsSorted from '@/lib/post-sort'
 import slugify from '@sindresorhus/slugify'
+import { type Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
-import { TagCounter } from '@/lib/content-collections/post-counter'
+
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
 import PostCard from '@/components/post-card'
 import PostPagination from '@/components/post-pagination'
 import Twemojify from '@/components/twemoji'
+import tagData from '@/data/tag-data.json'
+import { TagCounter } from '@/lib/content-collections/post-counter'
 import { generatePageMetadata } from '@/lib/page-metadata'
+import allPostsSorted from '@/lib/post-sort'
+import siteConfig from '@/lib/site-config'
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ tag: string; page: string }[]> {
   const tagCounter = tagData as TagCounter
   return Object.keys(tagCounter).flatMap((tag) => {
@@ -23,11 +25,10 @@ export async function generateStaticParams(): Promise<{ tag: string; page: strin
   })
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { tag: string; page: string }
+export async function generateMetadata(props: {
+  params: Promise<{ tag: string; page: string }>
 }): Promise<Metadata | undefined> {
+  const params = await props.params
   const tagCounter = tagData as TagCounter
   const tags = Object.keys(tagCounter)
   const tag = tags.find((t) => slugify(t) === decodeURI(params.tag))
@@ -40,14 +41,15 @@ export async function generateMetadata({
   })
 }
 
-export default function Page({ params }: { params: { tag: string; page: string } }) {
+export default async function Page(props: { params: Promise<{ tag: string; page: string }> }) {
+  const params = await props.params
   const tagCounter = tagData as TagCounter
   const tag = Object.keys(tagCounter).find((t) => slugify(t) === decodeURI(params.tag))
 
   if (!tag) return notFound()
 
   const totalPages = Math.ceil(tagCounter[tag] / siteConfig.postPerPage)
-  const filteredPosts = allPostsSorted.filter((post) => post.tags?.includes(tag))
+  const filteredPosts = allPostsSorted.filter((post) => post.tags.includes(tag))
 
   if (filteredPosts.length != tagCounter[tag]) {
     console.error(
@@ -80,7 +82,7 @@ export default function Page({ params }: { params: { tag: string; page: string }
         <ul>
           {!posts.length && 'No posts found.'}
           {posts.map((post) => (
-            <li key={post.slugPath} className="py-4">
+            <li key={post.slug} className="py-4">
               <PostCard post={post} />
             </li>
           ))}

@@ -1,4 +1,5 @@
 import NextLink from 'next/link'
+
 import { buttonVariants } from '@/components/ui/button'
 
 export default function NotFound() {

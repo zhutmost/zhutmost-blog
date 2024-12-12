@@ -4,6 +4,8 @@ import * as React from 'react'
 import { IconChevronsUp, IconMenu2 } from '@tabler/icons-react'
 import NextLink, { LinkProps } from 'next/link'
 import { useRouter } from 'next/navigation'
+
+import SmartImage from '@/components/smart-image'
 import { Button, buttonVariants } from '@/components/ui/button'
 import {
   Sheet,
@@ -16,7 +18,6 @@ import {
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import siteConfig from '@/lib/site-config'
 import { cn } from '@/lib/utils'
-import SmartImage from '@/components/smart-image'
 
 export default function MobileNav() {
   const [open, setOpen] = React.useState(false)
@@ -97,11 +98,12 @@ interface MobileLinkProps extends LinkProps {
 
 function MobileLink({ href, onOpenChange, className, children, ...props }: MobileLinkProps) {
   const router = useRouter()
+  const hrefString = typeof href === 'string' ? href : href.pathname!
   return (
     <NextLink
       href={href}
       onClick={() => {
-        router.push(href.toString())
+        router.push(hrefString)
         onOpenChange?.(false)
       }}
       className={cn(className)}

@@ -26,11 +26,11 @@
   background-color: var(--github-alert-background-color);
 }
 
-.markdown-alert>:first-child {
+.markdown-alert > :first-child {
   margin-top: 0;
 }
 
-.markdown-alert>:last-child {
+.markdown-alert > :last-child {
   margin-bottom: 0;
 }
 
@@ -62,7 +62,7 @@
   font-weight: 600;
 }
 
-.markdown-alert-title>svg {
+.markdown-alert-title > svg {
   margin-right: 8px;
 }
 

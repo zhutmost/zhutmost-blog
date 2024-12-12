@@ -1,7 +1,8 @@
 import * as React from 'react'
-import siteConfig from '@/lib/site-config'
+
 import HomepageIntro from '@/components/homepage/homepage-intro'
 import { homepageSectionMap } from '@/components/homepage/homepage-section'
+import siteConfig from '@/lib/site-config'
 
 export default function HomePage() {
   return (

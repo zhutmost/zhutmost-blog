@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next'
-import siteConfig from '@/lib/site-config'
-import allPostsSorted from '@/lib/post-sort'
+
 import { allAuthors } from '@/content-collections'
+import allPostsSorted from '@/lib/post-sort'
+import siteConfig from '@/lib/site-config'
 
 type Sitemap = MetadataRoute.Sitemap
 type SitemapSingleFile = MetadataRoute.Sitemap[number]
@@ -17,14 +18,14 @@ export default function sitemap(): Sitemap {
   const postRoutes: Sitemap = allPostsSorted
     .filter((post) => !post.draft)
     .map((post) => ({
-      url: new URL(`/post/${post.slugPath}`, siteConfig.siteUrl).toString(),
-      lastModified: (post.dateUpdate || post.datePublish).toISOString(),
+      url: new URL(`/post/${post.slug}`, siteConfig.siteUrl).toString(),
+      lastModified: post.dateUpdate.toISOString(),
       priority: 1,
       changeFrequency: 'monthly',
     }))
 
   const authorRoutes: Sitemap = allAuthors.map((author) => ({
-    url: new URL(`/about/${author.slugPath}`, siteConfig.siteUrl).toString(),
+    url: new URL(`/about/${author.slug}`, siteConfig.siteUrl).toString(),
     lastModified: author.dateUpdate.toISOString(),
     priority: 0.5,
     changeFrequency: 'monthly',

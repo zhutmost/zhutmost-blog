@@ -1,27 +1,28 @@
 import '@/styles/highlight.css'
 import 'katex/dist/katex.css'
 
-import mdxComponents from '@/components/mdx/mdx-components'
 import { MDXContent } from '@content-collections/mdx/react'
-import { allPosts, type Author, type Post } from '@/content-collections'
 import { Metadata } from 'next'
-import siteConfig from '@/lib/site-config'
 import { notFound } from 'next/navigation'
-import PostLayout from '@/layouts/post-layout'
-import allPostsSorted from '@/lib/post-sort'
-import authorsFind from '@/lib/authors-find'
 
+import mdxComponents from '@/components/mdx/mdx-components'
+import { allPosts, type Author, type Post } from '@/content-collections'
+import PostLayout from '@/layouts/post-layout'
+import authorsFind from '@/lib/authors-find'
+import allPostsSorted from '@/lib/post-sort'
+import siteConfig from '@/lib/site-config'
+
+// eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
-  return allPosts.map((post) => ({ slug: post.slug }))
+  return allPosts.map((post) => ({ slug: post.slug.split('/') }))
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string[] }
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string[] }>
 }): Promise<Metadata | undefined> {
+  const params = await props.params
   const postCurr: Post | undefined = allPostsSorted.find(
-    (post: Post) => post.slugPath === params.slug.join('/')
+    (post: Post) => post.slug === params.slug.join('/')
   )
   if (!postCurr) {
     return
@@ -59,10 +60,9 @@ export async function generateMetadata({
   }
 }
 
-export default function Page({ params }: { params: { slug: string[] } }) {
-  const postIndex = allPostsSorted.findIndex(
-    (post: Post) => post.slugPath === params.slug.join('/')
-  )
+export default async function Page(props: { params: Promise<{ slug: string[] }> }) {
+  const params = await props.params
+  const postIndex = allPostsSorted.findIndex((post: Post) => post.slug === params.slug.join('/'))
   if (postIndex === -1) {
     return notFound()
   }
