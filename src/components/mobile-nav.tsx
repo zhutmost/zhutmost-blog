@@ -13,6 +13,7 @@ import {
   SheetContent,
   SheetFooter,
   SheetHeader,
+  SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
@@ -42,21 +43,23 @@ export default function MobileNav() {
       </SheetTrigger>
       <SheetContent side={'top'}>
         <SheetHeader>
-          <MobileLink href="/" onOpenChange={setOpen}>
-            <div className="flex items-center justify-center gap-4">
-              {siteConfig.header.logo && (
-                <SmartImage
-                  src={siteConfig.header.logo}
-                  alt={siteConfig.siteTitle}
-                  width={30}
-                  height={30}
-                />
-              )}
-              {siteConfig.header.title && (
-                <div className="text-lg font-semibold">{siteConfig.header.title}</div>
-              )}
-            </div>
-          </MobileLink>
+          <SheetTitle>
+            <MobileLink href="/" onOpenChange={setOpen}>
+              <div className="flex items-center justify-center gap-4">
+                {siteConfig.header.logo && (
+                  <SmartImage
+                    src={siteConfig.header.logo}
+                    alt={siteConfig.siteTitle}
+                    width={30}
+                    height={30}
+                  />
+                )}
+                {siteConfig.header.title && (
+                  <div className="text-lg font-semibold">{siteConfig.header.title}</div>
+                )}
+              </div>
+            </MobileLink>
+          </SheetTitle>
         </SheetHeader>
         <div className="flex flex-col gap-2 py-4">
           {Object.entries(siteConfig.header.menu).map(([name, href]) => (
