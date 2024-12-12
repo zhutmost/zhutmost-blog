@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     description: siteConfig.seo.openGraph!.description,
     url: new URL(siteConfig.siteUrl),
     siteName: siteConfig.seo.openGraph!.siteName,
-    images: siteConfig.seo.openGraph!.images!,
+    images: siteConfig.seo.openGraph!.images,
     locale: siteConfig.seo.openGraph!.locale,
     type: 'website',
   },

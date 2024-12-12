@@ -12,6 +12,7 @@ import PostPagination from '@/components/post-pagination'
 import Twemojify from '@/components/twemoji'
 import { generatePageMetadata } from '@/lib/page-metadata'
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ tag: string; page: string }[]> {
   const tagCounter = tagData as TagCounter
   return Object.keys(tagCounter).flatMap((tag) => {
@@ -23,11 +24,10 @@ export async function generateStaticParams(): Promise<{ tag: string; page: strin
   })
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { tag: string; page: string }
+export async function generateMetadata(props: {
+  params: Promise<{ tag: string; page: string }>
 }): Promise<Metadata | undefined> {
+  const params = await props.params
   const tagCounter = tagData as TagCounter
   const tags = Object.keys(tagCounter)
   const tag = tags.find((t) => slugify(t) === decodeURI(params.tag))
@@ -40,14 +40,15 @@ export async function generateMetadata({
   })
 }
 
-export default function Page({ params }: { params: { tag: string; page: string } }) {
+export default async function Page(props: { params: Promise<{ tag: string; page: string }> }) {
+  const params = await props.params
   const tagCounter = tagData as TagCounter
   const tag = Object.keys(tagCounter).find((t) => slugify(t) === decodeURI(params.tag))
 
   if (!tag) return notFound()
 
   const totalPages = Math.ceil(tagCounter[tag] / siteConfig.postPerPage)
-  const filteredPosts = allPostsSorted.filter((post) => post.tags?.includes(tag))
+  const filteredPosts = allPostsSorted.filter((post) => post.tags.includes(tag))
 
   if (filteredPosts.length != tagCounter[tag]) {
     console.error(

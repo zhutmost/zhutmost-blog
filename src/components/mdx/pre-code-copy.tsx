@@ -19,10 +19,17 @@ export default function PreCodeCopy({ children, ...rest }: React.HTMLAttributes<
   const onCopy = () => {
     if (textInput.current) {
       setCopied(true)
-      navigator.clipboard.writeText(textInput.current.textContent!)
-      setTimeout(() => {
-        setCopied(false)
-      }, 2000)
+      void navigator.clipboard
+        .writeText(textInput.current.textContent!)
+        .catch((error: unknown) => {
+          console.error('Failed to copy code snippet: ', error)
+          setCopied(false)
+        })
+        .finally(() => {
+          setTimeout(() => {
+            setCopied(false)
+          }, 2000)
+        })
     }
   }
 

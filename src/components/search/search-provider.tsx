@@ -21,7 +21,9 @@ export default function SearchProvider({ children }: { children: React.ReactNode
       section: 'Pages',
       shortcut: ['h'],
       keywords: 'back',
-      perform: () => router.push('/'),
+      perform: () => {
+        router.push('/')
+      },
       priority: 5,
     },
     {
@@ -32,20 +34,31 @@ export default function SearchProvider({ children }: { children: React.ReactNode
       section: 'Pages',
       shortcut: ['c'],
       keywords: 'email author',
-      perform: () => router.push('/about'),
-      priority: 5,
-    },
-    timelineNews && {
-      id: 'news',
-      name: 'News',
-      subtitle: 'Latest news and updates',
-      icon: <IconNews />,
-      section: 'Pages',
-      shortcut: ['n'],
-      perform: () => router.push('/news'),
+      perform: () => {
+        router.push('/about')
+      },
       priority: 5,
     },
   ]
+
+  const newsAction: Action[] =
+    timelineNews.length > 0
+      ? [
+          {
+            id: 'news',
+            name: 'News',
+            subtitle: 'Latest news and updates',
+            icon: <IconNews />,
+            section: 'Pages',
+            shortcut: ['n'],
+            perform: () => {
+              router.push('/news')
+            },
+            priority: 5,
+          },
+        ]
+      : []
+
   const postActions = allPostsSorted.map((post) => ({
     id: `posts/${post.slug}`,
     name: post.title,
@@ -56,11 +69,13 @@ export default function SearchProvider({ children }: { children: React.ReactNode
       month: 'long',
       day: 'numeric',
     }),
-    perform: () => router.push(`posts/${post.slug}`),
+    perform: () => {
+      router.push(`posts/${post.slug}`)
+    },
     priority: 10,
   }))
   return (
-    <KBarProvider actions={[...pageActions, ...postActions]}>
+    <KBarProvider actions={[...pageActions, ...newsAction, ...postActions]}>
       <KBarModal actions={[]} isLoading={false} />
       {children}
     </KBarProvider>

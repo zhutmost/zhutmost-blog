@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils'
 
 export default function PopularTags() {
   let popularTags: { tag: string; icon?: string; title?: string }[]
-  if (siteConfig.homepage.popularTags) {
+  if (siteConfig.homepage.popularTags.length > 0) {
     popularTags = siteConfig.homepage.popularTags
   } else {
     const tagCounter = tagData as TagCounter
@@ -34,7 +34,7 @@ export default function PopularTags() {
         const { tag, icon, title } = popularTag
         const tagSlug = slugify(tag)
 
-        const IconSvg = icons[icon as keyof typeof icons] || icons.IconTag
+        const IconSvg = icon && icon in icons ? icons[icon as keyof typeof icons] : icons.IconTag
 
         const bgColor = chartColors[index % chartColors.length]
 
@@ -48,7 +48,7 @@ export default function PopularTags() {
             )}
           >
             <IconSvg className="h-6 w-6" />
-            <div className="my-auto truncate text-base">{title || tag}</div>
+            <div className="my-auto truncate text-base">{title ?? tag}</div>
           </NextLink>
         )
       })}

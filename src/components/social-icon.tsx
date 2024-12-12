@@ -12,7 +12,7 @@ interface SocialIconProps {
 }
 
 export default function SocialIcon({ name, icon, href, size = 6 }: SocialIconProps) {
-  const IconSvg = icons[icon as keyof typeof icons] || icons.IconFileUnknown
+  const IconSvg = icon in icons ? icons[icon as keyof typeof icons] : icons.IconFileUnknown
 
   return (
     <TooltipProvider>

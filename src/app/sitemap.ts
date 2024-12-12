@@ -18,7 +18,7 @@ export default function sitemap(): Sitemap {
     .filter((post) => !post.draft)
     .map((post) => ({
       url: new URL(`/post/${post.slug}`, siteConfig.siteUrl).toString(),
-      lastModified: (post.dateUpdate || post.datePublish).toISOString(),
+      lastModified: post.dateUpdate.toISOString(),
       priority: 1,
       changeFrequency: 'monthly',
     }))

@@ -36,7 +36,9 @@ export default function HomepageIntro() {
           </Twemojify>
         ))}
 
-        {homepageGreetings.scrolled && <ScrolledGreetings greetings={homepageGreetings.scrolled} />}
+        {homepageGreetings.scrolled.length && (
+          <ScrolledGreetings greetings={homepageGreetings.scrolled} />
+        )}
 
         {siteConfig.homepage.githubCalendar && (
           <div className="space-y-4 py-4">

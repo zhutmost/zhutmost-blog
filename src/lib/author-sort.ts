@@ -14,15 +14,12 @@ export function sortAuthors(
   method: SortMethod = 'name'
 ): Author[] {
   const compareFn = (a: Author, b: Author): number => {
-    if (method === 'name') {
-      return a.name.localeCompare(b.name)
-    } else if (method === 'slug') {
-      return a.slug.localeCompare(b.slug)
-    } else if (method === 'dateUpdate') {
-      return b.dateUpdate.getTime() - a.dateUpdate.getTime()
-    } else {
-      throw new Error(`Unknown author sorting method: ${method}`)
+    const methods = {
+      name: () => a.name.localeCompare(b.name),
+      slug: () => a.slug.localeCompare(b.slug),
+      dateUpdate: () => b.dateUpdate.getTime() - a.dateUpdate.getTime(),
     }
+    return methods[method]()
   }
   const authorsSorted: Author[] = authors.toSorted(compareFn)
   return order === 'asc' ? authorsSorted : authorsSorted.reverse()

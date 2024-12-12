@@ -1,9 +1,7 @@
-import { Button, buttonVariants } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 import { IconSearch } from '@tabler/icons-react'
 import { useKBar } from 'kbar'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import SmartLink from '@/components/smart-link'
-import { cn } from '@/lib/utils'
 
 export default function SearchButton() {
   const { query } = useKBar()
@@ -17,7 +15,9 @@ export default function SearchButton() {
             aria-label="Search"
             variant={'ghost'}
             size={'icon'}
-            onClick={() => query.toggle()}
+            onClick={() => {
+              query.toggle()
+            }}
           >
             <IconSearch />
           </Button>

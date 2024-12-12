@@ -16,7 +16,9 @@ export default function ScrolledGreetings({ greetings }: { greetings: HomepageGr
       loop: true,
       backDelay: 1000,
     })
-    return () => typed.destroy()
+    return () => {
+      typed.destroy()
+    }
   }, [])
 
   return (

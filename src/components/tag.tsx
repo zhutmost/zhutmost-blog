@@ -1,10 +1,7 @@
 import NextLink from 'next/link'
 import slugify from '@sindresorhus/slugify'
-interface Props {
-  text: string
-}
 
-const Tag = ({ text }: Props) => {
+const Tag = ({ text }: { text: string }) => {
   return (
     <NextLink
       href={`/tags/${slugify(text)}`}

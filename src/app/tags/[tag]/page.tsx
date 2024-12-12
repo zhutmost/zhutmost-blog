@@ -3,6 +3,7 @@ import { TagCounter } from '@/lib/content-collections/post-counter'
 import slugify from '@sindresorhus/slugify'
 import { notFound, redirect } from 'next/navigation'
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ tag: string }[]> {
   const tagCounter = tagData as TagCounter
   const tags = Object.keys(tagCounter)
@@ -13,7 +14,8 @@ export async function generateStaticParams(): Promise<{ tag: string }[]> {
   })
 }
 
-export default function Page({ params }: { params: { tag: string } }) {
+export default async function Page(props: { params: Promise<{ tag: string }> }) {
+  const params = await props.params
   const tagCounter = tagData as TagCounter
   const tag = Object.keys(tagCounter).find((t) => slugify(t) === decodeURI(params.tag))
 

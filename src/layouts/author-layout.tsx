@@ -16,7 +16,7 @@ export interface AuthorLayoutProps {
 
 export default function AuthorLayout({ children, author }: AuthorLayoutProps) {
   const { name, avatar, bio, affiliation, icons } = author
-  const avatarSrc: string = path.join(siteConfig.siteRoot || '', avatar || '/default-avatar.jpg')
+  const avatarSrc: string = path.join(siteConfig.siteRoot ?? '', avatar ?? '/default-avatar.jpg')
 
   return (
     <>

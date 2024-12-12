@@ -62,7 +62,11 @@ export default function PostCard({ post }: PostCardProps) {
               {title}
             </NextLink>
           </h3>
-          <div className="flex flex-wrap">{tags?.map((tag) => <Tag key={tag} text={tag} />)}</div>
+          <div className="flex flex-wrap">
+            {tags.map((tag) => (
+              <Tag key={tag} text={tag} />
+            ))}
+          </div>
         </div>
         <div className="prose max-w-none text-muted-foreground">{summary}</div>
         <div className="text-base font-medium leading-6">

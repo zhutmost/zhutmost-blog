@@ -97,11 +97,12 @@ interface MobileLinkProps extends LinkProps {
 
 function MobileLink({ href, onOpenChange, className, children, ...props }: MobileLinkProps) {
   const router = useRouter()
+  const hrefString = typeof href === 'string' ? href : href.pathname!
   return (
     <NextLink
       href={href}
       onClick={() => {
-        router.push(href.toString())
+        router.push(hrefString)
         onOpenChange?.(false)
       }}
       className={cn(className)}

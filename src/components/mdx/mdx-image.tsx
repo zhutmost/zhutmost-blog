@@ -12,13 +12,13 @@ export default function MdxImage({
   ...rest
 }: React.ImgHTMLAttributes<HTMLImageElement>) {
   if (!src) return null
-  const imgTitle = title || alt || ''
+  const imgTitle = title ?? alt ?? ''
   return (
     <figure className="relative mx-auto h-auto max-w-3xl">
       <SmartImage
         className={cn('mx-auto h-auto max-w-full rounded-lg object-fill', className)}
         src={src}
-        alt={alt || 'image'}
+        alt={alt ?? 'image'}
         width={parseInt(width! as string)}
         height={parseInt(height! as string)}
         placeholder={'empty'}

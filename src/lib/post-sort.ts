@@ -11,14 +11,13 @@ export function sortPosts(
   method: SortMethod = 'datePublish'
 ): Post[] {
   const compareFn = (a: Post, b: Post): number => {
-    if (method === 'datePublish') {
-      return b.datePublish.getTime() - a.datePublish.getTime()
-    } else if (method === 'dateUpdate') {
-      return b.dateUpdate.getTime() - a.dateUpdate.getTime()
-    } else {
-      throw new Error(`Unknown post sorting method: ${method}`)
+    const methods = {
+      datePublish: () => b.datePublish.getTime() - a.datePublish.getTime(),
+      dateUpdate: () => b.dateUpdate.getTime() - a.dateUpdate.getTime(),
     }
+    return methods[method]()
   }
+
   const postsDesc: Post[] = posts
     .filter((post: Post) => !isProduction || !post.draft)
     .toSorted(compareFn)

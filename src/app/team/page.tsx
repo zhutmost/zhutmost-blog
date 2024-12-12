@@ -14,7 +14,7 @@ import * as path from 'path'
 
 function PersonCard({ author }: { author: Author }) {
   const { name, avatar, bio, slug, icons } = author
-  const avatarSrc: string = path.join(siteConfig.siteRoot || '', avatar || '/default-avatar.jpg')
+  const avatarSrc: string = path.join(siteConfig.siteRoot ?? '', avatar ?? '/default-avatar.jpg')
 
   return (
     <div className="p-4 md:w-1/2 lg:w-1/4">
@@ -42,6 +42,7 @@ function PersonCard({ author }: { author: Author }) {
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export async function generateMetadata(): Promise<Metadata | undefined> {
   if (!siteConfig.teamPage) {
     return
@@ -60,7 +61,7 @@ export default function Page() {
     Record<string, Author[]>
   >((acc, a) => {
     const key: string = a._meta.directory
-    acc[key] = acc[key] || []
+    acc[key] = key in acc ? acc[key] : []
     acc[key].push(a)
     return acc
   }, {})

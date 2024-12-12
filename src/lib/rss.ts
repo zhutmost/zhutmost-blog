@@ -28,7 +28,7 @@ export default function generateRssFeed(): Feed {
       title: post.title,
       id: `/post/${post.slug}`,
       link: new URL(`post/${post.slug}`, siteUrl).toString(),
-      image: new URL(post.banner || siteConfig.seo.socialBanner, siteUrl).toString(),
+      image: new URL(post.banner ?? siteConfig.seo.socialBanner, siteUrl).toString(),
       description: post.summary,
       content: post.content,
       author: post.authors.map((author) => ({

@@ -10,6 +10,7 @@ export const metadata = generatePageMetadata({
   description: 'Things I blog about',
 })
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export default async function Page() {
   const tagCounter = tagData as TagCounter
   const tags = Object.keys(tagCounter)

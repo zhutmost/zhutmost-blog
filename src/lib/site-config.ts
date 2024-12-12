@@ -144,7 +144,7 @@ export interface SiteConfig {
 // Default site config. You can override it in the user config (/data/site-config.ts).
 export const defaultSiteConfig: SiteConfig = {
   siteUrl: 'https://example.com',
-  siteRoot: process.env.BASE_PATH || undefined,
+  siteRoot: process.env.BASE_PATH ?? undefined,
   siteTitle: 'Example Site',
   description: 'This is an example site',
   locale: 'en-US',
@@ -198,16 +198,16 @@ const siteConfig: SiteConfig = (() => {
 
   // Set default values for Open Graph and Twitter SEO
   c.seo.openGraph = {
-    title: c.seo.openGraph?.title || c.siteTitle,
-    description: c.seo.openGraph?.description || c.description,
-    siteName: c.seo.openGraph?.siteName || c.siteTitle,
-    locale: c.seo.openGraph?.locale || c.locale,
-    images: new URL(c.seo.openGraph?.images || c.seo.socialBanner, c.siteUrl).toString(),
+    title: c.seo.openGraph?.title ?? c.siteTitle,
+    description: c.seo.openGraph?.description ?? c.description,
+    siteName: c.seo.openGraph?.siteName ?? c.siteTitle,
+    locale: c.seo.openGraph?.locale ?? c.locale,
+    images: new URL(c.seo.openGraph?.images ?? c.seo.socialBanner, c.siteUrl).toString(),
   }
   c.seo.twitter = {
-    title: c.seo.twitter?.title || c.siteTitle,
-    description: c.seo.twitter?.description || c.description,
-    images: new URL(c.seo.twitter?.images || c.seo.socialBanner, c.siteUrl).toString(),
+    title: c.seo.twitter?.title ?? c.siteTitle,
+    description: c.seo.twitter?.description ?? c.description,
+    images: new URL(c.seo.twitter?.images ?? c.seo.socialBanner, c.siteUrl).toString(),
   }
 
   return c

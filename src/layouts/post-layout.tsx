@@ -83,7 +83,7 @@ function PostSidebar({ content, authors, postNext, postPrev }: Omit<PostLayoutPr
       </dl>
 
       {/* Tags */}
-      {tags && (
+      {tags.length && (
         <PostSidebarItem label="Tags">
           <div className="flex flex-wrap">
             {tags.map((tag) => (
@@ -94,7 +94,7 @@ function PostSidebar({ content, authors, postNext, postPrev }: Omit<PostLayoutPr
       )}
 
       {/* Next, Prev */}
-      {(postNext || postPrev) && (
+      {(postNext ?? postPrev) && (
         <div className="flex flex-wrap justify-between gap-8 py-4 xl:py-8">
           {postPrev && (
             <PostSidebarItem label="Previous Article" className="py-0 xl:py-0">

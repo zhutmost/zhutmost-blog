@@ -69,8 +69,8 @@ const rehypeGithubAlertsOptions: rehypeGithubAlertsOptionsType = {
   ],
 }
 
-async function commonTransform<D extends BaseDoc>(
-  document: D,
+async function commonTransform(
+  document: BaseDoc,
   context: Context
 ): Promise<{
   mdx: string
@@ -78,7 +78,7 @@ async function commonTransform<D extends BaseDoc>(
   dateUpdate: Date
   toc: TocItem[]
 }> {
-  const { mdx, toc } = await context.cache(document as BaseDoc, async () => {
+  const { mdx, toc } = await context.cache(document, async () => {
     const toc: TocItem[] = []
 
     const assetPath = path.join(context.collection.directory, document._meta.path)

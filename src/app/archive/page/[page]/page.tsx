@@ -9,6 +9,7 @@ import Twemojify from '@/components/twemoji'
 import { Metadata } from 'next'
 import { generatePageMetadata } from '@/lib/page-metadata'
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ page: string }[]> {
   const totalPages = Math.ceil(allPostsSorted.length / siteConfig.postPerPage)
   return Array.from({ length: totalPages }, (_, i) => ({ page: (i + 1).toString() }))
@@ -18,9 +19,9 @@ export const metadata: Metadata = generatePageMetadata({
   title: 'All Posts',
 })
 
-export default function Page({ params }: { params: { page: string } }) {
+export default async function Page({ params }: { params: Promise<{ page: string }> }) {
   const totalPages = Math.ceil(allPostsSorted.length / siteConfig.postPerPage)
-  const currPage = parseInt(params.page)
+  const currPage = parseInt((await params).page)
   if (currPage < 1 || currPage > totalPages) {
     redirect('/archive/page/1')
   }

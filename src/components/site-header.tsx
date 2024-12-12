@@ -18,7 +18,9 @@ export default function SiteHeader() {
     <header
       className={cn(
         'z-50 flex h-auto w-full items-center justify-center',
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         isSticky ? 'sticky inset-x-0 top-0' : 'static',
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         isBlurred ? 'bg-background/70 backdrop-blur-lg backdrop-saturate-150' : 'bg-background'
       )}
     >

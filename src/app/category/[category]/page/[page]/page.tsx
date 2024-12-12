@@ -13,6 +13,7 @@ import * as React from 'react'
 import Twemojify from '@/components/twemoji'
 import { generatePageMetadata } from '@/lib/page-metadata'
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ category: string }[]> {
   const categoryCounter = categoryData as CategoryCounter
   return Object.keys(categoryCounter).flatMap((category) => {
@@ -24,11 +25,10 @@ export async function generateStaticParams(): Promise<{ category: string }[]> {
   })
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { category: string; page: string }
+export async function generateMetadata(props: {
+  params: Promise<{ category: string; page: string }>
 }): Promise<Metadata | undefined> {
+  const params = await props.params
   const categoryCounter = tagData as TagCounter
   const category = Object.keys(categoryCounter).find(
     (t) => slugify(t) === decodeURI(params.category)
@@ -42,7 +42,8 @@ export async function generateMetadata({
   })
 }
 
-export default function Page({ params }: { params: { category: string; page: string } }) {
+export default async function Page(props: { params: Promise<{ category: string; page: string }> }) {
+  const params = await props.params
   const categoryCounter = categoryData as CategoryCounter
   const category = Object.keys(categoryCounter).find(
     (t) => slugify(t) === decodeURI(params.category)

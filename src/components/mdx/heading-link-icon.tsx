@@ -13,7 +13,7 @@ export default function HeadingLinkIcon({
   className,
   ...rest
 }: HeadingLinkIconProps) {
-  const Heading = `h${level}` as keyof React.JSX.IntrinsicElements
+  const Heading = `h${level.toString()}` as keyof React.JSX.IntrinsicElements
   if (id) {
     return React.createElement(
       Heading,
