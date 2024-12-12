@@ -1,16 +1,17 @@
 import * as React from 'react'
-import tagData from '@/data/tag-data.json'
-import { type Metadata } from 'next'
-import siteConfig from '@/lib/site-config'
-import allPostsSorted from '@/lib/post-sort'
 import slugify from '@sindresorhus/slugify'
+import { type Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
-import { TagCounter } from '@/lib/content-collections/post-counter'
+
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
 import PostCard from '@/components/post-card'
 import PostPagination from '@/components/post-pagination'
 import Twemojify from '@/components/twemoji'
+import tagData from '@/data/tag-data.json'
+import { TagCounter } from '@/lib/content-collections/post-counter'
 import { generatePageMetadata } from '@/lib/page-metadata'
+import allPostsSorted from '@/lib/post-sort'
+import siteConfig from '@/lib/site-config'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ tag: string; page: string }[]> {

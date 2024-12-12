@@ -1,6 +1,7 @@
-import NextLink from 'next/link'
-import Tag from '@/components/tag'
 import slugify from '@sindresorhus/slugify'
+import NextLink from 'next/link'
+
+import Tag from '@/components/tag'
 import tagData from '@/data/tag-data.json'
 import { TagCounter } from '@/lib/content-collections/post-counter'
 import { generatePageMetadata } from '@/lib/page-metadata'

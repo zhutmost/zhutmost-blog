@@ -1,8 +1,9 @@
-import { buttonVariants } from '@/components/ui/button'
 import { icons } from '@tabler/icons-react'
-import { cn } from '@/lib/utils'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+
 import SmartLink from '@/components/smart-link'
+import { buttonVariants } from '@/components/ui/button'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { cn } from '@/lib/utils'
 
 interface SocialIconProps {
   name: string

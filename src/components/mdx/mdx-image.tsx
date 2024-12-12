@@ -1,6 +1,7 @@
 import * as React from 'react'
-import { cn } from '@/lib/utils'
+
 import SmartImage from '@/components/smart-image'
+import { cn } from '@/lib/utils'
 
 export default function MdxImage({
   src,

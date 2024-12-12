@@ -1,16 +1,17 @@
 import * as React from 'react'
-import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
-import Twemojify from '@/components/twemoji'
-import siteConfig from '@/lib/site-config'
+import * as path from 'path'
+import type { Metadata } from 'next'
 import NextLink from 'next/link'
-import { Author } from '@/content-collections'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { notFound } from 'next/navigation'
+
+import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
 import SocialIcon from '@/components/social-icon'
+import Twemojify from '@/components/twemoji'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Author } from '@/content-collections'
 import { allAuthorsNonDefault, sortAuthors } from '@/lib/author-sort'
 import { generatePageMetadata } from '@/lib/page-metadata'
-import { notFound } from 'next/navigation'
-import type { Metadata } from 'next'
-import * as path from 'path'
+import siteConfig from '@/lib/site-config'
 
 function PersonCard({ author }: { author: Author }) {
   const { name, avatar, bio, slug, icons } = author

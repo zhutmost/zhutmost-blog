@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { IconCopy, IconCopyCheck } from '@tabler/icons-react'
+
 import { Button } from '@/components/ui/button'
 
 export default function PreCodeCopy({ children, ...rest }: React.HTMLAttributes<HTMLElement>) {

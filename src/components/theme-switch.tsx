@@ -1,8 +1,9 @@
 'use client'
 
 import * as React from 'react'
+import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-react'
 import { useTheme } from 'next-themes'
-import { IconSun, IconMoon, IconSunMoon } from '@tabler/icons-react'
+
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 

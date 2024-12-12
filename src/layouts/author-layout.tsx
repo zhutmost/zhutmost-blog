@@ -1,13 +1,14 @@
 import React from 'react'
 import * as path from 'path'
-import { Author } from '@/content-collections'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { IconMapPinFilled } from '@tabler/icons-react'
-import siteConfig from '@/lib/site-config'
-import SocialIcon from '@/components/social-icon'
+
 import BackToTop from '@/components/back-to-top'
-import { PageHeader, PageHeaderHeading, PageHeaderDescription } from '@/components/page-header'
+import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
+import SocialIcon from '@/components/social-icon'
 import Twemojify from '@/components/twemoji'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Author } from '@/content-collections'
+import siteConfig from '@/lib/site-config'
 
 export interface AuthorLayoutProps {
   children: React.ReactNode

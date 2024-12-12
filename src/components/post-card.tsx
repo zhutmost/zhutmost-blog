@@ -1,13 +1,14 @@
-import type { Post } from '@/content-collections'
-import NextLink from 'next/link'
 import * as React from 'react'
-import siteConfig from '@/lib/site-config'
-import Tag from '@/components/tag'
-import SmartImage from '@/components/smart-image'
-import { IconArrowRight } from '@tabler/icons-react'
 import slugify from '@sindresorhus/slugify'
+import { IconArrowRight } from '@tabler/icons-react'
+import NextLink from 'next/link'
+
+import SmartImage from '@/components/smart-image'
+import Tag from '@/components/tag'
 import Twemojify from '@/components/twemoji'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
+import type { Post } from '@/content-collections'
+import siteConfig from '@/lib/site-config'
 
 interface PostCardProps {
   post: Post

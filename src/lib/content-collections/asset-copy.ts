@@ -1,9 +1,9 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import { visit } from 'unist-util-visit'
-import { Plugin } from 'unified'
-import { Root } from 'mdast'
 import { Element } from 'hast'
+import { Root } from 'mdast'
+import { Plugin } from 'unified'
+import { visit } from 'unist-util-visit'
 
 export interface rehypeAssetCopyOptions {
   assetPath: string

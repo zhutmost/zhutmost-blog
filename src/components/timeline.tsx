@@ -1,8 +1,9 @@
 import * as React from 'react'
-import SocialIcon from '@/components/social-icon'
-import NextLink from 'next/link'
-import { buttonVariants } from '@/components/ui/button'
 import { IconArrowRight } from '@tabler/icons-react'
+import NextLink from 'next/link'
+
+import SocialIcon from '@/components/social-icon'
+import { buttonVariants } from '@/components/ui/button'
 
 type StringOrReactNode = string | React.ReactNode
 

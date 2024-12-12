@@ -1,17 +1,18 @@
-import categoryData from '@/data/category-data.json'
-import { type CategoryCounter, TagCounter } from '@/lib/content-collections/post-counter'
-import siteConfig from '@/lib/site-config'
+import * as React from 'react'
 import slugify from '@sindresorhus/slugify'
 import type { Metadata } from 'next'
-import tagData from '@/data/tag-data.json'
-import allPostsSorted from '@/lib/post-sort'
 import { notFound, redirect } from 'next/navigation'
+
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
 import PostCard from '@/components/post-card'
 import PostPagination from '@/components/post-pagination'
-import * as React from 'react'
 import Twemojify from '@/components/twemoji'
+import categoryData from '@/data/category-data.json'
+import tagData from '@/data/tag-data.json'
+import { TagCounter, type CategoryCounter } from '@/lib/content-collections/post-counter'
 import { generatePageMetadata } from '@/lib/page-metadata'
+import allPostsSorted from '@/lib/post-sort'
+import siteConfig from '@/lib/site-config'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ category: string }[]> {

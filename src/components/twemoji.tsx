@@ -1,9 +1,10 @@
 'use client'
 
 import * as React from 'react'
-import Twemoji, { TwemojiProps } from 'react-twemoji'
 import { parse } from '@twemoji/parser'
 import { cva, type VariantProps } from 'class-variance-authority'
+import Twemoji, { TwemojiProps } from 'react-twemoji'
+
 import { cn } from '@/lib/utils'
 
 const twemojifyVariants = cva('inline-block my-0', {

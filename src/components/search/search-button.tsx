@@ -1,6 +1,7 @@
-import { Button } from '@/components/ui/button'
 import { IconSearch } from '@tabler/icons-react'
 import { useKBar } from 'kbar'
+
+import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
 export default function SearchButton() {

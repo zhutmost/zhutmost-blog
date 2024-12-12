@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { TocItem } from 'remark-flexible-toc'
+
 import { cn } from '@/lib/utils'
 
 function useActiveItem(itemIds: string[]) {

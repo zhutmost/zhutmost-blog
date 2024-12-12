@@ -1,8 +1,8 @@
 'use client'
 
-import { useTheme } from 'next-themes'
 import * as React from 'react'
 import GiscusComponent from '@giscus/react'
+import { useTheme } from 'next-themes'
 
 export interface GiscusProps {
   themeURL?: `https://${string}`

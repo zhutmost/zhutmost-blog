@@ -1,10 +1,11 @@
 'use client'
 
 import * as React from 'react'
-import { Action, KBarProvider } from 'kbar'
-import KBarModal from '@/components/search/search-modal'
-import { useRouter } from 'next/navigation'
 import { IconHome, IconNews, IconUser } from '@tabler/icons-react'
+import { Action, KBarProvider } from 'kbar'
+import { useRouter } from 'next/navigation'
+
+import KBarModal from '@/components/search/search-modal'
 import timelineNews from '@/data/timeline-news'
 import allPostsSorted from '@/lib/post-sort'
 import siteConfig from '@/lib/site-config'

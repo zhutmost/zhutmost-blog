@@ -1,5 +1,5 @@
-import NextLink from 'next/link'
 import slugify from '@sindresorhus/slugify'
+import NextLink from 'next/link'
 
 const Tag = ({ text }: { text: string }) => {
   return (

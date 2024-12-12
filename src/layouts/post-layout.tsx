@@ -1,14 +1,15 @@
 import * as React from 'react'
-import type { Author, Post } from '@/content-collections'
-import BackToTop from '@/components/back-to-top'
-import siteConfig from '@/lib/site-config'
 import NextLink from 'next/link'
-import Tag from '@/components/tag'
-import PostLicense from '@/components/post-license'
+
+import BackToTop from '@/components/back-to-top'
 import Comments from '@/components/comments'
+import PostLicense from '@/components/post-license'
 import PostToc from '@/components/post-toc'
-import { cn } from '@/lib/utils'
 import SmartImage from '@/components/smart-image'
+import Tag from '@/components/tag'
+import type { Author, Post } from '@/content-collections'
+import siteConfig from '@/lib/site-config'
+import { cn } from '@/lib/utils'
 
 export interface PostLayoutProps {
   children: React.ReactNode

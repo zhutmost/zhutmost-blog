@@ -1,14 +1,15 @@
 import * as React from 'react'
-import { PageHeader, PageHeaderDescription } from '@/components/page-header'
-import NextLink from 'next/link'
 import { IconArrowRight } from '@tabler/icons-react'
-import Twemojify from '@/components/twemoji'
-import siteConfig from '@/lib/site-config'
-import PostCard from '@/components/post-card'
-import allPostsSorted from '@/lib/post-sort'
-import Timeline from '@/components/timeline'
+import NextLink from 'next/link'
+
 import PopularTags from '@/components/homepage/popular-tags'
+import { PageHeader, PageHeaderDescription } from '@/components/page-header'
+import PostCard from '@/components/post-card'
+import Timeline from '@/components/timeline'
+import Twemojify from '@/components/twemoji'
 import timelineNews from '@/data/timeline-news'
+import allPostsSorted from '@/lib/post-sort'
+import siteConfig from '@/lib/site-config'
 
 export interface HomepageSectionProps {
   children: React.ReactNode

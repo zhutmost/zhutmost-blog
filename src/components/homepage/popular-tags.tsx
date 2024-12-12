@@ -1,11 +1,12 @@
 import * as React from 'react'
-import NextLink from 'next/link'
 import slugify from '@sindresorhus/slugify'
 import { icons } from '@tabler/icons-react'
-import siteConfig from '@/lib/site-config'
+import NextLink from 'next/link'
+
 import { buttonVariants } from '@/components/ui/button'
 import tagData from '@/data/tag-data.json'
 import { TagCounter } from '@/lib/content-collections/post-counter'
+import siteConfig from '@/lib/site-config'
 import { cn } from '@/lib/utils'
 
 export default function PopularTags() {

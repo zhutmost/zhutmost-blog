@@ -1,6 +1,4 @@
 import { deepmerge } from 'deepmerge-ts'
-import { DisqusProps, UtterancesProps } from 'pliny/comments/index.js'
-import { GiscusProps } from '@/components/comment/giscus-comments'
 import {
   GoogleAnalyticsProps,
   PlausibleProps,
@@ -8,8 +6,11 @@ import {
   SimpleAnalyticsProps,
   UmamiProps,
 } from 'pliny/analytics/index.js'
-import userConfig from '@/data/site-config'
+import { DisqusProps, UtterancesProps } from 'pliny/comments/index.js'
+
+import { GiscusProps } from '@/components/comment/giscus-comments'
 import { homepageSectionMap } from '@/components/homepage/homepage-section'
+import userConfig from '@/data/site-config'
 
 export type CommentProviders = 'giscus' | 'utterances' | 'disqus'
 

@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
-import siteConfig from '@/lib/site-config'
-import Timeline from '@/components/timeline'
-import timelineNews from '@/data/timeline-news'
-import Twemojify from '@/components/twemoji'
-import { generatePageMetadata } from '@/lib/page-metadata'
 import { Metadata } from 'next'
+
+import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
+import Timeline from '@/components/timeline'
+import Twemojify from '@/components/twemoji'
+import timelineNews from '@/data/timeline-news'
+import { generatePageMetadata } from '@/lib/page-metadata'
+import siteConfig from '@/lib/site-config'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'News',

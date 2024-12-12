@@ -3,14 +3,15 @@ import '@/styles/github-alert.css'
 
 import * as React from 'react'
 import type { Metadata } from 'next'
-import siteConfig from '@/lib/site-config'
-import customFontFamily from '@/lib/fonts'
-import { ThemeProvider } from '@/components/theme-provider'
-import { cn } from '@/lib/utils'
-import SiteHeader from '@/components/site-header'
-import SiteFooter from '@/components/site-footer'
 import { Analytics } from 'pliny/analytics/index.js'
+
 import SearchProvider from '@/components/search/search-provider'
+import SiteFooter from '@/components/site-footer'
+import SiteHeader from '@/components/site-header'
+import { ThemeProvider } from '@/components/theme-provider'
+import customFontFamily from '@/lib/fonts'
+import siteConfig from '@/lib/site-config'
+import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),

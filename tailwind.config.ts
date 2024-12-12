@@ -1,9 +1,10 @@
-import type { Config as TwConfig } from 'tailwindcss'
 import pluginTwTypography from '@tailwindcss/typography'
 import pluginTwAnimate from 'tailwindcss-animate'
-import { createThemes } from 'tw-colors'
 import colors from 'tailwindcss/colors'
 import defaultTheme from 'tailwindcss/defaultTheme'
+import { createThemes } from 'tw-colors'
+
+import type { Config as TwConfig } from 'tailwindcss'
 
 const pluginTwColors = createThemes({
   light: {

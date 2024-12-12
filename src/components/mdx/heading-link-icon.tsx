@@ -1,6 +1,7 @@
 import * as React from 'react'
-import { cn } from '@/lib/utils'
 import { IconLink } from '@tabler/icons-react'
+
+import { cn } from '@/lib/utils'
 
 interface HeadingLinkIconProps extends React.HTMLAttributes<HTMLHeadingElement> {
   level: 1 | 2 | 3 | 4 | 5 | 6

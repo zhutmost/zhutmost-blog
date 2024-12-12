@@ -1,10 +1,11 @@
 import * as React from 'react'
+
+import GithubCalendar from '@/components/homepage/github-calendar'
 import ScrolledGreetings from '@/components/homepage/scrolled-greetings'
+import SmartLink from '@/components/smart-link'
 import Twemojify from '@/components/twemoji'
 import homepageGreetings from '@/data/homepage-greetings'
 import siteConfig from '@/lib/site-config'
-import GithubCalendar from '@/components/homepage/github-calendar'
-import SmartLink from '@/components/smart-link'
 
 export type HomepageGreetingsItem = string | React.ReactNode
 

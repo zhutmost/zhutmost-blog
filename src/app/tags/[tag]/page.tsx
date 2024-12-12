@@ -1,7 +1,8 @@
-import tagData from '@/data/tag-data.json'
-import { TagCounter } from '@/lib/content-collections/post-counter'
 import slugify from '@sindresorhus/slugify'
 import { notFound, redirect } from 'next/navigation'
+
+import tagData from '@/data/tag-data.json'
+import { TagCounter } from '@/lib/content-collections/post-counter'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ tag: string }[]> {

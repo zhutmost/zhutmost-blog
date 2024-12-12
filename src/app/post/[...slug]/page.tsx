@@ -1,15 +1,16 @@
 import '@/styles/highlight.css'
 import 'katex/dist/katex.css'
 
-import mdxComponents from '@/components/mdx/mdx-components'
 import { MDXContent } from '@content-collections/mdx/react'
-import { allPosts, type Author, type Post } from '@/content-collections'
 import { Metadata } from 'next'
-import siteConfig from '@/lib/site-config'
 import { notFound } from 'next/navigation'
+
+import mdxComponents from '@/components/mdx/mdx-components'
+import { allPosts, type Author, type Post } from '@/content-collections'
 import PostLayout from '@/layouts/post-layout'
-import allPostsSorted from '@/lib/post-sort'
 import authorsFind from '@/lib/authors-find'
+import allPostsSorted from '@/lib/post-sort'
+import siteConfig from '@/lib/site-config'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ slug: string[] }[]> {

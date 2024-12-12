@@ -1,5 +1,6 @@
 import * as path from 'path'
 import NextImage, { ImageProps } from 'next/image'
+
 import siteConfig from '@/lib/site-config'
 
 export default function SmartImage({ src, ...rest }: ImageProps) {

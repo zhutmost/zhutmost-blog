@@ -1,13 +1,14 @@
 'use client'
 
 import NextLink from 'next/link'
+
+import MobileNav from '@/components/mobile-nav'
+import SearchButton from '@/components/search/search-button'
+import SmartImage from '@/components/smart-image'
+import ThemeSwitch from '@/components/theme-switch'
 import { buttonVariants } from '@/components/ui/button'
 import siteConfig from '@/lib/site-config'
 import { cn } from '@/lib/utils'
-import MobileNav from '@/components/mobile-nav'
-import ThemeSwitch from '@/components/theme-switch'
-import SearchButton from '@/components/search/search-button'
-import SmartImage from '@/components/smart-image'
 
 export default function SiteHeader() {
   const isBlurred = true

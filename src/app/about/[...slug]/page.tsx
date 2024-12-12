@@ -1,12 +1,12 @@
-import { Metadata } from 'next'
-
-import { Author } from '@/content-collections'
 import { MDXContent } from '@content-collections/mdx/react'
-import mdxComponents from '@/components/mdx/mdx-components'
-import AuthorLayout from '@/layouts/author-layout'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { generatePageMetadata } from '@/lib/page-metadata'
+
+import mdxComponents from '@/components/mdx/mdx-components'
+import { Author } from '@/content-collections'
+import AuthorLayout from '@/layouts/author-layout'
 import { allAuthorsNonDefault } from '@/lib/author-sort'
+import { generatePageMetadata } from '@/lib/page-metadata'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ slug: string[] }[]> {

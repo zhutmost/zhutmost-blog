@@ -1,7 +1,8 @@
+import slugify from '@sindresorhus/slugify'
 import { notFound, redirect } from 'next/navigation'
+
 import categoryData from '@/data/category-data.json'
 import { CategoryCounter } from '@/lib/content-collections/post-counter'
-import slugify from '@sindresorhus/slugify'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams(): Promise<{ category: string }[]> {

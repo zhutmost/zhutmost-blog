@@ -2,8 +2,9 @@
 
 import * as React from 'react'
 import Typed from 'typed.js'
-import Twemojify from '@/components/twemoji'
+
 import { HomepageGreetingsItem } from '@/components/homepage/homepage-intro'
+import Twemojify from '@/components/twemoji'
 
 export default function ScrolledGreetings({ greetings }: { greetings: HomepageGreetingsItem[] }) {
   const el = React.useRef(null)

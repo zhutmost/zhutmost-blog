@@ -1,5 +1,6 @@
-import siteConfig from '@/lib/site-config'
 import { Metadata } from 'next'
+
+import siteConfig from '@/lib/site-config'
 
 interface PageMetadataProps {
   title: string

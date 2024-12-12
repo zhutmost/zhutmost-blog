@@ -1,5 +1,3 @@
-import siteConfig, { CreativeCommonsLicense } from '@/lib/site-config'
-import type { Author, Post } from '@/content-collections'
 import {
   IconCreativeCommons,
   IconCreativeCommonsBy,
@@ -8,6 +6,9 @@ import {
   IconCreativeCommonsSa,
   IconCreativeCommonsZero,
 } from '@tabler/icons-react'
+
+import type { Author, Post } from '@/content-collections'
+import siteConfig, { CreativeCommonsLicense } from '@/lib/site-config'
 
 export interface PostLicenseProps {
   post: Post

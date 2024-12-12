@@ -1,7 +1,8 @@
 import * as React from 'react'
-import siteConfig from '@/lib/site-config'
-import { Comments as PlinyComments, CommentsConfig } from 'pliny/comments/index.js'
+import { CommentsConfig, Comments as PlinyComments } from 'pliny/comments/index.js'
+
 import GiscusComments from '@/components/comment/giscus-comments'
+import siteConfig from '@/lib/site-config'
 
 export default function Comments({ slug }: { slug: string }) {
   if (siteConfig.comment.provider === 'giscus') {

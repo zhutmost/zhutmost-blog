@@ -1,10 +1,10 @@
+import { MDXContent } from '@content-collections/mdx/react'
 import { Metadata } from 'next'
 
-import { MDXContent } from '@content-collections/mdx/react'
 import mdxComponents from '@/components/mdx/mdx-components'
 import AuthorLayout from '@/layouts/author-layout'
-import { generatePageMetadata } from '@/lib/page-metadata'
 import { authorDefault } from '@/lib/author-sort'
+import { generatePageMetadata } from '@/lib/page-metadata'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'About',

@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { cn } from '@/lib/utils'
 import { IconExternalLink } from '@tabler/icons-react'
+
 import SmartLink from '@/components/smart-link'
+import { cn } from '@/lib/utils'
 
 export default function MdxLink({
   href,

@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next'
-import siteConfig from '@/lib/site-config'
-import allPostsSorted from '@/lib/post-sort'
+
 import { allAuthors } from '@/content-collections'
+import allPostsSorted from '@/lib/post-sort'
+import siteConfig from '@/lib/site-config'
 
 type Sitemap = MetadataRoute.Sitemap
 type SitemapSingleFile = MetadataRoute.Sitemap[number]
