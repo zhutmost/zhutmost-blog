@@ -29,7 +29,7 @@ const timelineNews2024: TimelineItemProps[] = [
   },
   {
     date: new Date('2024-05-14'),
-    title: 'Our 2 Compute-in-Memory papers appear on ISCAS 2024.',
+    title: 'Our 2 Compute-in-Memory papers appeared on ISCAS 2024.',
     description:
       'We presented two works, a Logarithmic FP CIM macro and a LUT-based CIM macro. The latter, Trident-CIM, was invited to transfer to TCAS-II.',
     icons: {
