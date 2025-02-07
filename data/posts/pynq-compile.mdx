@@ -15,11 +15,11 @@ PYNQ 是我很喜欢的一个 FPGA 开源工具。它将 Zynq 上的各种硬件
 
 PYNQ官方提供了 [SD 卡镜像编译的文档](https://pynq.readthedocs.io/en/latest/pynq_sd_card.html)，因此一些比较明确的步骤我可能不会详述，请搭配官方文档阅读。
 
-为了避免混淆，这里先澄清一下很多朋友的一个小误解：本文中的PYNQ指的是 PYNQ 框架（本质上是一个 Ubuntu），而非那两个粉色的开发板（PYNQ-Z1 和 PYNQ-Z2）。PYNQ 可以部署在 PYNQ-Z1 和 PYNQ-Z2 上，也可以部署在其他 Zynq 系列的 FPGA 上。
+为了避免混淆，这里先澄清一下很多朋友的一个小误解：本文中的 PYNQ 指的是 PYNQ 框架（本质上是一个 Ubuntu），而非那两个粉色的开发板（PYNQ-Z1 和 PYNQ-Z2）。PYNQ 可以部署在 PYNQ-Z1 和 PYNQ-Z2 上，也可以部署在其他 Zynq 系列的 FPGA 上。
 
 ## 开始之前
 
-Xilinx 提供了 PYNQ-Z1、PYNQ-Z2、ZCU104 等开发板的镜像，可以直接从PYNQ网站上下载到，具体列表可以在 [PYNQ 的下载页面](http://pynq.io/board.html)找到（也包括 Ultra96 等第三方开发板）。如果我们想要在此外的开发板（比如本文中的 EdgeBoard Lite）上使用 PYNQ，就需要自己编译PYNQ镜像。
+Xilinx 提供了 PYNQ-Z1、PYNQ-Z2、ZCU104 等开发板的镜像，可以直接从 PYNQ 网站上下载到，具体列表可以在 [PYNQ 的下载页面](http://pynq.io/board.html)找到（也包括 Ultra96 等第三方开发板）。如果我们想要在此外的开发板（比如本文中的 EdgeBoard Lite）上使用 PYNQ，就需要自己编译PYNQ镜像。
 
 本文的编译目标是 PYNQ v2.7。本文写作时（2021 年 8 月）PYNQ2.7 的开发已经完成，但是还没有合入主线分支，文档也没有更新（但差别不大，反正各种奇奇怪怪的 bug 本来也不会写在文档里）。每次大版本（即 2.X）更新后，随着时间推移，依赖软件包之间会出现五花八门的兼容性问题，这些问题很可能要到下一次 PYNQ 大版本更新才会一次性修复。这个问题主要得归咎于 Xilinx 官方，PYNQ 的编译中依赖的很多软件都不指定特定版本。因此，如果你看到本文时已是很久之后，文章中遇到的问题和你遇到的可能不尽相同。
 
@@ -51,7 +51,7 @@ source ./scripts/setup_host.sh
 sudo apt install ninja-build
 ```
 
-到这里，Xilinx 全家桶需要的各种依赖包也安装完成了，接下来就可以安装Xilinx全家桶了。
+到这里，Xilinx 全家桶需要的各种依赖包也安装完成了，接下来就可以安装 Xilinx 全家桶了。
 
 ### 安装 Xilinx 全家桶
 
@@ -63,7 +63,7 @@ PetaLinux 安装的命令如下：
 ```shell
 petalinux-v2020.2-final-installer.run --dir <xilinx_install_dir>/petalinux/2020.2 --platform "aarch64 arm"
 ```
-具体安装选项可以参考 [UG1144](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1144-petalinux-tools-reference-guide.pdf)。这里存在一个坑，PetaLinux 的安装程序允许用户任意指定安装位置，但是 PYNQ 之前的版本默认却要求它的路径必须是`.../2020.2/`的形式（v2.7 有无修复不确定，我没有去测试）。
+具体安装选项可以参考 [UG1144](https://docs.amd.com/r/en-US/ug1144-petalinux-tools-reference-guide)。这里存在一个坑，PetaLinux 的安装程序允许用户任意指定安装位置，但是 PYNQ 之前的版本默认却要求它的路径必须是`.../2020.2/`的形式（v2.7 有无修复不确定，我没有去测试）。
 
 安装完成后，我们需要将下面几行代码加入 `.bashrc`（也可以每次打开命令行手动执行）。这样一来，就可以在命令行中运行这些软件了。
 ```shell
@@ -87,7 +87,7 @@ PYNQ在 `boards` 文件夹下预置了 `Pynq-Z1`、`Pynq-Z2`、`ZCU104` 三个�
 
 `notebooks` 文件夹会原样复制到最终的用户目录下，每次大家打开 Jupyter Notebook 后看到的就是它。这个文件夹里的内容不是很重要，一般都是放些教程。
 
-`petalinux_bsp` 文件夹用于 PetaLinux 生成 BSP，它只在 `sdbuild/scripts/create_bsp.sh` 脚本中用到。该文件夹里边包括两个文件夹 `meta-user`、`hardware_project`。其中，`meta-user` 文件夹会被复制到PetaLinux项目文件夹下的 `project-spec/meta-user`，里面放设备树文件、各种用户配置等（如果你对 PetaLinux 项目的目录结构不了解的话可以参考 [UG1144](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1144-petalinux-tools-reference-guide.pdf)）。`hardware_project` 里需要放 `.xsa` 硬件描述文件（该文件由 Vivado 导出），或者也可以放一些脚本（至少包括一个 Makefile）供 PetaLinux 实时地生成 `.xsa` 文件。如果用户在 `<board_name>.spec` 中指定了 BSP，那么 `hardware_project` 不会被用到。这里一个文档中一个没有注明的是，`meta-user` 总是会起作用，即使你指定了 BSP，它也会覆盖掉里边的 `meta-user` 并重新打包。
+`petalinux_bsp` 文件夹用于 PetaLinux 生成 BSP，它只在 `sdbuild/scripts/create_bsp.sh` 脚本中用到。该文件夹里边包括两个文件夹 `meta-user`、`hardware_project`。其中，`meta-user` 文件夹会被复制到PetaLinux项目文件夹下的 `project-spec/meta-user`，里面放设备树文件、各种用户配置等（如果你对 PetaLinux 项目的目录结构不了解的话可以参考 [UG1144](https://docs.amd.com/r/en-US/ug1144-petalinux-tools-reference-guide)）。`hardware_project` 里需要放 `.xsa` 硬件描述文件（该文件由 Vivado 导出），或者也可以放一些脚本（至少包括一个 Makefile）供 PetaLinux 实时地生成 `.xsa` 文件。如果用户在 `<board_name>.spec` 中指定了 BSP，那么 `hardware_project` 不会被用到。这里一个文档中一个没有注明的是，`meta-user` 总是会起作用，即使你指定了 BSP，它也会覆盖掉里边的 `meta-user` 并重新打包。
 
 `packages` 文件夹的结构和 `sdbuild/packages` 的结构类似，这两个目录下的每个文件夹对应一个个的组件，在编译过程中会被安装到 RootFS 中。安装过程主要是在 `sdbuild/scripts/install_packages.sh` 中进行。如果你需要增加组件，建议阅读此脚本和 `sdbuild/packages/README.md` 了解更多细节。
 
@@ -274,7 +274,7 @@ EdgeBoard FZ3A 有两个 UART 串口，一个是 BT1120 连接件的一部分，
 
 ### `dash.preinst` 找不到
 
-RootFS 的编译脚本（即 `create_rootfs.sh`）会在前面提到的 `postinst1.sh` 和 `postinst2.sh` 两个脚本执行中提示 `dash.preinst`执行失败，原因是`/var/lib/dpkg/info/dash.preinst`找不到。该错误的原因仅仅是上游已经把`dash.preinst`这个脚本删除了（可参考[此文](https://unix.stackexchange.com/questions/558844/no-var-lib-dpkg-info-dash-preinst-in-buster)）。因此这里执行该脚本的三行代码都是多余的，直接删除即可。即使不删除，它们也应当不会引起其他异常（除了在终端里输出一些错误信息）。
+RootFS 的编译脚本（即 `create_rootfs.sh`）会在前面提到的 `postinst1.sh` 和 `postinst2.sh` 两个脚本执行中提示 `dash.preinst` 执行失败，原因是 `/var/lib/dpkg/info/dash.preinst` 找不到。该错误的原因仅仅是上游已经把 `dash.preinst` 这个脚本删除了（可参考[此文](https://unix.stackexchange.com/questions/558844/no-var-lib-dpkg-info-dash-preinst-in-buster)）。因此这里执行该脚本的三行代码都是多余的，直接删除即可。即使不删除，它们也应当不会引起其他异常（除了在终端里输出一些错误信息）。
 
 ### RootFS 分区磁盘容量不足
 
