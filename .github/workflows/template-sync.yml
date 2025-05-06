@@ -1,0 +1,39 @@
+name: Analog Template Sync
+
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  template-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Update submodules
+        run: git submodule update --remote --recursive
+
+      - name: Run git status
+        id: status
+        run: echo "::set-output name=status::$(git status -s)"
+
+      - name: Add and commit files
+        run: |
+          git add .
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "chore(analog): update analog at $(date "+DATE: %Y-%m-%d TIME: %H:%M:%S")"
+        if: ${{ steps.status.outputs.status }}
