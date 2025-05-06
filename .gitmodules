@@ -1,0 +1,3 @@
+[submodule "analog"]
+	path = analog
+	url = https://github.com/zhutmost/analog-blog-starter
