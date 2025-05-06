@@ -37,3 +37,10 @@ jobs:
           git config --local user.name "GitHub Action"
           git commit -m "chore(analog): update analog at $(date "+DATE: %Y-%m-%d TIME: %H:%M:%S")"
         if: ${{ steps.status.outputs.status }}
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+        if: ${{ steps.status.outputs.status && github.event_name == 'push' }}
