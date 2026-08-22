@@ -1,5 +1,10 @@
 # zhutmost.com
 
-This repository is just for hosting the Gitcus comment system for [my blog](https://zhutmost.com).
+This repository contains the site-specific content, configuration, and public assets for
+[zhutmost.com](https://zhutmost.com).
 
-The blog is driven by [Analog Blog Starter](https://github.com/zhutmost/analog-blog-starter). The source code of the blog is merged to template repostory.
+The site is built with [Analog Blog Starter](https://github.com/zhutmost/analog-blog-starter).
+During deployment, this repository is cloned into `sites/blog`, then built with
+`SITE_DIR=sites/blog`.
+
+This repository also hosts the Giscus discussions used by the blog.
