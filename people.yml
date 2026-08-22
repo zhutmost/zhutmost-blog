@@ -7,7 +7,7 @@ current:
       github: hesiqi2000
       cosupervisors:
         - name: Prof. Xiaoyang Zeng
-          href: https://zhutmost.com
+          href: https://icmne.fudan.edu.cn/2d/58/c48925a732504/page.htm
       research:
         - Compute-in-Memory
         - LLM Processor
@@ -17,7 +17,7 @@ current:
       github: Wulizhou888
       cosupervisors:
         - name: Prof. Xiaoyang Zeng
-          href: https://zhutmost.com
+          href: https://icmne.fudan.edu.cn/2d/58/c48925a732504/page.htm
       research:
         - GPU Architecture
         - 3DGS Architecture
@@ -26,7 +26,7 @@ current:
       startYear: 2023
       cosupervisors:
         - name: Prof. Xiaoyang Zeng
-          href: https://zhutmost.com
+          href: https://icmne.fudan.edu.cn/2d/58/c48925a732504/page.htm
       research:
         - Embodied AI Processor
 
@@ -34,7 +34,7 @@ current:
       startYear: 2024
       cosupervisors:
         - name: Prof. Xiaoyang Zeng
-          href: https://zhutmost.com
+          href: https://icmne.fudan.edu.cn/2d/58/c48925a732504/page.htm
       research:
         - Embodied AI Processor
 
@@ -49,7 +49,7 @@ current:
       startYear: 2024
       cosupervisors:
         - name: Prof. Qi Liu
-          href: https://zhutmost.com
+          href: https://fics.fudan.edu.cn/8e/48/c22619a429640/page.htm
       research:
         - Embodied AI System
         - FPGA Acceleration
@@ -59,7 +59,7 @@ current:
       github: Greedy247
       cosupervisors:
         - name: Prof. Qi Liu
-          href: https://zhutmost.com
+          href: https://fics.fudan.edu.cn/8e/48/c22619a429640/page.htm
       research:
         - Embodied AI Processor
         - FPGA Acceleration
@@ -93,7 +93,7 @@ current:
       github: FDU-ZJN
       cosupervisors:
         - name: Prof. Ming Liu
-          href: https://zhutmost.com
+          href: https://fics.fudan.edu.cn/36/80/c22618a276096/page.htm
       research:
         - GPU Architecture
 
@@ -110,7 +110,7 @@ alumni:
       github: GuitarZeiZei
       cosupervisors:
         - name: Prof. Xiaoyang Zeng
-          href: https://zhutmost.com
+          href: https://icmne.fudan.edu.cn/2d/58/c48925a732504/page.htm
       description: Joined Alibaba DAMO Academy (阿里巴巴达摩院) as an AI chip architect through the Alibaba Star (阿里星) program.
 
   "Master":
@@ -120,5 +120,5 @@ alumni:
       github: wZHYovo
       cosupervisors:
         - name: Prof. Xiaoyang Zeng
-          href: https://zhutmost.com
+          href: https://icmne.fudan.edu.cn/2d/58/c48925a732504/page.htm
       description: Joined Huawei HiSilicon Turing (华为海思 · 图灵业务部) as an IC designer.
