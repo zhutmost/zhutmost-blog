@@ -75,7 +75,7 @@ petalinux-v2020.2-final-installer.run --dir <xilinx_install_dir>/petalinux/2020.
 
 安装完成后，我们需要将下面几行代码加入 `.bashrc`（也可以每次打开命令行手动执行）。这样一来，就可以在命令行中运行这些软件了。
 
-```shell fileName=".bashrc"
+```shell title="~/.bashrc"
 source <xilinx_install_dir>/petalinux/2020.2/settings.sh
 source <xilinx_install_dir>/Vivado/2020.2/settings64.sh
 source <xilinx_install_dir>/Vitis/2020.2/settings64.sh
@@ -103,7 +103,7 @@ PYNQ在 `boards` 文件夹下预置了 `Pynq-Z1`、`Pynq-Z2`、`ZCU104` 三个�
 
 `<board_name>.spec` 文件描述了针对该开发板的各种配置和文件路径。它的格式如下所示：
 
-```makefile fileName="board_name.spec"
+```makefile title="board_name.spec"
 ARCH_<board_name> := aarch64 # Zynq的CPU架构，可以是aarch64或arm
 BSP_<board_name> := ... # 开发板的BSP文件（如果有的话）
 BITSTREAM_<board_name> := ... # 默认的比特流文件
@@ -169,7 +169,7 @@ PYNQ 采用 Multistrap 作为 RootFS 的初始化工具，它利用 apt 下载�
 
 那么问题来了，为什么 RootFS 初始化时部分包安装失败后不会报错呢？原因在 `sdbuild/scripts/create_rootfs.sh` 脚本中如下的两行代码抑制了 `postinst1.sh` 和 `postinst2.sh` 两个脚本的报错：
 
-```shell fileName="create_rootfs.sh"
+```shell title="sdbuild/scripts/create_rootfs.sh"
 $dry_run sudo -E chroot $target bash postinst1.sh
 ... # other stuff
 $dry_run sudo -E chroot $target bash postinst2.sh
@@ -181,7 +181,7 @@ $dry_run sudo -E chroot $target bash postinst2.sh
 
 这里我的解决方法是手工指定 `dpkg --configure` 的顺序，将 `sdbuild/scripts/create_rootfs.sh` 的 `postinst1.sh` 部分中原先的 `dpkg --configure -a` 修改成：
 
-```shell fileName="create_rootfs.sh"
+```shell title="sdbuild/scripts/create_rootfs.sh"
 # 先完成base-passwd的configure
 dpkg --configure gcc-10-base libcrypt1 libc6 libgcc-s1 libdebconfclient0 base-passwd
 # 再完成其他组件的configure
@@ -194,7 +194,7 @@ dpkg --configure -a
 
 这里可以从报错信息中观察到，安装失败的原因是它的 `postinst` 脚本中用到了 `awk`，然而此时 `awk` 这个命令还未安装。解决方法也和上个问题类似，即手工指定 `dpkg --configure` 的顺序，确保提供 `awk` 命令的包比 `python2.7-minimal` 先完成 `configure`。有很多包都提供了 `awk` 命令，我这里选择了 `mawk`。
 
-```shell fileName="create_rootfs.sh"
+```shell title="sdbuild/scripts/create_rootfs.sh"
 dpkg --configure <... 其他需要提前`configure`的包> mawk
 dpkg --configure -a
 ```
@@ -229,7 +229,7 @@ touch system-user.dtsi
 
 然后对 sdhci1 节点（对应于 PS_SD1，即我们的 SD 卡槽）进行修改。完成以后，你的 `system-user.dtsi` 文件应该长这个样子：
 
-```text fileName="system-user.dtsi"
+```text title="system-user.dtsi"
 /include/ "system-conf.dtsi"
 / { /*根节点，这里保持不变*/
 };
@@ -250,7 +250,7 @@ PYNQ 默认总是从 `/dev/mmcblk0`（这个路径是 PYNQ 上的，不是你的
 
 PetaLinux 的 Boot 参数是通过设备树中的 `/chosen/bootargs` 条目进行配置的。默认情况下，最后镜像使用的设备树中该条目会是这样的（每个字段的先后顺序不重要）：
 
-```text fileName="system-user.dtsi"
+```text title="system-user.dtsi"
 bootargs = "root=/dev/mmcblk0p2 rw earlyprintk rootfstype=ext4 rootwait devtmpfs.mount=1 uio_pdrv_genirq.of_id=\"generic-uio\" clk_ignore_unused";
 ```
 
@@ -271,7 +271,7 @@ bootargs = "root=/dev/mmcblk0p2 rw earlyprintk rootfstype=ext4 rootwait devtmpfs
 
 除了修改 `pynq_bootargs.dtsi`，我们还需要修改 `sdbuild/Makefile`，将下面这行代码中的 `mmcblk0p2` 变成 `mmcblk1p2`。
 
-```makefile fileName="sdbuild/Makefile"
+```makefile title="sdbuild/Makefile"
 	echo 'CONFIG_SUBSYSTEM_SDROOT_DEV="/dev/mmcblk0p2"' >> $$(PL_CONFIG_$1)
 ```
 
@@ -343,7 +343,7 @@ export PYNQ_UBUNTU_REPO=http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports
 
 CrossTool-NG 每次运行时会从云端下载很多包（主要是各种源代码）。根据其文档的指示，我们可以建立一个本地的缓存文件夹。当需要下载的包本地已经缓存时，它就会跳过下载，从而节省时间。CrossTool-NG 的配置文件在 `sdbuild/packages/gcc-mb/samples/<compile_targets>/crosstool.config`，在其最后加上两行：
 
-```text fileName="crosstool.config"
+```text title="crosstool.config"
 CT_SAVE_TARBALLS=y
 CT_LOCAL_TARBALLS_DIR=<somewhere_to_put_downloaded_files>
 ```
@@ -356,7 +356,7 @@ CT_LOCAL_TARBALLS_DIR=<somewhere_to_put_downloaded_files>
 
 因为 EdgeBoard FZ3A 板载的 Zynq 芯片是 ARM64 架构，因此为了节约空间，就只下载 “aarch64 sstate-cache” 和 “downloads” 两个包（加起来也超过 60GB 了）。然后我们将它们解压缩，并把路径添加到 `petalinux_bsp/meta-user/conf/petalinuxbsp.conf`：
 
-```text fileName="petalinuxbsp.conf"
+```text title="petalinuxbsp.conf"
 DL_DIR = "<sstate_extract_dir>/2020.2/downloads"
 SSTATE_DIR = "<sstate_extract_dir>/2020.2/sstate-cache/aarch64"
 ```

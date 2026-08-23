@@ -114,7 +114,7 @@ PYNQ 框架默认预置了 ZCU104、PYNQ-Z1、PYNQ-Z2 三款开发板，可以�
 
 PYNQ 的 make 脚本中预置了几行代码，用于检查 Vivado、Vitis、PetaLinux、QEMU 等软件是否已安装，以及版本是否和推荐的版本一致：
 
-```shell
+```shell title="sdbuild/Makefile" {2,4} showLineNumbers
 vivado -version | fgrep ${KERNEL_VERSION}
 vitis -version | fgrep ${KERNEL_VERSION}
 which petalinux-config
@@ -136,7 +136,7 @@ bash $(SCRIPT_DIR)/check_env.sh
 
 PYNQ 的编译过程中，会使用 QEMU 进入 PetaLinux 镜像，执行脚本 `sdbuild/scripts/install_packages.sh` 安装一些软件。该脚本会使用 QEMU 环境下的 Bash 执行一个叫 `qemu.sh` 的脚本，涉及代码如下：
 
-```shell highlightLines="6"
+```shell title="sdbuild/scripts/install_packages.sh" {6} showLineNumbers
 for p in $@
 do
   ...
