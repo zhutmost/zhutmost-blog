@@ -35,6 +35,11 @@ const config: InputSiteConfig = {
         href: "https://github.com/zhutmost",
       },
       {
+        label: "Web Analytics",
+        icon: "IconChartBarPopular",
+        href: "https://cloud.umami.is/share/Xhuqb7y5CtlUaz3U",
+      },
+      {
         label: "RSS Feed",
         icon: "IconRss",
         href: "/rss.xml",
